@@ -26,14 +26,14 @@ if node.attribute?(:sysctl)
   file "/etc/sysctl.d/68-chef-attributes.conf" do
     content attr_txt
     mode "0644"
-    notifies :start, "service[procps]"
+    notifies :start, "service[procps]", :immediately
   end
 end
 
 cookbook_file "/etc/sysctl.d/69-chef-static.conf" do
   ignore_failure true
   mode "0644"
-  notifies :start, "service[procps]"
+  notifies :start, "service[procps]", :immediately
 end
 
 service "procps"
