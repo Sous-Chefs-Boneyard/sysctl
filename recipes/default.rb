@@ -3,37 +3,40 @@
 # Recipe:: default
 #
 # Copyright 2011, Fewbytes Technologies LTD
+# Copyright 2012, Chris Roberts <chrisroberts.code@gmail.com>
 #
 
-def compile_attr(prefix, v)
-  case v
-  when Array
-    return "#{prefix}=#{v.join(" ")}"
-  when String, Fixnum, Bignum, Float, Symbol
-    "#{prefix}=#{v}"
-  when Hash, Chef::Node::Attribute
-    prefix += "." unless prefix.empty?
-    return v.map {|key, value| compile_attr("#{prefix}#{key}", value)}.flatten
-  else
-    raise Chef::Exceptions::UnsupportedAction, "Sysctl cookbook can't handle values of type: #{v.class}"
+service "procps"
+
+sysctl_path = if(node[:sysctl][:conf_dir])
+                File.join(node[:sysctl][:conf_dir], '99-chef-attributes.conf')
+              else
+                node[:sysctl][:allow_sysctl_conf] ? '/etc/sysctl.conf' : nil
+              end
+
+if(sysctl_path)
+  template sysctl_path do
+    action :nothing
+    source 'sysctl.conf.erb'
+    mode '0644'
+    notifies :start, resources(:service => 'procps'), :immediately
+    only_if do
+      node[:sysctl][:attributes] && !node[:sysctl][:attributes].empty?
+    end
   end
-end
 
-if node.attribute?(:sysctl)
-
-  attr_txt = compile_attr("", node[:sysctl]).join("\n") + "\n"
-
-  file "/etc/sysctl.d/68-chef-attributes.conf" do
-    content attr_txt
-    mode "0644"
-    notifies :start, "service[procps]", :immediately
+  ruby_block 'sysctl config notifier' do
+    block do
+      true
+    end
+    notifies :create, resources(:template => sysctl_path), :delayed
   end
 end
 
 cookbook_file "/etc/sysctl.d/69-chef-static.conf" do
   ignore_failure true
   mode "0644"
-  notifies :start, "service[procps]", :immediately
+  notifies :start, "service[procps]"
 end
 
 service "procps"
