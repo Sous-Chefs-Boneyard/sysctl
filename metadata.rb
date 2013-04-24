@@ -1,4 +1,4 @@
-name		 "sysctl"
+name             "sysctl"
 maintainer       "OneHealth Solutions, Inc."
 maintainer_email "cookbooks@onehealth.com"
 license          "Apache v2.0"

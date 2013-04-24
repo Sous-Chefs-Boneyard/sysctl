@@ -8,7 +8,7 @@ module Sysctl
         "#{prefix}=#{v}"
       when Hash, Chef::Node::Attribute
         prefix += "." unless prefix.empty?
-        return v.map {|key, value| compile_attr("#{prefix}#{key}", value)}.flatten
+        return v.map {|key, value| compile_attr("#{prefix}#{key}", value) }.flatten
       else
         raise Chef::Exceptions::UnsupportedAction, "Sysctl cookbook can't handle values of type: #{v.class}"
       end
