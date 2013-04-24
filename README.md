@@ -1,7 +1,7 @@
 Description
 ===========
 
-Set [sysctl](http://en.wikipedia.org/wiki/Sysctl) System Control parameters via Opscode Chef
+Set [sysctl](http://en.wikipedia.org/wiki/Sysctl) system control parameters via Opscode Chef
 
 Platforms
 =========
@@ -16,9 +16,7 @@ There are two main ways to interact with the cookbook. This is via chef [attribu
 
 ## Attributes
 
-* node['sysctl']['attributes'] - A namespace for sysctl settings.
-  For example: node['sysctl']['attributes']['vm']['swappiness'] = 20
-
+* node['sysctl']['attributes'] - A namespace for setting sysctl parameters
 * node['sysctl']['conf_dir']  - Specifies the sysctl.d directory to be used. Defaults on Debian to /etc/sysctl.d, otherwise nil
 * node['sysctl']['allow_sysctl_conf'] - Defaults to false. This will write params to /etc/sysctl.conf directly when set to true.
 
