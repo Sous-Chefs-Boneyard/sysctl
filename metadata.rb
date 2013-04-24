@@ -1,8 +1,9 @@
-maintainer       "Fewbytes Technologies"
-maintainer_email "avishai@fewbytes.com"
+name		 "sysctl"
+maintainer       "OneHealth Solutions, Inc."
+maintainer_email "cookbooks@onehealth.com"
 license          "Apache v2.0"
 description      "Configures sysctl parameters"
-long_description IO.read(File.join(File.dirname(__FILE__), 'README.rdoc'))
-version          "0.2.0"
+long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
+version          "0.3.0"
 supports         "ubuntu"
 supports         "debian"
