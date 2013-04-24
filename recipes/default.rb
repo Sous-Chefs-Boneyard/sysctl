@@ -9,10 +9,10 @@
 
 service "procps"
 
-sysctl_path = if(node[:sysctl][:conf_dir])
-  File.join(node[:sysctl][:conf_dir], '99-chef-attributes.conf')
+sysctl_path = if(node['sysctl']['conf_dir'])
+  File.join(node['sysctl']['conf_dir'], '99-chef-attributes.conf')
 else
-  node[:sysctl][:allow_sysctl_conf] ? '/etc/sysctl.conf' : nil
+  node['sysctl']['allow_sysctl_conf'] ? '/etc/sysctl.conf' : nil
 end
 
 if(sysctl_path)
@@ -20,9 +20,9 @@ if(sysctl_path)
     action :nothing
     source 'sysctl.conf.erb'
     mode '0644'
-    notifies :start, resources(:service => 'procps'), :immediately
+    notifies :start, "service[procps]", :immediately
     only_if do
-      node[:sysctl][:params] && !node[:sysctl][:params].empty?
+      node['sysctl']['params'] && !node['sysctl']['params'].empty?
     end
   end
 
@@ -30,7 +30,7 @@ if(sysctl_path)
     block do
       true
     end
-    notifies :create, resources(:template => sysctl_path), :delayed
+    notifies :create, "template[#{sysctl_path}]", :delayed
   end
 end
 
