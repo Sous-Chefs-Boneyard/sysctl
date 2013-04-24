@@ -2,11 +2,12 @@
 
 There is a lot of talk about making one sysctl cookbook. Let's make it happen.
 
+* [GH-1] Remove 69-chef-static.conf
 * New Maintainer: Sander van Zoest, OneHealth
 * Update Development environment with Berkshelf, Vagrant, Test-Kitchen
 
 ## v0.2.0:
 
-* [GH-3] - Notify procps start immediately
-* [GH-4] - Dynamic configuration file. Add LWRP.
-* [GH-5] - Allow Bignums as values
+* [FB-3] - Notify procps start immediately
+* [FB-4] - Dynamic configuration file. Add LWRP.
+* [FB-5] - Allow Bignums as values
