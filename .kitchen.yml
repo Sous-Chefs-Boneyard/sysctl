@@ -23,4 +23,11 @@ platforms:
 suites:
 - name: default
   run_list: ["recipe[sysctl]"]
-  attributes: {}
+  attributes:
+    sysctl:
+      attributes:
+        vm:
+          swappiness: 19
+        net:
+          ipv4:
+            tcp_fin_timeout: 29
