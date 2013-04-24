@@ -1,10 +1,10 @@
+# sysctl [![Build Status](https://travis-ci.org/onehealth-cookbooks/sysctl.png?branch=master)](https://travis-ci.org/onehealth-cookbooks/sysctl)
 
 Description
 ===========
 
 Set [sysctl](http://en.wikipedia.org/wiki/Sysctl) system control parameters via Opscode Chef
 
-# sysctl [![Build Status](https://secure.travis.ci.org/onehealth-cookbooks/sysctl.png?branch=master)](http://travis-ci.org/onehealth-cookbooks/sysctl)
 
 Platforms
 =========
