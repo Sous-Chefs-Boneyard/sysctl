@@ -65,9 +65,9 @@ Tested with
 * vagrant-berkshelf (1.2.0)
 * vagrant-omnibus (1.0.2)
 
-# System Control Links
+# Links
 
-There are a lot of different documents that talk about system control parameters, the hope here is to point to some of the most useful ones to provide more guidance as to what the possible parameters are and what they mean.
+There are a lot of different documents that talk about system control parameters, the hope here is to point to some of the most useful ones to provide more guidance as to what the possible kernel parameters are and what they mean.
 
 * [Arch Linux SysCtl Tutorial (Feb 2013)](http://gotux.net/arch-linux/sysctl-config/)
 * [Linux Kernel IP Sysctl](http://www.kernel.org/doc/Documentation/networking/ip-sysctl.txt)
