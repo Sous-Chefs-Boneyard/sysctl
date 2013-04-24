@@ -16,7 +16,7 @@ There are two main ways to interact with the cookbook. This is via chef [attribu
 
 ## Attributes
 
-* node['sysctl']['attributes'] - A namespace for setting sysctl parameters
+* node['sysctl']['params'] - A namespace for setting sysctl parameters
 * node['sysctl']['conf_dir']  - Specifies the sysctl.d directory to be used. Defaults on Debian to /etc/sysctl.d, otherwise nil
 * node['sysctl']['allow_sysctl_conf'] - Defaults to false. This will write params to /etc/sysctl.conf directly when set to true.
 
@@ -38,7 +38,7 @@ Attributes
 
     # set vm.swapiness to 20 via attributes
 
-    node.default['sysctl']['attributes']['vm']['swappiness'] = 20
+    node.default['sysctl']['params']['vm']['swappiness'] = 20
 
     # set vm.swapiness to 20 via sysctl_param LWRP
     sysctl_param 'vm.swappiness' do

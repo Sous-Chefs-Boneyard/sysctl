@@ -2,6 +2,7 @@
 
 There is a lot of talk about making one sysctl cookbook. Let's make it happen.
 
+* BREAKING CHANGE: use sysctl.params instead of sysctl.attributes to match LWRP and sysctl standard naming
 * [GH-1] Remove 69-chef-static.conf
 * New Maintainer: Sander van Zoest, OneHealth
 * Update Development environment with Berkshelf, Vagrant, Test-Kitchen

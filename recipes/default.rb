@@ -22,7 +22,7 @@ if(sysctl_path)
     mode '0644'
     notifies :start, resources(:service => 'procps'), :immediately
     only_if do
-      node[:sysctl][:attributes] && !node[:sysctl][:attributes].empty?
+      node[:sysctl][:params] && !node[:sysctl][:params].empty?
     end
   end
 

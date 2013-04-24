@@ -4,5 +4,5 @@ default[:sysctl][:conf_dir] = case node.platform_family
   else
     nil
   end
-default[:sysctl][:attributes] = {}
+default[:sysctl][:params] = {}
 default[:sysctl][:allow_sysctl_conf] = false
