@@ -1,3 +1,8 @@
+##
+
+* Added Travis CI Builds
+* Cleanedup foodcritic and tailor complaints
+
 ## v0.3.0
 
 There is a lot of talk about making one sysctl cookbook. Let's make it happen.
