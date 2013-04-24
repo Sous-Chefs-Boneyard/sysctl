@@ -4,6 +4,7 @@
 #
 # Copyright 2011, Fewbytes Technologies LTD
 # Copyright 2012, Chris Roberts <chrisroberts.code@gmail.com>
+# Copyright 2013, OneHealth Solutions, Inc.
 #
 
 service "procps"
@@ -31,12 +32,6 @@ if(sysctl_path)
     end
     notifies :create, resources(:template => sysctl_path), :delayed
   end
-end
-
-cookbook_file "/etc/sysctl.d/69-chef-static.conf" do
-  ignore_failure true
-  mode "0644"
-  notifies :start, "service[procps]"
 end
 
 service "procps"
