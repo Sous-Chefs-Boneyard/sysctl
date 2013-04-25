@@ -11,3 +11,14 @@ begin
 rescue LoadError
   puts ">>>>> Kitchen gem not loaded, omitting tasks" unless ENV['CI']
 end
+
+class Tailor < Thor
+  require 'tailor/cli'
+
+  desc "lint", "check style"
+  def lint
+     ::Tailor::Logger.log = false
+     tailor = ::Tailor::CLI.new []
+     tailor.execute!
+  end
+end
