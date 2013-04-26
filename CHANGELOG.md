@@ -1,9 +1,9 @@
-##
+## v0.3.1
 
 * Added attribute integration tests for test kitchen
-* Added Alpha RHEL/CentOS support
+* Added alpha RHEL/CentOS support
 * Added Travis CI Builds
-* Cleanedup foodcritic and tailor complaints
+* Cleaned up foodcritic and tailor complaints
 
 ## v0.3.0
 
