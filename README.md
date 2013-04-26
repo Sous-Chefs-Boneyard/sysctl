@@ -10,7 +10,7 @@ Platforms
 =========
 
 * Debian/Ubuntu
-* RHEL/CentOS
+* RHEL/CentOS (work in progress)
 
 Usage
 =======

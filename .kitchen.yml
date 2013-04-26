@@ -31,3 +31,14 @@ suites:
         net:
           ipv4:
             tcp_fin_timeout: 29
+- name: override_conf
+  run_list: ["recipe[sysctl]"]
+  attributes:
+    sysctl:
+      allow_sysctl_conf: true
+      params:
+        vm:
+          swappiness: 19
+        net:
+          ipv4:
+            tcp_fin_timeout: 29
