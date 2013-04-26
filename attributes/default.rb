@@ -1,5 +1,5 @@
 case platform_family
-when 'debian'
+when 'debian', 'rhel'
   default['sysctl']['conf_dir'] = '/etc/sysctl.d'
 else
   default['sysctl']['conf_dir'] = nil

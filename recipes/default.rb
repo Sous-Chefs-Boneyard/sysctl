@@ -7,9 +7,22 @@
 # Copyright 2013, OneHealth Solutions, Inc.
 #
 
+if platform_family?("rhel")
+  template "/etc/rc.d/init.d/procps" do
+    source "procps.init-rhel.erb"
+    mode '0755'
+  end
+end
+
 service "procps"
 
 sysctl_path = if(node['sysctl']['conf_dir'])
+  directory node['sysctl']['conf_dir'] do
+    owner "root"
+    group "root"
+    mode 0755
+    action :create
+  end
   File.join(node['sysctl']['conf_dir'], '99-chef-attributes.conf')
 else
   node['sysctl']['allow_sysctl_conf'] ? '/etc/sysctl.conf' : nil
@@ -33,5 +46,3 @@ if(sysctl_path)
     notifies :create, "template[#{sysctl_path}]", :delayed
   end
 end
-
-service "procps"
