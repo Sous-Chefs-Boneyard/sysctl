@@ -22,7 +22,8 @@ platforms:
 
 suites:
 - name: default
-  run_list: ["recipe[sysctl]"]
+  run_list:
+    - recipe[sysctl_test]
   attributes:
     sysctl:
       params:
@@ -32,7 +33,8 @@ suites:
           ipv4:
             tcp_fin_timeout: 29
 - name: override_conf
-  run_list: ["recipe[sysctl]"]
+  run_list:
+    - recipe[sysctl_test]
   attributes:
     sysctl:
       allow_sysctl_conf: true
