@@ -1,3 +1,9 @@
+## v0.3.2
+
+* [GH-5] Fixed ImmutableAttributeModification (Mark Pimentel)
+* Added LWRP integration tests for test kitchen
+* LWRP now sets attributes on the node via node.default, not node.set allowing easier overrides by other cookbooks
+
 ## v0.3.1
 
 * Added attribute integration tests for test kitchen
