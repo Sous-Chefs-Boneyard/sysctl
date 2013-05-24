@@ -6,4 +6,4 @@ description      "Wrapper cookbook to test sysctl LWRPs"
 long_description "wrapper cookbook to test sysctl LWRPs"
 version          "0.1.0"
 
-depends	"sysctl"
+depends          "sysctl"

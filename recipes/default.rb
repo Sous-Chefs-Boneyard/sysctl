@@ -10,7 +10,7 @@
 template "/etc/rc.d/init.d/procps" do
   source "procps.init-rhel.erb"
   mode '0755'
-  only_if { platform_family?("rhel") }
+  only_if {platform_family?("rhel") }
 end
 
 service "procps"
