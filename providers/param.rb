@@ -17,7 +17,7 @@ action :apply do
         %x{sysctl -n #{new_resource.key}}.strip == new_resource.value.to_s
       end
     end
-    node.set['sysctl']['params'] = sys_attrs
+    node.default['sysctl']['params'] = sys_attrs
     new_resource.updated_by_last_action(true)
   end
 end
@@ -41,7 +41,7 @@ action :remove do
         end
       end
     end
-    node.set['sysctl']['params'] = sys_attrs
+    node.default['sysctl']['params'] = sys_attrs
     new_resource.updated_by_last_action(true)
   end
 end
