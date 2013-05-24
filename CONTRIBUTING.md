@@ -101,5 +101,5 @@ information above.
 
 Please do not update the CHANGELOG.md for a new version. Not all
 changes to a cookbook may be merged and released in the same versions.
-Opscode will update the CHANGELOG.md when releasing a new version of
+OneHealth will update the CHANGELOG.md when releasing a new version of
 the cookbook.
