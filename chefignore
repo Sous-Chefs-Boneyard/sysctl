@@ -76,7 +76,7 @@ tmp
 
 # Cookbooks #
 #############
-CONTRIBUTING
+CONTRIBUTING*
 CHANGELOG*
 
 # Strainer #
@@ -94,3 +94,7 @@ Vagrantfile
 # Travis #
 ##########
 .travis.yml
+
+# Tailor #
+##########
+.tailor
