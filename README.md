@@ -10,7 +10,7 @@ Platforms
 =========
 
 * Debian/Ubuntu
-* RHEL/CentOS (work in progress)
+* RHEL/CentOS
 
 Usage
 =======
@@ -64,9 +64,24 @@ vagrant plugin install vagrant-berkshelf
 ```
 
 Tested with 
-* Vagrant (version 1.2.1)
+* Vagrant (version 1.2.2)
 * vagrant-berkshelf (1.2.0)
 * vagrant-omnibus (1.0.2)
+
+To test we have written tests in [bats](https://github.com/sstephenson/bats) and executed via [test-kitchen](https://github.com/opscode/test-kitchen).
+
+Much of the tooling around this cookbook is exposed via thor and test kitchen, so it is highly recommended to learn more about those tools.
+However, to give a quick glance at how to do some tests, you can execute the following commmands
+
+```
+bundle install
+bundle exec thor tailor:lint
+bundle exec thor foodcritic:lint
+bundle exec kitchen test default-ubuntu-1204
+bundle exec kitchen test default-centos-64
+```
+
+The above will do ruby style ([tailor](https://github.com/turboladen/tailor)) and cookbook style ([foodcritic](http://acrmp.github.io/foodcritic/)) checks followed by ensuring proper cookbook operation on two separate linux platforms (Ubuntu 12.04 LTS Precise 64-bit and CentOS 6.4). Please run the tests on any pull requests that you are about to submit and write tests for defects or new features to ensure backwards compatibility and a stable cookbook that we can all rely upon.
 
 # Links
 
