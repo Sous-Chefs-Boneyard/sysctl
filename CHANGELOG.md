@@ -1,3 +1,5 @@
+* [GH-6] Fixed any params with spaces throw errors (Mike Pavlenko)
+
 ## v0.3.2
 
 * [GH-5] Fixed ImmutableAttributeModification (Mark Pimentel)
