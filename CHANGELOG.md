@@ -1,3 +1,5 @@
+## v0.3.3
+
 * more explicitly define conflicting cookbooks and operating systems in metadata.rb
 * [GH-6] Fixed any params with spaces throw errors (Mike Pavlenko)
 
