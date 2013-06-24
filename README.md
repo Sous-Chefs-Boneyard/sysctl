@@ -20,8 +20,8 @@ There are two main ways to interact with the cookbook. This is via chef [attribu
 ## Attributes
 
 * node['sysctl']['params'] - A namespace for setting sysctl parameters
-* node['sysctl']['conf_dir']  - Specifies the sysctl.d directory to be used. Defaults on Debian to /etc/sysctl.d, otherwise nil
-* node['sysctl']['allow_sysctl_conf'] - Defaults to false. This will write params to /etc/sysctl.conf directly when set to true.
+* node['sysctl']['conf_dir']  - Specifies the sysctl.d directory to be used. Defaults to /etc/sysctl.d on the Debian and RHEL platform families, otherwise nil
+* node['sysctl']['allow_sysctl_conf'] - Defaults to false.  Using conf_dir is highly recommended. On some platforms that is not supported. For those platforms, set this to true and the cookbook will write params to /etc/sysctl.conf directly.
 
 ## LWRP
 
