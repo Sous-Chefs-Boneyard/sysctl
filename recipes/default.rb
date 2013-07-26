@@ -42,6 +42,6 @@ if(sysctl_path)
     block do
       true
     end
-    notifies :create, "template[#{sysctl_path}]", :delayed
+    notifies :create, "template[#{sysctl_path}]", :immediately
   end
 end
