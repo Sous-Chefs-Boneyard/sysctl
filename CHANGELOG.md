@@ -1,3 +1,9 @@
+## v0.3.4
+
+* Switch to rubocop over tailor
+* modernize Gemfile dependencies and add Guard for development
+* fix FC048: Prefer Mixlib::ShellOut
+
 ## v0.3.3
 
 * more explicitly define conflicting cookbooks and operating systems in metadata.rb
