@@ -1,9 +1,19 @@
 source "https://rubygems.org"
 
-#gem 'rb-fsevent', :group => :development
-gem 'rb-inotify', :group => :development
-gem 'berkshelf'
-gem 'thor-foodcritic'
-gem 'tailor'
-gem 'test-kitchen', :git => 'git://github.com/opscode/test-kitchen.git', :branch => 'v1.0.0.alpha.7', :group => :integration
-gem 'kitchen-vagrant', :group => :integration
+gem 'berkshelf',  '~> 2.0'
+gem 'foodcritic', '~> 3.0'
+gem 'thor-foodcritic', '~> 1.1'
+gem 'rubocop',    '~> 0.12'
+
+group :integration do
+  gem 'test-kitchen',    '~> 1.0.0.beta'
+  gem 'kitchen-vagrant', '~> 0.11'
+end
+
+group :development do
+  gem 'guard'
+  gem 'guard-rubocop'
+  gem 'guard-foodcritic'
+  gem 'rb-fsevent', :require => false
+  gem 'rb-inotify', :require => false
+end
