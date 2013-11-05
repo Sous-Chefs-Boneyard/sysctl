@@ -1,12 +1,14 @@
 ## v0.3.4
 
+* [GH-9] Make changes available immediately (Warren Vosper)
+* [GH-8] Added PLD Linux support (not regularily tested) (Elan Ruusam?e)
 * Switch to rubocop over tailor
-* modernize Gemfile dependencies and add Guard for development
-* fix FC048: Prefer Mixlib::ShellOut
+* Modernize Gemfile dependencies and add Guard for development
+* Fix FC048: Prefer Mixlib::ShellOut
 
 ## v0.3.3
 
-* more explicitly define conflicting cookbooks and operating systems in metadata.rb
+* More explicitly define conflicting cookbooks and operating systems in metadata.rb
 * [GH-6] Fixed any params with spaces throw errors (Mike Pavlenko)
 
 ## v0.3.2
