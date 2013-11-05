@@ -11,6 +11,7 @@ Platforms
 
 * Debian/Ubuntu
 * RHEL/CentOS
+* PLD Linux (not tested)
 
 Usage
 =======
@@ -64,9 +65,9 @@ vagrant plugin install vagrant-berkshelf
 ```
 
 Tested with 
-* Vagrant (version 1.2.2)
-* vagrant-berkshelf (1.2.0)
-* vagrant-omnibus (1.0.2)
+* Vagrant (version 1.3.5)
+* vagrant-berkshelf (1.3.4)
+* vagrant-omnibus (1.1.2)
 
 To test we have written tests in [bats](https://github.com/sstephenson/bats) and executed via [test-kitchen](https://github.com/opscode/test-kitchen).
 
@@ -75,13 +76,15 @@ However, to give a quick glance at how to do some tests, you can execute the fol
 
 ```
 bundle install
-bundle exec thor tailor:lint
+bundle exec rubocop
 bundle exec thor foodcritic:lint
 bundle exec kitchen test default-ubuntu-1204
 bundle exec kitchen test default-centos-64
 ```
 
-The above will do ruby style ([tailor](https://github.com/turboladen/tailor)) and cookbook style ([foodcritic](http://acrmp.github.io/foodcritic/)) checks followed by ensuring proper cookbook operation on two separate linux platforms (Ubuntu 12.04 LTS Precise 64-bit and CentOS 6.4). Please run the tests on any pull requests that you are about to submit and write tests for defects or new features to ensure backwards compatibility and a stable cookbook that we can all rely upon.
+The above will do ruby style ([robucop](https://github.com/bbatsov/rubocop)) and cookbook style ([foodcritic](http://acrmp.github.io/foodcritic/)) checks followed by ensuring proper cookbook operation on two separate linux platforms (Ubuntu 12.04 LTS Precise 64-bit and CentOS 6.4). Please run the tests on any pull requests that you are about to submit and write tests for defects or new features to ensure backwards compatibility and a stable cookbook that we can all rely upon.
+
+This coobook is also setup to run the style checks while you work via the [guard gem](http://guardgem.org/).
 
 # Links
 
