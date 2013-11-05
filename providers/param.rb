@@ -14,7 +14,8 @@ action :apply do
     execute "sysctl[#{new_resource.key}]" do
       command "sysctl -w \"#{new_resource.key}=#{new_resource.value}\""
       not_if do
-        %x{sysctl -n #{new_resource.key}}.strip == new_resource.value.to_s
+	cparam = Mixlib::ShellOut.new("sysctl -n #{new_resource.key}").run_command
+        cparam.stdout.strip == new_resource.value.to_s
       end
     end
     node.default['sysctl']['params'] = sys_attrs
