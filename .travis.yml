@@ -1,6 +1,10 @@
 language: ruby
 rvm:
   - 1.9.3
+  - 2.0.0
+before_script:
+  - bundle exec berks install
 bundler_args: --without integration development
-script: bundle exec thor foodcritic:lint -f correctness
-after_script: bundle exec thor tailor:lint
+script:
+  - bundle exec foodcritic -f any . --tags ~FC007 --tags ~FC015 --tags ~FC023
+  - bundle exec rubocop
