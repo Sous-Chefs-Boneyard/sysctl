@@ -98,3 +98,7 @@ Vagrantfile
 # Tailor #
 ##########
 .tailor
+
+# Rubocop #
+##########
+.rubocop.yml
