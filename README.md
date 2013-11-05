@@ -82,7 +82,7 @@ bundle exec kitchen test default-ubuntu-1204
 bundle exec kitchen test default-centos-64
 ```
 
-The above will do ruby style ([robucop](https://github.com/bbatsov/rubocop)) and cookbook style ([foodcritic](http://acrmp.github.io/foodcritic/)) checks followed by ensuring proper cookbook operation on two separate linux platforms (Ubuntu 12.04 LTS Precise 64-bit and CentOS 6.4). Please run the tests on any pull requests that you are about to submit and write tests for defects or new features to ensure backwards compatibility and a stable cookbook that we can all rely upon.
+The above will do ruby style ([robucop](https://github.com/bbatsov/rubocop)) and cookbook style ([foodcritic](http://www.foodcritic.io/)) checks followed by ensuring proper cookbook operation on two separate linux platforms (Ubuntu 12.04 LTS Precise 64-bit and CentOS 6.4). Please run the tests on any pull requests that you are about to submit and write tests for defects or new features to ensure backwards compatibility and a stable cookbook that we can all rely upon.
 
 This coobook is also setup to run the style checks while you work via the [guard gem](http://guardgem.org/).
 
