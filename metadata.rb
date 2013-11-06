@@ -7,6 +7,7 @@ long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
 version          '0.3.4'
 supports 'ubuntu', '>= 10.04'
 supports 'centos', '>= 5.9'
+supports 'scientific', '>= 6'
 %w(debian redhat pld).each do |os|
   supports os
 end

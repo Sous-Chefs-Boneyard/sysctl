@@ -16,6 +16,9 @@ platforms:
   driver_config:
     box: opscode-ubuntu-10.04
     box_url: https://opscode-vm.s3.amazonaws.com/vagrant/opscode_ubuntu-10.04_provisionerless.box
+- name: debian-7.0
+    box: opscode-debian-7.0
+    box_url: https://opscode-vm.s3.amazonaws.com/vagrant/opscode_debian-7.0.0_provisionerless.box
 - name: centos-6.4
   driver_config:
     box: opscode-centos-6.4
@@ -24,6 +27,18 @@ platforms:
   driver_config:
     box: opscode-centos-5.9
     box_url: https://opscode-vm.s3.amazonaws.com/vagrant/opscode_centos-5.9_provisionerless.box
+- name: scientific-6
+  driver_config:
+    box: lyte-scientific-6-minimal
+    box_url: http://lyte.id.au/vagrant/sl6-64-lyte.box
+- name: fedora-18
+  driver_config:
+    box: opscode-fedora-18
+    box_url: https://opscode-vm-bento.s3.amazonaws.com/vagrant/opscode-fedora-18_provisionerless.box
+- name: fedora-20
+  driver_config:
+    box: opscode-fedora-20
+    box_url: https://opscode-vm-bento.s3.amazonaws.com/vagrant/opscode-fedora-20-x86_64_provisionerless.box
 
 suites:
 - name: default
