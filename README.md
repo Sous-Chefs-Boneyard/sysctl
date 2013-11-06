@@ -11,6 +11,7 @@ Platforms
 
 * Debian/Ubuntu
 * RHEL/CentOS
+* Scientific Linux
 * PLD Linux (not tested)
 
 Usage
