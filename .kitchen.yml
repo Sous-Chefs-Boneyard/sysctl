@@ -17,6 +17,7 @@ platforms:
     box: opscode-ubuntu-10.04
     box_url: https://opscode-vm.s3.amazonaws.com/vagrant/opscode_ubuntu-10.04_provisionerless.box
 - name: debian-7.0
+  driver_config:
     box: opscode-debian-7.0
     box_url: https://opscode-vm.s3.amazonaws.com/vagrant/opscode_debian-7.0.0_provisionerless.box
 - name: centos-6.4
