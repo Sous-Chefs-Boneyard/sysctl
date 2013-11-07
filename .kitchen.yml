@@ -28,7 +28,7 @@ platforms:
   driver_config:
     box: opscode-centos-5.9
     box_url: https://opscode-vm.s3.amazonaws.com/vagrant/opscode_centos-5.9_provisionerless.box
-- name: scientific-6
+- name: scientific-6.0
   driver_config:
     box: lyte-scientific-6-minimal
     box_url: http://lyte.id.au/vagrant/sl6-64-lyte.box
