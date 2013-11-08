@@ -13,7 +13,7 @@ platforms:
 - name: debian-7.1.0
 - name: centos-6.4
 - name: centos-5.9
-- name: scientific-6.0
+- name: scientific-6.4
   driver_config:
     box: lyte-scientific-6-minimal
     box_url: http://lyte.id.au/vagrant/sl6-64-lyte.box
