@@ -70,7 +70,7 @@ Tested with
 * vagrant-berkshelf (1.3.4)
 * vagrant-omnibus (1.1.2)
 
-To test we have written tests in [bats](https://github.com/sstephenson/bats) and executed via [test-kitchen](https://github.com/opscode/test-kitchen).
+To test we have written tests in [bats](https://github.com/sstephenson/bats) and executed via [test-kitchen](http://kitchen.ci).
 
 Much of the tooling around this cookbook is exposed via thor and test kitchen, so it is highly recommended to learn more about those tools.
 However, to give a quick glance at how to do some tests, you can execute the following commmands

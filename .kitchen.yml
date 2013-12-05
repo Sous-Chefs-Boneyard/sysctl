@@ -1,11 +1,17 @@
 ---
-driver_plugin: vagrant
-driver_config:
+driver:
+  name: vagrant
+
+provisioner:
+  name: chef_solo
+  data_bags_path: "data_bags"
+  roles_path: "roles"
+  environments_path: "environments"
   require_chef_omnibus: true
 
 platforms:
 - name: canonical-ubuntu-12.04
-  driver_config:
+  driver:
     box: canonical-ubuntu-12.04
     box_url: https://cloud-images.ubuntu.com/vagrant/precise/current/precise-server-cloudimg-amd64-vagrant-disk1.box
 - name: ubuntu-12.04
@@ -14,11 +20,11 @@ platforms:
 - name: centos-6.4
 - name: centos-5.9
 - name: scientific-6.4
-  driver_config:
+  driver:
     box: lyte-scientific-6-minimal
     box_url: http://lyte.id.au/vagrant/sl6-64-lyte.box
 - name: canonical-ubuntu-14.04
-  driver_config:
+  driver:
     box: canonical-ubuntu-14.04
     box_url: https://cloud-images.ubuntu.com/vagrant/trusty/current/trusty-server-cloudimg-amd64-vagrant-disk1.box
 - name: fedora-18
