@@ -66,8 +66,8 @@ vagrant plugin install vagrant-berkshelf
 ```
 
 Tested with 
-* Vagrant (version 1.3.5)
-* vagrant-berkshelf (1.3.4)
+* Vagrant (version 1.4.0)
+* vagrant-berkshelf (1.3.5)
 * vagrant-omnibus (1.1.2)
 
 To test we have written tests in [bats](https://github.com/sstephenson/bats) and executed via [test-kitchen](http://kitchen.ci).
