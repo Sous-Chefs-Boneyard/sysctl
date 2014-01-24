@@ -7,12 +7,15 @@ Berksfile.lock
 .*.sw[a-z]
 *.un~
 /cookbooks
+vendor
 
 # Bundler
 Gemfile.lock
 bin/*
 .bundle/*
-ruby/
 
 .kitchen/
 .kitchen.local.yml
+.idea/
+.DS_Store
+.coverage
