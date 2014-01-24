@@ -1,3 +1,13 @@
+##
+
+* Removed Thor development dependency
+* Added LWRP Matcher for use with ChefSpec by wrapper cookbooks
+* Added ChefSpec 3 unit tests
+* Ported bats tests to ServerSpec integration tests
+* Use platform_family? in attributes (requires Ohai 0.6.12)
+* Removed ruby_block[sysctl config notifier]
+* [GH-19] Make sysctl template logic idempotent (Roy Tewalt)
+
 ## v0.3.5
 
 * Scientific Linux 6 support confirmed
