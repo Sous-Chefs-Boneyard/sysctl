@@ -59,7 +59,12 @@ Attributes
 
 # Development
 
-This cookbook can be tested using vagrant, but it depends on the following vagrant plugins
+We have written unit tests using [chefspec](http://code.sethvargo.com/chefspec/) and integration tests in [bats](https://github.com/sstephenson/bats) executed via [test-kitchen](http://kitchen.ci).
+Much of the tooling around this cookbook is exposed via guard and test kitchen, so it is highly recommended to learn more about those tools.
+
+## Vagrant Plugin Dependencies
+
+The integration tests can be run via test-kitchen using vagrant, but it depends on the following vagrant plugins:
 
 ```
 vagrant plugin install vagrant-omnibus
@@ -67,26 +72,37 @@ vagrant plugin install vagrant-berkshelf
 ```
 
 Tested with 
-* Vagrant (version 1.4.0)
+* Vagrant (version 1.4.3)
 * vagrant-berkshelf (1.3.5)
 * vagrant-omnibus (1.1.2)
 
-To test we have written tests in [bats](https://github.com/sstephenson/bats) and executed via [test-kitchen](http://kitchen.ci).
+## Running tests
 
-Much of the tooling around this cookbook is exposed via thor and test kitchen, so it is highly recommended to learn more about those tools.
-However, to give a quick glance at how to do some tests, you can execute the following commmands
+The following commands will run the tests:
 
 ```
 bundle install
 bundle exec rubocop
-bundle exec thor foodcritic:lint
+bundle exec foodcritic .
+bundle exec rspec
 bundle exec kitchen test default-ubuntu-1204
-bundle exec kitchen test default-centos-64
+bundle exec kitchen test default-centos-65
 ```
 
-The above will do ruby style ([rubocop](https://github.com/bbatsov/rubocop)) and cookbook style ([foodcritic](http://www.foodcritic.io/)) checks followed by ensuring proper cookbook operation on two separate linux platforms (Ubuntu 12.04 LTS Precise 64-bit and CentOS 6.4). Please run the tests on any pull requests that you are about to submit and write tests for defects or new features to ensure backwards compatibility and a stable cookbook that we can all rely upon.
+The above will do ruby style ([rubocop](https://github.com/bbatsov/rubocop)) and cookbook style ([foodcritic](http://www.foodcritic.io/)) checks followed rspec unit tests ensuring proper cookbook operation.Integration tests will be run next on two separate linux platforms (Ubuntu 12.04 LTS Precise 64-bit and CentOS 6.5). Please run the tests on any pull requests that you are about to submit and write tests for defects or new features to ensure backwards compatibility and a stable cookbook that we can all rely upon.
 
-This coobook is also setup to run the style checks while you work via the [guard gem](http://guardgem.org/).
+## Running tests continuously with guard
+
+This cookbook is also setup to run the checks while you work via the [guard gem](http://guardgem.org/).
+
+```
+bundle install
+bundle exec guard start
+```
+
+## ChefSpec LWRP Matchers
+
+The cookbook exposes a chefspec matcher to be used by wrapper cookbooks to test the cookbooks LWRP. See `library/matcher.rb` for basic usage.
 
 # Links
 
