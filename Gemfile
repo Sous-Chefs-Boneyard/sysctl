@@ -12,7 +12,6 @@ group :release do
 end
 
 group :development do
-  gem 'thor-foodcritic',  '~> 1.1'
   gem 'foodcritic',       '~> 3.0'
   gem 'rubocop',          '~> 0.12'
   gem 'chefspec',         '~> 3.1.0'
