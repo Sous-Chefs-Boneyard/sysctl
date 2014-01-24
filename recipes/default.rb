@@ -38,12 +38,4 @@ if sysctl_path
       node['sysctl']['params'] && !node['sysctl']['params'].empty?
     end
   end
-
-  ruby_block 'sysctl config notifier' do
-    block do
-      true
-    end
-    action :nothing
-    notifies :create, "template[#{sysctl_path}]", :immediately
-  end
 end
