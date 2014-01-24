@@ -8,7 +8,7 @@ group :integration do
 end
 
 group :release do
-  gem 'stove', '~> 2.0.0.beta.1'
+  gem 'stove', '~> 1.1'
 end
 
 group :development do
