@@ -30,7 +30,7 @@ end
 
 if sysctl_path
   template sysctl_path do
-    action :nothing
+    action :create
     source 'sysctl.conf.erb'
     mode '0644'
     notifies :start, 'service[procps]', :immediately
@@ -43,6 +43,7 @@ if sysctl_path
     block do
       true
     end
+    action :nothing
     notifies :create, "template[#{sysctl_path}]", :immediately
   end
 end
