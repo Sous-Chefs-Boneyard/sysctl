@@ -15,7 +15,6 @@ end
 
 service 'procps'
 
-sysctl_path =
 if node['sysctl']['conf_dir']
   directory node['sysctl']['conf_dir'] do
     owner 'root'
@@ -23,13 +22,10 @@ if node['sysctl']['conf_dir']
     mode 0755
     action :create
   end
-  File.join(node['sysctl']['conf_dir'], '99-chef-attributes.conf')
-else
-  node['sysctl']['allow_sysctl_conf'] ? '/etc/sysctl.conf' : nil
 end
 
-if sysctl_path
-  template sysctl_path do
+if Sysctl.config_file(node)
+  template Sysctl.config_file(node) do
     action :create
     source 'sysctl.conf.erb'
     mode '0644'

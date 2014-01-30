@@ -1,3 +1,8 @@
+# Support whyrun
+def whyrun_supported?
+  true
+end
+
 def load_current_resource
   new_resource.key new_resource.name unless new_resource.key
 end
@@ -11,14 +16,22 @@ action :apply do
   end
   unless location[key_path.last] == new_resource.value
     location[key_path.last] = new_resource.value
+    ruby_block 'save-sysctl-params' do
+       action :nothing
+       block do
+       end
+       notifies :create, "template[#{Sysctl.config_file(node)}]", :delayed
+    end
+    node.default['sysctl']['params'] = sys_attrs
+    node.save unless Chef::Config[:solo]
     execute "sysctl[#{new_resource.key}]" do
       command "sysctl -w \"#{new_resource.key}=#{new_resource.value}\""
       not_if do
         cparam = Mixlib::ShellOut.new("sysctl -n #{new_resource.key}").run_command
         cparam.stdout.strip == new_resource.value.to_s
       end
+      notifies :run, 'ruby_block[save-sysctl-params]', :immediately
     end
-    node.default['sysctl']['params'] = sys_attrs
     new_resource.updated_by_last_action(true)
   end
 end
@@ -43,6 +56,7 @@ action :remove do
       end
     end
     node.default['sysctl']['params'] = sys_attrs
+    node.save unless Chef::Config[:solo]
     new_resource.updated_by_last_action(true)
   end
 end
