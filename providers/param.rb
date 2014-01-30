@@ -17,10 +17,10 @@ action :apply do
   unless location[key_path.last] == new_resource.value
     location[key_path.last] = new_resource.value
     ruby_block 'save-sysctl-params' do
-       action :nothing
-       block do
-       end
-       notifies :create, "template[#{Sysctl.config_file(node)}]", :delayed
+      action :nothing
+      block do
+      end
+      notifies :create, "template[#{Sysctl.config_file(node)}]", :delayed
     end
     node.default['sysctl']['params'] = sys_attrs
     node.save unless Chef::Config[:solo]

@@ -15,6 +15,7 @@ group :development do
   gem 'parser', '~> 2.1.1'
   gem 'foodcritic',       '~> 3.0'
   gem 'rubocop',          '~> 0.16.0'
+  gem 'rainbow',          '=1.99.2'
   gem 'chefspec',         '~> 3.1.4'
   gem 'guard',            '~> 1.8'
   gem 'guard-rubocop',    '~> 0.2'

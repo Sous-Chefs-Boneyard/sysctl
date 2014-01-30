@@ -1,14 +1,16 @@
 # Sysctl
 module Sysctl
   class << self
-
     def config_file(node)
-        if node['sysctl']['conf_dir']
-            return File.join(node['sysctl']['conf_dir'], '99-chef-attributes.conf')
-        elsif node['sysctl']['allow_sysctl_conf']
-            return '/etc/sysctl.conf'
-	end
-	return nil
+      if node['sysctl']['conf_dir']
+        return File.join(node['sysctl']['conf_dir'], '99-chef-attributes.conf')
+      else
+        if node['sysctl']['allow_sysctl_conf']
+          return '/etc/sysctl.conf'
+        else
+          return nil
+        end
+      end
     end
 
     def compile_attr(prefix, v)
