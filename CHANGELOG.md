@@ -1,6 +1,6 @@
 ##
 
-* [GH-22] lwrp parameters are written to the sysctl config file
+* [GH-22] lwrp parameters are written to the sysctl config file (Sander van Zoest, Guilhem Lettron)
 * Entries in the sysctl config file are now sorted
 * Removed Thor development dependency
 * Added LWRP Matcher for use with ChefSpec by wrapper cookbooks
