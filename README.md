@@ -102,7 +102,7 @@ bundle exec guard start
 
 ## ChefSpec LWRP Matchers
 
-The cookbook exposes a chefspec matcher to be used by wrapper cookbooks to test the cookbooks LWRP. See `library/matcher.rb` for basic usage.
+The cookbook exposes a chefspec matcher to be used by wrapper cookbooks to test the cookbooks LWRP. See `library/matchers.rb` for basic usage.
 
 # Links
 
