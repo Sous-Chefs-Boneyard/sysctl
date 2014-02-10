@@ -82,7 +82,7 @@ describe 'sysctl::default' do
             }
           }
         }
-        runner.converge(described_recipe)
+        runner.converge('sysctl::default')
       end
       it 'creates a template /etc/rc.d/init.d/procps' do
         expect(chef_run).to create_template('/etc/rc.d/init.d/procps')

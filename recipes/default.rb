@@ -4,16 +4,8 @@
 #
 # Copyright 2011, Fewbytes Technologies LTD
 # Copyright 2012, Chris Roberts <chrisroberts.code@gmail.com>
-# Copyright 2013, OneHealth Solutions, Inc.
+# Copyright 2013-2014, OneHealth Solutions, Inc.
 #
-
-template '/etc/rc.d/init.d/procps' do
-  source 'procps.init-rhel.erb'
-  mode '0755'
-  only_if { platform_family?('rhel', 'pld') }
-end
-
-service 'procps'
 
 if node['sysctl']['conf_dir']
   directory node['sysctl']['conf_dir'] do
@@ -25,6 +17,17 @@ if node['sysctl']['conf_dir']
 end
 
 if Sysctl.config_file(node)
+  # this is called by the sysctl_param lwrp to trigger template creation
+  ruby_block 'save-sysctl-params' do
+    action :nothing
+    block do
+    end
+    notifies :create, "template[#{Sysctl.config_file(node)}]", :delayed
+  end
+
+  # this needs to have an action in case node.sysctl.params has changed
+  # and also needs to be called for persistence on lwrp changes via the
+  # ruby_block
   template Sysctl.config_file(node) do
     action :create
     source 'sysctl.conf.erb'
@@ -35,3 +38,5 @@ if Sysctl.config_file(node)
     end
   end
 end
+
+include_recipe 'sysctl::service'
