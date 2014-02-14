@@ -114,5 +114,5 @@ There are a lot of different documents that talk about system control parameters
 * [RHEL 5 VM/Page Cache Tuning Presentation (2009) pdf](http://people.redhat.com/dshaks/Larry_Shak_Perf_Summit1_2009_final.pdf)
 * [Arch Linux SysCtl Tutorial (Feb 2013)](http://gotux.net/arch-linux/sysctl-config/)
 * [Old RedHat System Tuning Overview (2001!)](http://people.redhat.com/alikins/system_tuning.html)
-* [Tuning TCP For The Web at Velocity 2013 (video)](http://vimeo.com/70369211),[slides](http://cdn.oreillystatic.com/en/assets/1/event/94/Tuning%20TCP%20For%20The%20Web%20Presentation.pdf))
+* [Tuning TCP For The Web at Velocity 2013 (video)](http://vimeo.com/70369211), [slides](http://cdn.oreillystatic.com/en/assets/1/event/94/Tuning%20TCP%20For%20The%20Web%20Presentation.pdf)
 * [Adventures in Linux TCP Tuning](http://thesimplecomputer.info/adventures-in-linux-tcp-tuning-page2/)
