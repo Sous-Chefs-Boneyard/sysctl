@@ -1,12 +1,12 @@
 require 'spec_helper'
 
-describe 'sysctl_test' do
+describe 'sysctl' do
   describe 'lwrps' do
     chef_run = ChefSpec::Runner.new(step_into: ['sysctl_param'])
     chef_run.node.set['sysctl']['conf_dir'] = '/etc/sysctl.d'
     chef_run.node.set['sysctl']['params'] = {}
     chef_run.node.set['sysctl']['allow_sysctl_conf'] = false
-    chef_run.converge 'sysctl_test'
+    chef_run.converge 'sysctl'
 
     it 'applies a sysctl_param named net.ipv4.tcp_max_syn_backlog with value 12345' do
       expect(chef_run).to apply_sysctl_param('net.ipv4.tcp_max_syn_backlog').with(value: 12_345)
