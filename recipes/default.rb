@@ -7,6 +7,8 @@
 # Copyright 2013-2014, OneHealth Solutions, Inc.
 #
 
+include_recipe 'sysctl::service'
+
 if node['sysctl']['conf_dir']
   directory node['sysctl']['conf_dir'] do
     owner 'root'
@@ -38,5 +40,3 @@ if Sysctl.config_file(node)
     end
   end
 end
-
-include_recipe 'sysctl::service'
