@@ -1,4 +1,4 @@
-##
+## v0.4.0
 
 * [GH-24] On RHEL Adjust Init file to follow chkconfig standards (Alex Farhadi)
 * [GH-22] lwrp parameters are written to the sysctl config file (Sander van Zoest, Guilhem Lettron)
