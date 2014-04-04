@@ -9,7 +9,7 @@ group :unit do
 end
 
 group :integration do
-  gem 'test-kitchen',    '~> 1.1'
+  gem 'test-kitchen',    '~> 1.2'
   gem 'kitchen-vagrant'
 end
 
