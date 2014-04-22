@@ -17,15 +17,15 @@ describe 'sysctl::default' do
           ChefSpec::Runner.new(platform: platform, version: version) do |node|
             node.set['sysctl']['conf_dir'] = '/etc/sysctl.d'
             node.set['sysctl']['params'] = {
-            'vm' => {
-              'swappiness' => 19
-            },
-            'net' => {
-              'ipv4' => {
-                'tcp_fin_timeout' => 29
+              'vm' => {
+                'swappiness' => 19
+              },
+              'net' => {
+                'ipv4' => {
+                  'tcp_fin_timeout' => 29
+                }
               }
             }
-          }
           end.converge('sysctl::default')
         end
 
