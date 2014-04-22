@@ -15,13 +15,7 @@ platforms:
 - name: ubuntu-10.04
 - name: debian-7.1.0
 - name: centos-6.5
-  driver:
-    box: opscode-centos-6.5
-    box_url: http://opscode-vm-bento.s3.amazonaws.com/vagrant/virtualbox/opscode_centos-6.5_chef-provisionerless.box
 - name: centos-5.10
-  driver:
-    box: opscode-centos-5.10
-    box_url: http://opscode-vm-bento.s3.amazonaws.com/vagrant/virtualbox/opscode_centos-5.10_chef-provisionerless.box
 - name: scientific-6.4
   driver:
     box: lyte-scientific-6-minimal
