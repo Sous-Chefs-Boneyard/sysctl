@@ -19,19 +19,19 @@
 require 'chef/mixin/deep_merge'
 
 Ohai.plugin(:Sysctl) do
-  provides "sysctl"
+  provides 'sysctl'
 
   def init_sysctl
     sysctl Mash.new
     sysctl
   end
 
-  def get_sysctls(cmd='sysctl -A')
+  def get_sysctls(cmd = 'sysctl -A')
     so = shell_out(cmd)
     sys_attrs = Mash.new
     so.stdout.lines do |line|
-      k,v = line.split(%r{[=:]})
-      next if k == nil || v == nil
+      k, v = line.split(/[=:]/)
+      next if k.nil? || v.nil?
       k = k.strip
       v = v.strip
       key_path = k.split('.')
@@ -49,14 +49,14 @@ Ohai.plugin(:Sysctl) do
   collect_data(:default) do
     sysctl init_syctl
   end
- 
+
   collect_data(:linux) do
     sysctl init_sysctl
     sysctl.merge get_sysctls
   end
 
   collect_data(:darwin) do
-    sysctl init_sysctl 
+    sysctl init_sysctl
     sysctl.merge get_sysctls
   end
 end
