@@ -31,12 +31,9 @@ if Sysctl.config_file(node)
   # and also needs to be called for persistence on lwrp changes via the
   # ruby_block
   template Sysctl.config_file(node) do
-    action :create
+    action :nothing
     source 'sysctl.conf.erb'
     mode '0644'
     notifies :start, 'service[procps]', :immediately
-    only_if do
-      node['sysctl']['params'] && !node['sysctl']['params'].empty?
-    end
   end
 end

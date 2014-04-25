@@ -21,8 +21,8 @@ There are two main ways to interact with the cookbook. This is via chef [attribu
 
 ## Attributes
 
-* `node['sysctl']['params']` - A namespace for setting sysctl parameters
-* `node['sysctl']['conf_dir']`  - Specifies the sysctl.d directory to be used. Defaults to `/etc/sysctl.d` on the Debian and RHEL platform families, otherwise `nil`
+* `node['sysctl']['params']` - A namespace for setting sysctl parameters.  These will be set during convergence, but will not be automatically persisted into a configuration file.  The resource `ruby_block[save-sysctl-params]` is provided via the default recipe, which you can notify in order to persist these values.
+* `node['sysctl']['conf_dir']` - Specifies the sysctl.d directory to be used. Defaults to `/etc/sysctl.d` on the Debian and RHEL platform families, otherwise `nil`
 * `node['sysctl']['allow_sysctl_conf']` - Defaults to false.  Using `conf_dir` is highly recommended. On some platforms that is not supported. For those platforms, set this to `true` and the cookbook will rewrite the `/etc/sysctl.conf` file directly with the params provided. Be sure to save any local edits of `/etc/sysctl.conf` before enabling this to avoid losing them.
 
 ## LWRP
@@ -39,6 +39,20 @@ Attributes
 
 - key
 - value
+
+## Persistence rules
+
+sysctl values will be persisted to the filesystem (so that they can be
+initialized at boot) by this cookbook under the following conditions:
+
+- You use an LWRP to declare the value, **or** you declare its value via
+  a node attribute (`node['sysctl']['param']`) and invoke
+  `ruby_block[save-sysctl-params']` via a notification; **and**
+
+- `node['sysctl']['conf_dir']` is defined, in which case they are written
+  to `VALUE/99-chef-attributes.conf`; *or*
+  `node['sysctl']['allow_sysctl_conf']` is set to `true`, in which case
+  they are written to `/etc/sysctl.conf`.
 
 ## Examples
 
@@ -71,7 +85,7 @@ vagrant plugin install vagrant-omnibus
 vagrant plugin install vagrant-berkshelf
 ```
 
-Tested with 
+Tested with
 * Vagrant (version 1.4.3)
 * vagrant-berkshelf (1.3.5)
 * vagrant-omnibus (1.1.2)
