@@ -14,7 +14,7 @@ group :integration do
 end
 
 group :release do
-  gem 'stove', '~> 1.1'
+  gem 'stove', '~> 2.0.0'
   gem 'rspec_junit_formatter'
   gem 'rubocop-checkstyle_formatter'
 end
