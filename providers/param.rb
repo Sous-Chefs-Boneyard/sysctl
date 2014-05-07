@@ -17,7 +17,6 @@ action :apply do
   unless location[key_path.last] == new_resource.value
     location[key_path.last] = new_resource.value
     node.default['sysctl']['params'] = sys_attrs
-    node.save unless Chef::Config[:solo]
     execute "sysctl[#{new_resource.key}]" do
       command "sysctl -w \"#{new_resource.key}=#{new_resource.value}\""
       notifies :run, 'ruby_block[save-sysctl-params]', :delayed
@@ -46,7 +45,6 @@ action :remove do
       end
     end
     node.default['sysctl']['params'] = sys_attrs
-    node.save unless Chef::Config[:solo]
     new_resource.updated_by_last_action(true)
   end
 end
