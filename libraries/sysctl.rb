@@ -16,7 +16,7 @@ module Sysctl
     def compile_attr(prefix, v)
       case v
       when Array
-        return "#{prefix}=#{v.join(" ")}"
+        return "#{prefix}=#{v.join(' ')}"
       when String, Fixnum, Bignum, Float, Symbol
         "#{prefix}=#{v}"
       when Hash, Chef::Node::Attribute

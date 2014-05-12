@@ -1,20 +1,20 @@
 source 'https://rubygems.org'
 
-gem 'berkshelf', '~> 2.0.14'
+gem 'berkshelf', '~> 3.1.2'
 
 group :unit do
   gem 'foodcritic',       '~> 3.0'
-  gem 'rubocop',          '~> 0.20.1'
-  gem 'chefspec',         '~> 3.2.0'
+  gem 'rubocop',          '~> 0.21.0'
+  gem 'chefspec',         '~> 3.4.0'
 end
 
 group :integration do
   gem 'test-kitchen',    '~> 1.2'
-  gem 'kitchen-vagrant'
+  gem 'kitchen-vagrant', :require => false
+  gem 'kitchen-docker', :require => false
 end
 
 group :release do
-  gem 'stove', '~> 2.0.0'
   gem 'rspec_junit_formatter'
   gem 'rubocop-checkstyle_formatter'
 end

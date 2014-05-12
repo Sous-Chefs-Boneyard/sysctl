@@ -1,8 +1,8 @@
 AllCops:
   Exclude:
-    - test/**
-    - vendor/**
-    - ruby/**
+    - test/**/*
+    - vendor/**/*
+    - ruby/**/*
 
 AlignParameters:
   Enabled: false

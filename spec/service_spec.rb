@@ -4,7 +4,7 @@ require 'spec_helper'
 
 describe 'sysctl::service' do
   platforms = {
-    'ubuntu' => ['10.04', '12.04'],
+    'ubuntu' => ['12.04', '14.04'],
     'debian' => ['7.0'],
     'centos' => ['5.9', '6.4']
   }

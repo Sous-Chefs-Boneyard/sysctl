@@ -68,13 +68,11 @@ The integration tests can be run via test-kitchen using vagrant, but it depends 
 
 ```
 vagrant plugin install vagrant-omnibus
-vagrant plugin install vagrant-berkshelf
 ```
 
 Tested with 
-* Vagrant (version 1.4.3)
-* vagrant-berkshelf (1.3.5)
-* vagrant-omnibus (1.1.2)
+* Vagrant (version 1.6.1)
+* vagrant-omnibus (1.4.1)
 
 ## Running tests
 
@@ -89,7 +87,7 @@ bundle exec kitchen test default-ubuntu-1204
 bundle exec kitchen test default-centos-65
 ```
 
-The above will do ruby style ([rubocop](https://github.com/bbatsov/rubocop)) and cookbook style ([foodcritic](http://www.foodcritic.io/)) checks followed rspec unit tests ensuring proper cookbook operation.Integration tests will be run next on two separate linux platforms (Ubuntu 12.04 LTS Precise 64-bit and CentOS 6.5). Please run the tests on any pull requests that you are about to submit and write tests for defects or new features to ensure backwards compatibility and a stable cookbook that we can all rely upon.
+The above will do ruby style ([rubocop](https://github.com/bbatsov/rubocop)) and cookbook style ([foodcritic](http://www.foodcritic.io/)) checks followed rspec unit tests ensuring proper cookbook operation.Integration tests will be run next on two separate linux platforms (Ubuntu 14.04 LTS Precise 64-bit and CentOS 6.5). Please run the tests on any pull requests that you are about to submit and write tests for defects or new features to ensure backwards compatibility and a stable cookbook that we can all rely upon.
 
 ## Running tests continuously with guard
 
