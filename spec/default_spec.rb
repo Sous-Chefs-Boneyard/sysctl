@@ -41,14 +41,8 @@ describe 'sysctl::default' do
           )
         end
 
-        it 'creates the 99-chef-attributes.conf template with attributes' do
-          expect(chef_run).to create_template('/etc/sysctl.d/99-chef-attributes.conf').with(
-            source: 'sysctl.conf.erb',
-            mode: '0644'
-          )
-          expect(chef_run).to_not create_template('/etc/sysctl.d/99-chef-attributes.conf').with(
-            mode: '0755'
-          )
+        it 'does not persist the attributes file' do
+          expect(chef_run).to_not create_template('/etc/sysctl.d/99-chef-attributes.conf')
         end
 
         let(:template) { chef_run.template('/etc/sysctl.d/99-chef-attributes.conf') }

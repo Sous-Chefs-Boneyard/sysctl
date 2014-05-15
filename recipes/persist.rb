@@ -1,8 +1,8 @@
 #
 # Cookbook Name:: sysctl
-# Recipe:: service
+# Recipe:: persist
 #
-# Copyright 2013-2014, OneHealth Solutions, Inc.
+# Copyright 2014, OneHealth Solutions, Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -17,13 +17,10 @@
 # limitations under the License.
 #
 
-template '/etc/rc.d/init.d/procps' do
-  source 'procps.init-rhel.erb'
-  mode '0755'
-  only_if { platform_family?('rhel', 'pld') }
-end
+include_recipe 'sysctl::default'
 
-service 'procps' do
-  supports :restart => true, :reload => true, :status => false
-  action :enable
+ruby_block 'persist sysctl variables' do
+  block do
+  end
+  notifies :run, 'ruby_block[save-sysctl-params]'
 end

@@ -30,5 +30,13 @@ describe 'sysctl_test' do
       expect(chef_run).to run_execute('sysctl[net.ipv4.tcp_rmem]').with(command: 'sysctl -w "net.ipv4.tcp_rmem=4096 16384 33554432"')
     end
 
+    it 'notifies the save-sysctl-params ruby block' do
+      expect(chef_run.execute('sysctl[net.ipv4.tcp_max_syn_backlog]')).to notify('ruby_block[save-sysctl-params]').to(:run).delayed
+      expect(chef_run.execute('sysctl[net.ipv4.tcp_rmem]')).to notify('ruby_block[save-sysctl-params]').to(:run).delayed
+    end
+
+    it 'notifies the config file template' do
+      expect(chef_run.ruby_block('save-sysctl-params')).to notify("template[#{Sysctl.config_file(chef_run.node)}]").to(:create).delayed
+    end
   end
 end

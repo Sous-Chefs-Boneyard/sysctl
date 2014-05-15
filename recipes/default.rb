@@ -6,6 +6,18 @@
 # Copyright 2012, Chris Roberts <chrisroberts.code@gmail.com>
 # Copyright 2013-2014, OneHealth Solutions, Inc.
 #
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#
 
 include_recipe 'sysctl::service'
 
@@ -31,12 +43,9 @@ if Sysctl.config_file(node)
   # and also needs to be called for persistence on lwrp changes via the
   # ruby_block
   template Sysctl.config_file(node) do
-    action :create
+    action :nothing
     source 'sysctl.conf.erb'
     mode '0644'
     notifies :start, 'service[procps]', :immediately
-    only_if do
-      node['sysctl']['params'] && !node['sysctl']['params'].empty?
-    end
   end
 end

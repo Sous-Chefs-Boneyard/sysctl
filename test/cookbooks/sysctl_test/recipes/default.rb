@@ -1,6 +1,6 @@
 #
-# Cookbook Name:: sysctl
-# Recipe:: service
+# Cookbook Name:: test_sysctl
+# Attributes:: default
 #
 # Copyright 2013-2014, OneHealth Solutions, Inc.
 #
@@ -16,14 +16,17 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
+include_recipe 'sysctl'
 
-template '/etc/rc.d/init.d/procps' do
-  source 'procps.init-rhel.erb'
-  mode '0755'
-  only_if { platform_family?('rhel', 'pld') }
+sysctl_param 'net.ipv4.tcp_max_syn_backlog' do
+  value 12_345
 end
 
-service 'procps' do
-  supports :restart => true, :reload => true, :status => false
-  action :enable
+sysctl_param 'net.ipv4.tcp_rmem' do
+  value '4096 16384 33554432'
 end
+
+# remove sysctl parameter and set net.ipv4.tcp_fin_timeout back to default
+# sysctl_param 'net.ipv4.tcp_fin_timeout' do
+#  action :remove
+# end

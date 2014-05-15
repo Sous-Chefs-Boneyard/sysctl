@@ -1,8 +1,8 @@
 #
-# Cookbook Name:: sysctl
-# Recipe:: service
+# Cookbook Name:: test_sysctl
+# Recipe:: tcp_wmem
 #
-# Copyright 2013-2014, OneHealth Solutions, Inc.
+# Copyright (C) 2014 Zendesk Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -17,13 +17,8 @@
 # limitations under the License.
 #
 
-template '/etc/rc.d/init.d/procps' do
-  source 'procps.init-rhel.erb'
-  mode '0755'
-  only_if { platform_family?('rhel', 'pld') }
-end
+include_recipe 'sysctl'
 
-service 'procps' do
-  supports :restart => true, :reload => true, :status => false
-  action :enable
+sysctl_param 'net.ipv4.tcp_wmem' do
+  value '1024 32768 33554432'
 end

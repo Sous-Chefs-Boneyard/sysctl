@@ -4,9 +4,6 @@ require 'chefspec/berkshelf'
 RSpec.configure do |config|
   config.formatter = :documentation
   config.color_enabled = true
-  # Specify the path for Chef Solo to find cookbooks (default: [inferred from
-  # the location of the calling spec file])
-  config.cookbook_path = %W(#{File.expand_path(Dir.pwd)}/test/kitchen/cookbooks #{File.expand_path(Dir.pwd)}/vendor/cookbooks)
 
   # Specify the path for Chef Solo to find roles (default: [ascending search])
   # config.role_path = '/var/roles'
