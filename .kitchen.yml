@@ -40,13 +40,15 @@ suites:
         net:
           ipv4:
             tcp_fin_timeout: 29
-- name: override_conf
+- name: lwrps
   run_list:
     - recipe[sysctl_test]
     - recipe[sysctl_test::tcp_wmem]
+- name: attributes
+  run_list:
+    - recipe[sysctl::persist]
   attributes:
     sysctl:
-      allow_sysctl_conf: true
       params:
         vm:
           swappiness: 19

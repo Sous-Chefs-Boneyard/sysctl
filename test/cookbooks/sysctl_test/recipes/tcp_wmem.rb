@@ -1,8 +1,8 @@
 #
-# Cookbook Name:: sysctl
-# Recipe:: persist
+# Cookbook Name:: test_sysctl
+# Recipe:: tcp_wmem
 #
-# Copyright 2014, OneHealth Solutions, Inc.
+# Copyright (C) 2014 Zendesk Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -17,10 +17,8 @@
 # limitations under the License.
 #
 
-include_recipe 'sysctl::default'
+include_recipe 'sysctl'
 
-ruby_block 'persist sysctl variables' do
-  block do
-  end
-  notifies :run, 'ruby_block[save-sysctl-params]'
+sysctl_param 'net.ipv4.tcp_wmem' do
+  value '1024 32768 33554432'
 end
