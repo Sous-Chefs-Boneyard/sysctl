@@ -3,7 +3,7 @@
 Description
 ===========
 
-Set [sysctl](http://en.wikipedia.org/wiki/Sysctl) system control parameters via Opscode Chef
+Set [sysctl](http://en.wikipedia.org/wiki/Sysctl) system control parameters via Chef
 
 
 Platforms
@@ -46,7 +46,7 @@ sysctl values will be persisted to the filesystem (so that they can be
 initialized at boot) by this cookbook under the following conditions:
 
 - You use an LWRP to declare the value, **or** you declare its value via
-  a node attribute (`node['sysctl']['param']`) and invoke
+  a node attribute (`node['sysctl']['params']`) and invoke
   `ruby_block[save-sysctl-params']` via a notification; **and**
 
 - `node['sysctl']['conf_dir']` is defined, in which case they are written
