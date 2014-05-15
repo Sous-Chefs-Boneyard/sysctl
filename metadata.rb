@@ -6,7 +6,7 @@ license 'Apache v2.0'
 description 'Configures sysctl parameters'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
 version '0.4.0'
-supports 'ubuntu', '>= 10.04'
+supports 'ubuntu', '>= 12.04'
 supports 'debian', '>= 7.0'
 supports 'centos', '>= 5.9'
 supports 'scientific', '>= 6.4'
