@@ -71,9 +71,15 @@ initialized at boot) by this cookbook under the following conditions:
       action :remove
     end
 
+## Ohai Plugin
+
+The cookbook also includes an Ohai 7 plugin that can be installed by adding `sysctl::ohai_plugin` to your run_list. This will populate `node['sys']` with automatic attributes that mirror the layout of `/proc/sys`.
+
+To see ohai plugin output manually, you can run `ohai -d /etc/chef/ohai_plugins sys` on the command line.
+
 # Development
 
-We have written unit tests using [chefspec](http://code.sethvargo.com/chefspec/) and integration tests in [bats](https://github.com/sstephenson/bats) executed via [test-kitchen](http://kitchen.ci).
+We have written unit tests using [chefspec](http://code.sethvargo.com/chefspec/) and integration tests in [serverspec](http://serverspec.org/) executed via [test-kitchen](http://kitchen.ci).
 Much of the tooling around this cookbook is exposed via guard and test kitchen, so it is highly recommended to learn more about those tools.
 
 ## Vagrant Plugin Dependencies
@@ -97,7 +103,7 @@ bundle install
 bundle exec rubocop
 bundle exec foodcritic .
 bundle exec rspec
-bundle exec kitchen test default-ubuntu-1204
+bundle exec kitchen test default-ubuntu-1404
 bundle exec kitchen test default-centos-65
 ```
 
