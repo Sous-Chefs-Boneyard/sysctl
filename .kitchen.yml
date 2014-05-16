@@ -32,6 +32,7 @@ suites:
   run_list:
     - recipe[sysctl_test]
     - recipe[sysctl_test::tcp_wmem]
+    - recipe[sysctl::ohai_plugin]
   attributes:
     sysctl:
       params:

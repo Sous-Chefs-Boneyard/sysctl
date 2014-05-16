@@ -1,4 +1,3 @@
-
 name 'sysctl'
 maintainer 'OneHealth Solutions, Inc.'
 maintainer_email 'cookbooks@onehealth.com'
@@ -15,3 +14,4 @@ supports 'scientific', '>= 6.4'
 end
 conflicts 'jn_sysctl'
 conflicts 'el-sysctl'
+depends 'ohai'
