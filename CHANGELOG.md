@@ -1,5 +1,5 @@
 Sysctl
-========
+======
 
 
 v0.5.6 (2014-05-16)
@@ -32,22 +32,18 @@ v0.5.1 (2014-05-16)
 * Now managed by [Stove](https://github.com/sethvargo/stove)
 
 
-v0.5.0 (2014-05-16)
--------------------
-
-
 v0.5.0 (2013-05-16)
 -------------------
 
-- BREAKING CHANGE:
+* BREAKING CHANGE:
   For parameters to persist on reboot that are set via attributes, you now need to include
   `sysctl::persist` instead of `sysctl::default`. This allows LWRP users to use the cookbook
   without needing to load `sysctl::default` in their run list.
-- Standardize on using Stove for community site management
-- Updated Ubuntu tests to no longer test Lucid and focus on Precise and Trusty
-- [GH-3] Improve idempotency with respect to sysctl config file when using lwrps (Michael S. Fischer)
-- Added Ohai 7 plugin which exposes sysctl parameters via node['sys'] (Sander van Zoest, Guilhem Lettron)
-- Fully switch to serverspec tests, added separate suites for attributes and lwrp invocation
+* Standardize on using Stove for community site management
+* Updated Ubuntu tests to no longer test Lucid and focus on Precise and Trusty
+* [GH-3] Improve idempotency with respect to sysctl config file when using lwrps (Michael S. Fischer)
+* Added Ohai 7 plugin which exposes sysctl parameters via node['sys'] (Sander van Zoest, Guilhem Lettron)
+* Fully switch to serverspec tests, added separate suites for attributes and lwrp invocation
 
 ## v0.4.0
 
