@@ -32,7 +32,7 @@ v0.5.1 (2014-05-16)
 * Now managed by [Stove](https://github.com/sethvargo/stove)
 
 
-v0.5.0 (2013-05-16)
+v0.5.0 (2014-05-16)
 -------------------
 
 * BREAKING CHANGE:
@@ -45,7 +45,8 @@ v0.5.0 (2013-05-16)
 * Added Ohai 7 plugin which exposes sysctl parameters via node['sys'] (Sander van Zoest, Guilhem Lettron)
 * Fully switch to serverspec tests, added separate suites for attributes and lwrp invocation
 
-## v0.4.0
+v0.4.0 (2014-04-04)
+-------------------
 
 * [GH-24] On RHEL Adjust Init file to follow chkconfig standards (Alex Farhadi)
 * [GH-22] lwrp parameters are written to the sysctl config file (Sander van Zoest, Guilhem Lettron)
@@ -58,7 +59,8 @@ v0.5.0 (2013-05-16)
 * Renamed ruby_block[sysctl config notifier] to ruby_block[save-sysctl-params] for clarity
 * [GH-19] Make sysctl template logic idempotent (Roy Tewalt)
 
-## v0.3.5
+v0.3.5 (2013-12-10)
+-------------------
 
 * Scientific Linux 6 support confirmed
 * [GH-16] Document and test lwrp action :nothing
@@ -66,7 +68,8 @@ v0.5.0 (2013-05-16)
 * Update to vagrant 1.4
 * Added CentOS 5.10 and 6.5 test boxes
 
-## v0.3.4
+v0.3.4 (2013-11-04)
+-------------------
 
 * [GH-9] Make changes available immediately (Warren Vosper)
 * [GH-8] Added PLD Linux support (not regularily tested) (Elan Ruusam?e)
@@ -74,25 +77,29 @@ v0.5.0 (2013-05-16)
 * Modernize Gemfile dependencies and add Guard for development
 * Fix FC048: Prefer Mixlib::ShellOut
 
-## v0.3.3
+v0.3.3 (2013-06-14)
+-------------------
 
 * More explicitly define conflicting cookbooks and operating systems in metadata.rb
 * [GH-6] Fixed any params with spaces throw errors (Mike Pavlenko)
 
-## v0.3.2
+v0.3.2 (2013-05-24)
+-------------------
 
 * [GH-5] Fixed ImmutableAttributeModification (Mark Pimentel)
 * Added LWRP integration tests for test kitchen
 * LWRP now sets attributes on the node via node.default, not node.set allowing easier overrides by other cookbooks
 
-## v0.3.1
+v0.3.1 (2013-04-26)
+-------------------
 
 * Added attribute integration tests for test kitchen
 * Added alpha RHEL/CentOS support
 * Added Travis CI Builds
 * Cleaned up foodcritic and tailor complaints
 
-## v0.3.0
+v0.3.0 (2013-04-23)
+-------------------
 
 There is a lot of talk about making one sysctl cookbook. Let's make it happen.
 
@@ -101,7 +108,8 @@ There is a lot of talk about making one sysctl cookbook. Let's make it happen.
 * New Maintainer: Sander van Zoest, OneHealth
 * Update Development environment with Berkshelf, Vagrant, Test-Kitchen
 
-## v0.2.0:
+v0.2.0:
+-------------------
 
 * [FB-3] - Notify procps start immediately
 * [FB-4] - Dynamic configuration file. Add LWRP.
