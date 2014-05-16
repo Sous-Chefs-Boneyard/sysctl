@@ -25,7 +25,7 @@ Ohai.plugin(:Sysctl) do
     rescue LoadError => e
       Ohai::Log.warn("Cannot load gem: #{e}.")
     end
-    
+
     Ohai::Log.debug("get_sysctl: running #{cmd}")
     so = shell_out(cmd)
     lines_attrs = Mash.new
