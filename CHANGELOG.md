@@ -2,6 +2,12 @@ Sysctl
 ========
 
 
+v0.5.1 (2014-05-16)
+-------------------
+
+* Now managed by [Stove](https://github.com/sethvargo/stove)
+
+
 v0.5.0 (2014-05-16)
 -------------------
 
