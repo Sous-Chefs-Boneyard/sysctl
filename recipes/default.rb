@@ -39,6 +39,14 @@ if Sysctl.config_file(node)
     notifies :create, "template[#{Sysctl.config_file(node)}]", :delayed
   end
 
+  # this is called by the sysctl::apply recipe to trigger template creation
+  ruby_block 'apply-sysctl-params' do
+    action :nothing
+    block do
+    end
+    notifies :create, "template[#{Sysctl.config_file(node)}]", :immediately
+  end
+
   # this needs to have an action in case node.sysctl.params has changed
   # and also needs to be called for persistence on lwrp changes via the
   # ruby_block

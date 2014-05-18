@@ -2,7 +2,7 @@ require 'spec_helper'
 
 # examples at https://github.com/sethvargo/chefspec/tree/master/examples
 
-describe 'sysctl::persist' do
+describe 'sysctl::apply' do
   platforms = {
     'ubuntu' => ['12.04', '14.04'],
     'debian' => ['7.0'],
@@ -26,14 +26,14 @@ describe 'sysctl::persist' do
               }
             }
           }
-          runner.converge('sysctl::persist')
+          runner.converge('sysctl::apply')
         end
 
-        let(:ruby_block) { chef_run.ruby_block('persist sysctl variables') }
+        let(:ruby_block) { chef_run.ruby_block('notify-apply-sysctl-params') }
 
-        it 'issues a save notification' do
-          expect(chef_run).to run_ruby_block('persist sysctl variables')
-          expect(ruby_block).to notify('ruby_block[save-sysctl-params]').to(:run).delayed
+        it 'issues a run apply-sysctl-params notification' do
+          expect(chef_run).to run_ruby_block('notify-apply-sysctl-params')
+          expect(ruby_block).to notify('ruby_block[apply-sysctl-params]').to(:run).immediately
         end
       end
     end

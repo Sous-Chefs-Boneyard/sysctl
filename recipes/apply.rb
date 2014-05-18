@@ -1,6 +1,6 @@
 #
 # Cookbook Name:: sysctl
-# Recipe:: persist
+# Recipe:: apply
 #
 # Copyright 2014, OneHealth Solutions, Inc.
 #
@@ -19,8 +19,8 @@
 
 include_recipe 'sysctl::default'
 
-ruby_block 'persist sysctl variables' do
+ruby_block 'notify-apply-sysctl-params' do
   block do
   end
-  notifies :run, 'ruby_block[save-sysctl-params]'
+  notifies :run, 'ruby_block[apply-sysctl-params]', :immediately
 end

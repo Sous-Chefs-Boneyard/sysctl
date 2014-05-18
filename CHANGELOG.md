@@ -1,6 +1,11 @@
 Sysctl
 ======
 
+v0.5.7 
+------
+
+* [GH-5] Fix immediate application of sysctl.params attributes using the `sysctl::apply` recipe.
+* Rename `sysctl::persist` to `sysctl::apply`
 
 v0.5.6 (2014-05-16)
 -------------------

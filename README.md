@@ -19,13 +19,37 @@ Usage
 
 There are two main ways to interact with the cookbook. This is via chef [attributes](http://docs.opscode.com/essentials_cookbook_attribute_files.html) or via the provided [LWRP](http://docs.opscode.com/lwrp.html).
 
-## Attributes
+# Cookbook Attributes
 
-* `node['sysctl']['params']` - A namespace for setting sysctl parameters.  These will be set during convergence, but will not be automatically persisted into a configuration file.  The resource `ruby_block[save-sysctl-params]` is provided via the default recipe, which you can notify in order to persist these values.
+* `node['sysctl']['params']` - A namespace for setting sysctl parameters.
 * `node['sysctl']['conf_dir']` - Specifies the sysctl.d directory to be used. Defaults to `/etc/sysctl.d` on the Debian and RHEL platform families, otherwise `nil`
 * `node['sysctl']['allow_sysctl_conf']` - Defaults to false.  Using `conf_dir` is highly recommended. On some platforms that is not supported. For those platforms, set this to `true` and the cookbook will rewrite the `/etc/sysctl.conf` file directly with the params provided. Be sure to save any local edits of `/etc/sysctl.conf` before enabling this to avoid losing them.
 
-## LWRP
+Note: if `node['sysctl']['conf_dir']` is set to nil and `node['sysctl']['allow_sysctl_conf']` is not set, no config will be written
+
+# Setting Sysctl Parameters
+
+## Using Attributes
+
+Setting variables in the `node['sysctl']['params']` hash will allow you to easily set common kernel parameters across a lot of nodes.
+All you need to do to have them loaded is to include `sysctl::apply` anywhere in your run list of the node. It is recommended to do this early in the run list, so any recipe that gets applied afterwards that may depend on the set parameters will find them to be set.
+
+The attributes method is easiest to implement if you manage the kernel parameters at the system level opposed to a per cookbook level approach.
+The configuration will be written out when `sysctl::apply` gets run, which allows the parameters set to be persisted during a reboot.
+
+### Examples
+
+Set vm.swapiness to 20 via attributes
+
+```` ruby
+    node.default['sysctl']['params']['vm']['swappiness'] = 20
+
+    include_recipe 'sysctl::apply'
+````
+
+## Using LWRPs
+
+The `sysctl_param` LWRP can be called from wrapper and application cookbooks to immediately set the kernel parameter and cue the kernel parameter to be written out to the configuration file.
 
 ### sysctl_param
 
@@ -40,36 +64,25 @@ Attributes
 - key
 - value
 
-## Persistence rules
+### Examples
 
-sysctl values will be persisted to the filesystem (so that they can be
-initialized at boot) by this cookbook under the following conditions:
+Set vm.swapiness to 20 via sysctl_param LWRP
 
-- You use an LWRP to declare the value, **or** you declare its value via
-  a node attribute (`node['sysctl']['params']`) and invoke
-  `ruby_block[save-sysctl-params']` via a notification; **and**
-
-- `node['sysctl']['conf_dir']` is defined, in which case they are written
-  to `VALUE/99-chef-attributes.conf`; *or*
-  `node['sysctl']['allow_sysctl_conf']` is set to `true`, in which case
-  they are written to `/etc/sysctl.conf`.
-
-## Examples
-
-    # set vm.swapiness to 20 via attributes
-
-    node.default['sysctl']['params']['vm']['swappiness'] = 20
-
-    # set vm.swapiness to 20 via sysctl_param LWRP
+```` ruby
     sysctl_param 'vm.swappiness' do
       value 20
     end
+````
+Remove sysctl parameter and set net.ipv4.tcp_fin_timeout back to default
 
-    # remove sysctl parameter and set net.ipv4.tcp_fin_timeout back to default
+```` ruby
     sysctl_param 'net.ipv4.tcp_fin_timeout' do
       value 30
       action :remove
     end
+````
+
+# Reading Sysctl Parameters
 
 ## Ohai Plugin
 
