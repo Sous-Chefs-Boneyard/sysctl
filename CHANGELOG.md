@@ -1,6 +1,13 @@
 Sysctl
 ======
 
+v0.6.0 (2014-05-19)
+-------------------
+
+* Rename `sysctl::persist` to `sysctl::apply` to more clearly reflect usage
+* [GH-5] Improve immediate setting of attribute parameters during `sysctl::apply` run
+
+
 v0.5.7 
 ------
 
