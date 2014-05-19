@@ -7,13 +7,6 @@ v0.6.0 (2014-05-19)
 * Rename `sysctl::persist` to `sysctl::apply` to more clearly reflect usage
 * [GH-5] Improve immediate setting of attribute parameters during `sysctl::apply` run
 
-
-v0.5.7 
-------
-
-* [GH-5] Fix immediate application of sysctl.params attributes using the `sysctl::apply` recipe.
-* Rename `sysctl::persist` to `sysctl::apply`
-
 v0.5.6 (2014-05-16)
 -------------------
 
