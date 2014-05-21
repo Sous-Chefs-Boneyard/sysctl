@@ -20,7 +20,7 @@
 template '/etc/rc.d/init.d/procps' do
   source 'procps.init-rhel.erb'
   mode '0755'
-  only_if { platform_family?('rhel', 'pld') }
+  only_if { platform_family?('rhel','fedora', 'pld') }
 end
 
 service 'procps' do

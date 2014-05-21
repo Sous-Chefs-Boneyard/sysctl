@@ -16,7 +16,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-if platform_family?('debian', 'rhel')
+if platform_family?('debian', 'rhel', 'fedora')
   default['sysctl']['conf_dir'] = '/etc/sysctl.d'
 else
   default['sysctl']['conf_dir'] = nil

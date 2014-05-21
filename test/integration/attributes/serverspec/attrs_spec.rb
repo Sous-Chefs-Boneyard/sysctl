@@ -11,7 +11,7 @@ describe file('/proc/sys/vm/swappiness') do
 end
 
 persistence_file = case os[:family]
-                   when 'RedHat', 'Debian', 'Ubuntu'
+                   when 'RedHat', 'Fedora', 'Debian', 'Ubuntu'
                      '/etc/sysctl.d/99-chef-attributes.conf'
                    else
                      '/etc/sysctl.conf'
