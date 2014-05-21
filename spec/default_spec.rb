@@ -3,10 +3,10 @@ require 'spec_helper'
 # examples at https://github.com/sethvargo/chefspec/tree/master/examples
 
 describe 'sysctl::default' do
- platforms = {
+  platforms = {
     'ubuntu' => ['12.04', '14.04'],
     'debian' => ['7.0', '7.4'],
-    'fedora' => ['18', '20'],
+    'fedora' => %w(18 20),
     'redhat' => ['5.9', '6.5'],
     'centos' => ['5.9', '6.5']
   }
