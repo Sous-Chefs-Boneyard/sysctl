@@ -31,7 +31,7 @@ describe 'sysctl::service' do
           runner.converge('sysctl::service')
         end
 
-        if platform == 'centos'
+        if platform == 'centos' || platform == 'fedora' || platform == 'redhat'
           it 'creates a template /etc/rc.d/init.d/procps' do
             expect(chef_run).to create_template('/etc/rc.d/init.d/procps')
           end
