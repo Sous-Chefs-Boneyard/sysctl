@@ -16,10 +16,19 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
+default['sysctl']['params'] = {}
+
+if platform_family?('freebsd')
+  default['sysctl']['allow_sysctl_conf'] = true
+  default['sysctl']['conf_file'] = '/etc/sysctl.conf.local'
+else
+  default['sysctl']['allow_sysctl_conf'] = false
+  default['sysctl']['conf_file'] = '/etc/sysctl.conf'
+end
+
 if platform_family?('debian', 'rhel', 'fedora')
   default['sysctl']['conf_dir'] = '/etc/sysctl.d'
+  default['sysctl']['conf_file'] = node['sysctl']['conf_dir'] + '/99-chef-attributes.conf'
 else
   default['sysctl']['conf_dir'] = nil
 end
-default['sysctl']['params'] = {}
-default['sysctl']['allow_sysctl_conf'] = false

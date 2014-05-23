@@ -3,10 +3,10 @@ module Sysctl
   class << self
     def config_file(node)
       if node['sysctl']['conf_dir']
-        return File.join(node['sysctl']['conf_dir'], '99-chef-attributes.conf')
+        return File.join(node['sysctl']['conf_dir'], node['sysctl']['conf_file'])
       else
         if node['sysctl']['allow_sysctl_conf']
-          return '/etc/sysctl.conf'
+          return node['sysctl']['conf_file']
         else
           return nil
         end
