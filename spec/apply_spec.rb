@@ -8,7 +8,8 @@ describe 'sysctl::apply' do
     'debian' => ['7.0', '7.4'],
     'fedora' => %w(18 20),
     'redhat' => ['5.9', '6.5'],
-    'centos' => ['5.9', '6.5']
+    'centos' => ['5.9', '6.5'],
+    'freebsd' => ['9.2']
   }
 
   # Test all generic stuff on all platforms

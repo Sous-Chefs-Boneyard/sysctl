@@ -28,7 +28,7 @@ end
 
 if platform_family?('debian', 'rhel', 'fedora')
   default['sysctl']['conf_dir'] = '/etc/sysctl.d'
-  default['sysctl']['conf_file'] = node['sysctl']['conf_dir'] + '/99-chef-attributes.conf'
+  default['sysctl']['conf_file'] = File.join(node['sysctl']['conf_dir'], '/99-chef-attributes.conf')
 else
   default['sysctl']['conf_dir'] = nil
 end
