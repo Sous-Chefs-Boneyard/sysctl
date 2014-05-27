@@ -13,7 +13,7 @@ platforms:
 - name: ubuntu-14.04
 - name: ubuntu-12.04
 - name: ubuntu-10.04
-- name: debian-7.4.0
+- name: debian-7.4
 - name: centos-6.5
 - name: centos-5.10
 - name: scientific-6.4
