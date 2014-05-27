@@ -48,13 +48,13 @@ describe 'sysctl::default' do
           expect(chef_run).to_not create_template('/etc/sysctl.d/99-chef-attributes.conf')
         end
 
-        let(:template) { 
-           if platform == 'freebsd'
-             chef_run.template('/etc/sysctl.conf.local') 
-           else
-             chef_run.template('/etc/sysctl.d/99-chef-attributes.conf') 
-           end
-        }
+        let(:template) do
+          if platform == 'freebsd'
+            chef_run.template('/etc/sysctl.conf.local')
+          else
+            chef_run.template('/etc/sysctl.d/99-chef-attributes.conf')
+          end
+        end
 
         it 'sends a notification to the procps service' do
           expect(template).to notify('service[procps]').immediately
