@@ -43,8 +43,8 @@ Ohai.plugin(:Sysctl) do
     sys Mash.new
   end
 
-  # :aix, :darwin, :freebsd, :hpux, :linux, :openbsd, :netbsd, :solaris2, :windows
-  #  or any other value from RbConfig::CONFIG['host_os']
+  # customised data collectors for special case platforms
+  # http://docs.opscode.com/ohai_custom.html#collect-data-blocks
 
   collect_data(:freebsd) do
     sys Mash.new

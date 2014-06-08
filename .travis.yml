@@ -11,6 +11,6 @@ rvm:
   - 2.1.1
 bundler_args: --without integration development
 script:
-  - bundle exec foodcritic -f any . --tags ~FC007 --tags ~FC015 --tags ~FC023
+  - bundle exec foodcritic -f any .
   - bundle exec rubocop
   - bundle exec rspec

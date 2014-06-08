@@ -124,7 +124,7 @@ end
 def apply(key, value)
   file = cache(key)
   return unless sysctl(key, value)
-  converge_by "create cache for #{key}" do
+  converge_by("create cache for #{key}") do
     FileUtils.mkdir_p(::File.dirname(file))
     ::File.write(file, @current_resource.parameters[key])
   end unless ::File.exist?(file)
@@ -155,7 +155,7 @@ def restore(key)
   file = cache(key)
   return unless ::File.exist?(file)
   sysctl(key, ::File.read(file))
-  converge_by "remove cache for #{key}" do
+  converge_by("remove cache for #{key}") do
     ::File.unlink(file)
   end
 end
@@ -175,7 +175,7 @@ def stringify(value)
 end
 
 def sysctl(key, value)
-  converge_by "set #{key} = #{value}" do
+  converge_by("set #{key} = #{value}") do
     shell_out!("sysctl #{key.shellescape}=#{value.shellescape}")
   end unless value == @current_resource.parameters[key]
 end

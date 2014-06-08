@@ -19,6 +19,6 @@
 
 include_recipe 'sysctl'
 
-sysctl_param 'net.ipv4.tcp_wmem' do
-  value '1024 32768 33554432'
+sysctl 'net.ipv4.tcp_wmem' do
+  parameters name => '1024 32768 33554432'
 end
