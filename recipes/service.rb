@@ -17,22 +17,22 @@
 # limitations under the License.
 #
 
-template '/etc/rc.d/init.d/procps' do
-  source 'procps.init-rhel.erb'
-  mode '0755'
-  only_if { platform_family?('rhel', 'fedora', 'pld') }
+cookbook_file '/etc/rc.d/init.d/procps' do
+  source 'procps.init-rhel'
+  mode 00755
+  only_if { platform_family?('fedora', 'pld', 'rhel') }
 end
 
 service 'procps' do
-  supports :restart => true, :reload => true, :status => false
-  case node['platform']
+  supports restart: true, reload: true, status: false
+  case node.platform
   when 'freebsd'
     service_name 'sysctl'
   when 'arch', 'exherbo'
     service_name 'systemd-sysctl'
     provider Chef::Provider::Service::Systemd
   when 'ubuntu'
-    if node['platform_version'].to_f >= 9.10
+    if node.platform_version.to_f >= 9.10
       provider Chef::Provider::Service::Upstart
     end
   end
