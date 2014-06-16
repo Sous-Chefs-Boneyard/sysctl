@@ -28,7 +28,7 @@ service 'procps' do
   case node['platform']
   when 'freebsd'
     service_name 'sysctl'
-  when 'archlinux', 'exherbo'
+  when 'arch', 'exherbo'
     service_name 'systemd-sysctl'
     provider Chef::Provider::Service::Systemd
   when 'ubuntu'
