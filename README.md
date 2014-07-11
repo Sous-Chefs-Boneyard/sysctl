@@ -1,4 +1,7 @@
-# sysctl [![Build Status](https://travis-ci.org/onehealth-cookbooks/sysctl.png?branch=master)](https://travis-ci.org/onehealth-cookbooks/sysctl)
+sysctl cookbook
+===============
+[![Build Status](https://travis-ci.org/onehealth-cookbooks/sysctl.png?branch=master)](https://travis-ci.org/onehealth-cookbooks/sysctl)
+[![Gitter chat](https://badges.gitter.im/onehealth-cookbooks/sysctl.png)](https://gitter.im/onehealth-cookbooks/sysctl)
 
 Description
 ===========
