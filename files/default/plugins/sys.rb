@@ -52,8 +52,8 @@ Ohai.plugin(:Sysctl) do
     sys Mash.new
   end
 
-# :aix, :darwin, :freebsd, :hpux, :linux, :openbsd, :netbsd, :solaris2, :windows
-#  or any other value from RbConfig::CONFIG['host_os']
+  # :aix, :darwin, :freebsd, :hpux, :linux, :openbsd, :netbsd, :solaris2, :windows
+  #  or any other value from RbConfig::CONFIG['host_os']
 
   collect_data(:linux) do
     sys Mash.new

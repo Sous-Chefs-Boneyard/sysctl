@@ -3,6 +3,8 @@ AllCops:
     - vendor/**/*
     - ruby/**/*
 
+Next:
+  Enabled: false
 AlignParameters:
   Enabled: false
 Encoding:

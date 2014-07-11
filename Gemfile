@@ -1,11 +1,11 @@
 source 'https://rubygems.org'
 
-gem 'berkshelf', '~> 3.1.2'
+gem 'berkshelf', '~> 3.1.3'
 
 group :unit do
   gem 'foodcritic',       '~> 3.0'
-  gem 'rubocop',          '~> 0.21.0'
-  gem 'chefspec',         '~> 3.4.0'
+  gem 'rubocop',          '~> 0.24.0'
+  gem 'chefspec',         '~> 4.0'
 end
 
 group :integration do
@@ -20,11 +20,11 @@ group :release do
 end
 
 group :development do
-  gem 'guard',            '~> 1.8'
-  gem 'guard-rubocop',    '~> 0.2'
+  gem 'guard',            '~> 2.6'
+  gem 'guard-rubocop',    '~> 1.1'
   gem 'guard-foodcritic', '~> 1.0'
   gem 'guard-kitchen',    '~> 0.0'
-  gem 'guard-rspec',      '~> 3.0'
+  gem 'guard-rspec',      '~> 4.2'
   gem 'rb-fsevent', :require => false
   gem 'rb-inotify', :require => false
   gem 'terminal-notifier-guard', :require => false

@@ -24,6 +24,10 @@ platforms:
   driver:
     box: canonical-ubuntu-14.04
     box_url: https://cloud-images.ubuntu.com/vagrant/trusty/current/trusty-server-cloudimg-amd64-vagrant-disk1.box
+- name: srijn-arch-2014-01-07
+  driver:
+    box: srijn-arch-2014-01-07
+    box_url:  http://vagrant.srijn.net/archlinux-x64-2014-01-07.box
 - name: fedora-18
 - name: fedora-20
 - name: freebsd-9.2

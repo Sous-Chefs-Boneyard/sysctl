@@ -3,7 +3,7 @@ require 'chefspec/berkshelf'
 
 RSpec.configure do |config|
   config.formatter = :documentation
-  config.color_enabled = true
+  config.color = true
 
   # Specify the path for Chef Solo to find roles (default: [ascending search])
   # config.role_path = '/var/roles'
