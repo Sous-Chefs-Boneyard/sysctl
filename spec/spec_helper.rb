@@ -16,3 +16,24 @@ RSpec.configure do |config|
 end
 
 at_exit { ChefSpec::Coverage.report! }
+
+def multiplatform
+  platforms = {
+    'ubuntu' => ['14.04', '12.04'],
+    'debian' => ['7.4'],
+    'centos' => ['6.5', '5.10'],
+    'fedora' => %w(20 18),
+    'freebsd' => ['9.2'],
+
+    # The following platforms are currently unsupported by fauxhai, add
+    # versions as the associated metadata is added to the fauxhai gem
+    'arch' => [], # unsupported by fauxhai
+    'exherbo' => [] # unsupported by fauxhai
+  }
+
+  platforms.each do |platform, versions|
+    versions.each do |version|
+      yield platform, version
+    end
+  end
+end

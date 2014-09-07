@@ -22,11 +22,8 @@ ohai 'reload_sys' do
   action :nothing
 end
 
-cookbook_file "#{node['ohai']['plugin_path']}/sys.rb" do
+cookbook_file "#{node.ohai.plugin_path}/sys.rb" do
   source 'plugins/sys.rb'
-  owner 'root'
-  group node['root_group']
-  mode '0755'
   notifies :reload, 'ohai[reload_sys]', :immediately
 end
 

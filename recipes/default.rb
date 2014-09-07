@@ -21,39 +21,8 @@
 
 include_recipe 'sysctl::service'
 
-if node['sysctl']['conf_dir']
-  directory node['sysctl']['conf_dir'] do
-    owner 'root'
-    group 'root'
-    mode 0755
-    action :create
-  end
-end
+directory ::File.dirname(node.sysctl.conf_file)
 
-if Sysctl.config_file(node)
-  # this is called by the sysctl_param lwrp to trigger template creation
-  ruby_block 'save-sysctl-params' do
-    action :nothing
-    block do
-    end
-    notifies :create, "template[#{Sysctl.config_file(node)}]", :delayed
-  end
-
-  # this is called by the sysctl::apply recipe to trigger template creation
-  ruby_block 'apply-sysctl-params' do
-    action :nothing
-    block do
-    end
-    notifies :create, "template[#{Sysctl.config_file(node)}]", :immediately
-  end
-
-  # this needs to have an action in case node.sysctl.params has changed
-  # and also needs to be called for persistence on lwrp changes via the
-  # ruby_block
-  template Sysctl.config_file(node) do
-    action :nothing
-    source 'sysctl.conf.erb'
-    mode '0644'
-    notifies :start, 'service[procps]', :immediately
-  end
+sysctl 'attributes' do
+  parameters node.sysctl.params
 end

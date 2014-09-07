@@ -18,15 +18,26 @@
 #
 include_recipe 'sysctl'
 
-sysctl_param 'net.ipv4.tcp_max_syn_backlog' do
-  value 12_345
+sysctl 'single' do
+  parameters 'net.ipv4.tcp_max_syn_backlog' => 12_345
 end
 
-sysctl_param 'net.ipv4.tcp_rmem' do
-  value '4096 16384 33554432'
+sysctl 'multiple' do
+  parameters(
+    'net.ipv4.tcp_rmem' => '4096 16384 33554432',
+    'net.ipv4.tcp_keepalive_time' => 10_800
+  )
+end
+
+sysctl 'nested' do
+  parameters net: {
+    core: { somaxconn: 2048 },
+    ipv6: { icmp: { ratelimit: 2000 } }
+  }
 end
 
 # remove sysctl parameter and set net.ipv4.tcp_fin_timeout back to default
-# sysctl_param 'net.ipv4.tcp_fin_timeout' do
+# sysctl 'net.ipv4.tcp_fin_timeout' do
+#  parameters [ name ]
 #  action :remove
 # end

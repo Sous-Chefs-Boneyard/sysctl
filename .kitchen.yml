@@ -12,7 +12,6 @@ provisioner:
 platforms:
 - name: ubuntu-14.04
 - name: ubuntu-12.04
-- name: ubuntu-10.04
 - name: debian-7.4
 - name: centos-6.5
 - name: centos-5.10
@@ -35,24 +34,22 @@ platforms:
 suites:
 - name: default
   run_list:
-    - recipe[sysctl_test]
     - recipe[sysctl_test::tcp_wmem]
     - recipe[sysctl::ohai_plugin]
   attributes:
     sysctl:
       params:
         vm:
-          swappiness: 19
-        net:
-          ipv4:
-            tcp_fin_timeout: 29
+          swappiness: 23
+  excludes: freebsd-9.2
 - name: lwrps
   run_list:
     - recipe[sysctl_test]
     - recipe[sysctl_test::tcp_wmem]
+  excludes: freebsd-9.2
 - name: attributes
   run_list:
-    - recipe[sysctl::apply]
+    - recipe[sysctl]
   attributes:
     sysctl:
       params:
@@ -61,3 +58,13 @@ suites:
         net:
           ipv4:
             tcp_fin_timeout: 29
+  excludes: freebsd-9.2
+- name: bsd-attributes
+  run_list:
+    - recipe[sysctl]
+  attributes:
+    sysctl:
+      params:
+        debug:
+            minidump: 0
+  includes: freebsd-9.2
