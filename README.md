@@ -1,6 +1,6 @@
 sysctl cookbook
 ===============
-[![Build Status](https://travis-ci.org/onehealth-cookbooks/sysctl.png?branch=master)](https://travis-ci.org/onehealth-cookbooks/sysctl)
+[![Build Status](https://travis-ci.org/viverae-cookbooks/sysctl.png?branch=master)](https://travis-ci.org/viverae-cookbooks/sysctl)
 [![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/viverae-cookbooks/sysctl?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 Description
