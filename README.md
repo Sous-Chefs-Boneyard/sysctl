@@ -1,5 +1,6 @@
 sysctl cookbook
 ===============
+[![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/viverae-cookbooks/sysctl?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [![Build Status](https://travis-ci.org/onehealth-cookbooks/sysctl.png?branch=master)](https://travis-ci.org/onehealth-cookbooks/sysctl)
 [![Gitter chat](https://badges.gitter.im/onehealth-cookbooks/sysctl.png)](https://gitter.im/onehealth-cookbooks/sysctl)
 
