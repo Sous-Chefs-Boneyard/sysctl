@@ -54,6 +54,8 @@ Set vm.swapiness to 20 via attributes
 
 The `sysctl_param` LWRP can be called from wrapper and application cookbooks to immediately set the kernel parameter and cue the kernel parameter to be written out to the configuration file.
 
+This also requires that your run_list include the `sysctl::default` recipe in order to persist the settings.
+
 ### sysctl_param
 
 Actions
@@ -72,6 +74,8 @@ Attributes
 Set vm.swapiness to 20 via sysctl_param LWRP
 
 ```` ruby
+    include_recipe 'sysctl::default'
+
     sysctl_param 'vm.swappiness' do
       value 20
     end
