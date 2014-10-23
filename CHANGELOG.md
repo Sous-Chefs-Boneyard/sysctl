@@ -1,6 +1,12 @@
 Sysctl
 ======
 
+* [GH-14] Update to chefspec 4.1 , rubocop 26, foodcritic 4
+* [GH-13] OneHealth was acquired by Viverae, update Gitter
+* [GH-12] Update documentation to reflect inclusion of default recipe for LWRP
+* Added initial FreeBSD support
+* [GH-7] Added systemd based distros support
+
 v0.6.0 (2014-05-19)
 -------------------
 

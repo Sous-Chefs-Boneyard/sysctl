@@ -17,7 +17,7 @@ describe 'sysctl::service' do
     versions.each do |version|
       context "on #{platform.capitalize} #{version}" do
         let(:chef_run) do
-          runner = ChefSpec::Runner.new(platform: platform, version: version)
+          runner = ChefSpec::SoloRunner.new(platform: platform, version: version)
           runner.node.set['sysctl']['conf_dir'] = '/etc/sysctl.d'
           runner.node.set['sysctl']['params'] = {
             'vm' => {

@@ -15,3 +15,5 @@ LineLength:
   Enabled: false
 MethodLength:
   Max: 30
+RegexpLiteral:
+  Enabled: false

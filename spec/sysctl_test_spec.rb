@@ -3,7 +3,7 @@ require 'spec_helper'
 describe 'sysctl_test' do
   describe 'lwrps' do
     let(:chef_run) do
-      ChefSpec::Runner.new(step_into: ['sysctl_param']) do |node|
+      ChefSpec::SoloRunner.new(step_into: ['sysctl_param']) do |node|
         node.set['sysctl']['conf_dir'] = '/etc/sysctl.d'
         node.set['sysctl']['params'] = {}
         node.set['sysctl']['allow_sysctl_conf'] = false
