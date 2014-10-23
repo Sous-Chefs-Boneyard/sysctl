@@ -1,5 +1,5 @@
 if defined?(ChefSpec)
-  ChefSpec::Runner.define_runner_method :sysctl_param
+  ChefSpec.define_matcher :sysctl_param
 
   # @example This is an example
   # expect(chef_run.to apply_sysctl_param('foo')
