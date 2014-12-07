@@ -1,6 +1,10 @@
 Sysctl
 ======
 
+v0.6.2 (2014-12-06)
+-------------------
+* Fix rubocop error and packaging error
+
 v0.6.1 (2014-12-06)
 -------------------
 * [GH-14] Update to chefspec 4.1 , rubocop 27, foodcritic 4
