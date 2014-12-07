@@ -7,7 +7,6 @@ notifications:
     on_start: false     # default: false
 language: ruby
 rvm:
-  - 1.9.3
   - 2.1.1
 bundler_args: --without integration development
 script:
