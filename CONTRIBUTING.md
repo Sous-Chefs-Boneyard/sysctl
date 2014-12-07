@@ -1,11 +1,11 @@
-# Contributing to OneHealth Cookbooks
+# Contributing to Viverae Cookbooks
 
-We are glad you want to contribute to OneHealth Cookbooks! The first
+We are glad you want to contribute to Viverae Cookbooks! The first
 step is the desire to improve the project.
 
 ## Quick-contribute
 
-* Create an issue on the github [issue tracker](https://github.com/onehealth-cookbooks/sysctl/issues)
+* Create an issue on the github [issue tracker](https://github.com/viverae-cookbooks/sysctl/issues)
 * Link to your patch as a rebased git branch or pull request from the ticket
 
 We regularly review contributions and will get back to you if we have
@@ -35,13 +35,12 @@ downloading the branch.
 
 ## Functional and Unit Tests
 
-This cookbook is set up to run tests under
-[Opscode's test-kitchen](https://github.com/opscode/test-kitchen). It
-uses minitest-chef to run integration tests after the node has been
+This cookbook is set up to run tests under [test-kitchen](https://kitchen.ci/). It
+uses serverspec to run integration tests after the node has been
 converged to verify that the state of the node.
 
 Test kitchen should run completely without exception using the default
-[baseboxes provided by Opscode](https://github.com/opscode/bento).
+[baseboxes provided by Chef](http://opscode.github.io/bento/).
 Because Test Kitchen creates VirtualBox machines and runs through
 every configuration in the .kitchen.yml file, it may take some time for
 these tests to complete.
@@ -75,7 +74,7 @@ Please do include tests for your contribution. If you need help, ask
 on the
 [chef-dev mailing list](http://lists.opscode.com/sympa/info/chef-dev)
 or the
-[#chef-hacking IRC channel](http://community.opscode.com/chat/chef-hacking).
+[#chef-hacking IRC channel](https://botbot.me/freenode/chef-hacking/).
 Not all platforms that a cookbook supports may be supported by Test
 Kitchen. Please provide evidence of testing your contribution if it
 isn't trivial so we don't have to duplicate effort in testing. Chef
@@ -85,7 +84,7 @@ Please do indicate new platform (families) or platform versions in the
 commit message, and update the relevant ticket.  If a contribution adds 
 new platforms or platform versions, indicate such in the body of the commit message(s).
 
-Please do use [foodcritic](http://acrmp.github.com/foodcritic) to
+Please do use [foodcritic](http://www.foodcritic.io/) to
 lint-check the cookbook. Except FC007, it should pass all correctness
 rules. FC007 is okay as long as the dependent cookbooks are *required*
 for the default behavior of the cookbook, such as to support an
@@ -101,5 +100,5 @@ information above.
 
 Please do not update the CHANGELOG.md for a new version. Not all
 changes to a cookbook may be merged and released in the same versions.
-OneHealth will update the CHANGELOG.md when releasing a new version of
+Viverae will update the CHANGELOG.md when releasing a new version of
 the cookbook.

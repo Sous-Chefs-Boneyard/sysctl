@@ -20,7 +20,7 @@ Platforms
 Usage
 =======
 
-There are two main ways to interact with the cookbook. This is via chef [attributes](http://docs.opscode.com/essentials_cookbook_attribute_files.html) or via the provided [LWRP](http://docs.opscode.com/lwrp.html).
+There are two main ways to interact with the cookbook. This is via chef [attributes](http://docs.chef.io/attributes.html) or via the provided [LWRP](http://docs.chef.io/lwrp.html).
 
 # Cookbook Attributes
 

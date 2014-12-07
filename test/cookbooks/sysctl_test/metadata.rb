@@ -1,6 +1,6 @@
 name 'sysctl_test'
-maintainer 'OneHealth Solutions, Inc.'
-maintainer_email 'cookbooks@onehealth.com'
+maintainer 'Viverae, Inc.'
+maintainer_email 'cookbooks@viveraehealth.com'
 license 'All rights reserved'
 description 'Wrapper cookbook to test sysctl LWRPs'
 long_description 'wrapper cookbook to test sysctl LWRPs'

@@ -1,6 +1,6 @@
 name 'sysctl'
-maintainer 'OneHealth Solutions, Inc.'
-maintainer_email 'cookbooks@onehealth.com'
+maintainer 'Viverae, Inc.'
+maintainer_email 'cookbooks@viveraehealth.com'
 license 'Apache v2.0'
 description 'Configures sysctl parameters'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
