@@ -2,6 +2,7 @@ Sysctl
 ======
 
 v0.6.1 (2014-12-06)
+-------------------
 * [GH-14] Update to chefspec 4.1 , rubocop 27, foodcritic 4
           Update matchers.rb for deprecated chefspec method.
 * [GH-13] OneHealth was acquired by Viverae, update Gitter
