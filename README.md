@@ -12,10 +12,10 @@ Set [sysctl](http://en.wikipedia.org/wiki/Sysctl) system control parameters via 
 Platforms
 =========
 
-* Debian/Ubuntu
-* RHEL/CentOS
+* Debian/Ubuntu (chefdk tested)
+* RHEL/CentOS (chefdk tested)
 * Scientific Linux
-* PLD Linux (not tested)
+* PLD Linux
 * Exherbo
 * Archlinux
 
