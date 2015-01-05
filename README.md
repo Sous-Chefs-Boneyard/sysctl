@@ -16,6 +16,8 @@ Platforms
 * RHEL/CentOS
 * Scientific Linux
 * PLD Linux (not tested)
+* Exherbo
+* Archlinux
 
 Usage
 =======
