@@ -12,15 +12,17 @@ Set [sysctl](http://en.wikipedia.org/wiki/Sysctl) system control parameters via 
 Platforms
 =========
 
-* Debian/Ubuntu
-* RHEL/CentOS
+* Debian/Ubuntu (chefdk tested)
+* RHEL/CentOS (chefdk tested)
 * Scientific Linux
-* PLD Linux (not tested)
+* PLD Linux
+* Exherbo
+* Archlinux
 
 Usage
 =======
 
-There are two main ways to interact with the cookbook. This is via chef [attributes](http://docs.opscode.com/essentials_cookbook_attribute_files.html) or via the provided [LWRP](http://docs.opscode.com/lwrp.html).
+There are two main ways to interact with the cookbook. This is via chef [attributes](http://docs.chef.io/attributes.html) or via the provided [LWRP](http://docs.chef.io/lwrp.html).
 
 # Cookbook Attributes
 
@@ -150,6 +152,7 @@ There are a lot of different documents that talk about system control parameters
 * [Linux Kernel IP Sysctl](http://www.kernel.org/doc/Documentation/networking/ip-sysctl.txt)
 * [THE /proc FILESYSTEM (Jun 2009)](http://www.kernel.org/doc/Documentation/filesystems/proc.txt)
 * [RHEL 5 VM/Page Cache Tuning Presentation (2009) pdf](http://people.redhat.com/dshaks/Larry_Shak_Perf_Summit1_2009_final.pdf)
+  * Note that RHEL 6.2 or later support /etc/sysctl.d, and using 'service sysctl reload' to load attributes.
 * [Arch Linux SysCtl Tutorial (Feb 2013)](http://gotux.net/arch-linux/sysctl-config/)
 * [Old RedHat System Tuning Overview (2001!)](http://people.redhat.com/alikins/system_tuning.html)
 * [Tuning TCP For The Web at Velocity 2013 (video)](http://vimeo.com/70369211), [slides](http://cdn.oreillystatic.com/en/assets/1/event/94/Tuning%20TCP%20For%20The%20Web%20Presentation.pdf)

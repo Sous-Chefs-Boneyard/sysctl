@@ -2,6 +2,7 @@ AllCops:
   Exclude:
     - vendor/**/*
     - ruby/**/*
+    - files/**/*
 
 Next:
   Enabled: false

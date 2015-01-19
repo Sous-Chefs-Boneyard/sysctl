@@ -1,0 +1,17 @@
+DEPENDENCIES
+  apt
+  sysctl
+    path: .
+    metadata: true
+  sysctl_test
+    path: test/cookbooks/sysctl_test
+  yum
+
+GRAPH
+  apt (2.6.0)
+  ohai (2.0.1)
+  sysctl (0.6.0)
+    ohai (>= 0.0.0)
+  sysctl_test (0.1.0)
+    sysctl (>= 0.0.0)
+  yum (3.5.1)

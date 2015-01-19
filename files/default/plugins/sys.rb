@@ -1,6 +1,7 @@
 #
-# Author:: Sander van Zoest (<svanzoest@onehealth.com>)
+# Author:: Sander van Zoest (<sander.vanzoest@viverae.com>)
 # Copyright:: Copyright (c) 2014 OneHealth Solutions, Inc.
+# Copyright:: Copyright (c) 2014 Viverae, Inc.
 # License:: Apache License, Version 2.0
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
