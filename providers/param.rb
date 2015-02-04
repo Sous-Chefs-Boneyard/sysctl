@@ -14,7 +14,8 @@ action :apply do
     m[o] ||= {}
     m[o]
   end
-  unless location[key_path.last] == new_resource.value
+  value_as_string = Sysctl.compile_attr('', new_resource.value).to_s.sub(/^=/,'')
+  unless location[key_path.last] == new_resource.value || location[key_path.last] == value_as_string
     location[key_path.last] = new_resource.value
     node.default['sysctl']['params'] = sys_attrs
     execute "sysctl[#{new_resource.key}]" do
