@@ -30,13 +30,31 @@ if node['sysctl']['conf_dir']
   end
 end
 
-if Sysctl.config_file(node)
+sysctl_config_file = Sysctl.config_file(node)
+
+if sysctl_config_file
+  # If default sysctl.params attributes are not set, set them at recipe compile time
+  # to the values output by the last run. This allows the LWRPs to act idempotently
+  if File.exists?(sysctl_config_file)
+    File.read(sysctl_config_file).lines.each do |l|
+      next unless l =~ /^[\w\.]+?=/
+      key, val = l.chomp.split('=')
+      key_path = key.split('.')
+      location = key_path.slice(0, key_path.size - 1).reduce(node.default['sysctl']['params']) do |m, o|
+        m[o] ||= {}
+        m[o]
+      end
+      location[key_path.last] ||= val.to_s
+    end
+  end
+
+  
   # this is called by the sysctl_param lwrp to trigger template creation
   ruby_block 'save-sysctl-params' do
     action :nothing
     block do
     end
-    notifies :create, "template[#{Sysctl.config_file(node)}]", :delayed
+    notifies :create, "template[#{sysctl_config_file}]", :delayed
   end
 
   # this is called by the sysctl::apply recipe to trigger template creation
@@ -44,13 +62,13 @@ if Sysctl.config_file(node)
     action :nothing
     block do
     end
-    notifies :create, "template[#{Sysctl.config_file(node)}]", :immediately
+    notifies :create, "template[#{sysctl_config_file}]", :immediately
   end
 
   # this needs to have an action in case node.sysctl.params has changed
   # and also needs to be called for persistence on lwrp changes via the
   # ruby_block
-  template Sysctl.config_file(node) do
+  template sysctl_config_file do
     action :nothing
     source 'sysctl.conf.erb'
     mode '0644'
