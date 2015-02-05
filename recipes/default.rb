@@ -35,7 +35,7 @@ sysctl_config_file = Sysctl.config_file(node)
 if sysctl_config_file
   # If default sysctl.params attributes are not set, set them at recipe compile time
   # to the values output by the last run. This allows the LWRPs to act idempotently
-  if File.exists?(sysctl_config_file)
+  if File.exist?(sysctl_config_file)
     File.read(sysctl_config_file).lines.each do |l|
       next unless l =~ /^[\w\.]+?=/
       key, val = l.chomp.split('=')
@@ -48,7 +48,6 @@ if sysctl_config_file
     end
   end
 
-  
   # this is called by the sysctl_param lwrp to trigger template creation
   ruby_block 'save-sysctl-params' do
     action :nothing
