@@ -33,9 +33,7 @@ service 'procps' do
     provider Chef::Provider::Service::Systemd
   when 'ubuntu'
     if node['platform_version'].to_f >= 9.10
-      if node['platform_version'].to_f >= 14.10
-        service_name 'procps-instance'
-      end
+      service_name 'procps-instance' if node['platform_version'].to_f >= 14.10
       provider Chef::Provider::Service::Upstart
     end
   end
