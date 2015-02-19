@@ -7,7 +7,7 @@ notifications:
     on_start: false     # default: false
 language: ruby
 rvm:
-  - 2.1.1
+  - 2.1.5
 bundler_args: --without integration development
 script:
   - bundle exec foodcritic -f any . --tags ~FC007 --tags ~FC015 --tags ~FC023
