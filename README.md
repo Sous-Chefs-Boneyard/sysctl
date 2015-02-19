@@ -1,7 +1,7 @@
 sysctl cookbook
 ===============
-[![Build Status](https://travis-ci.org/svanzoest/sysctl-cookbook.png?branch=master)](https://travis-ci.org/svanzoest/sysctl-cookbook)
-[![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/svanzoest/sysctl-cookbook?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![Build Status](https://travis-ci.org/svanzoest-cookbooks/sysctl.png?branch=master)](https://travis-ci.org/svanzoest-cookbooks/sysctl)
+[![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/svanzoest-cookbooks/sysctl?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 Description
 ===========
