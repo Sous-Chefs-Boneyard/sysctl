@@ -101,35 +101,22 @@ To see ohai plugin output manually, you can run `ohai -d /etc/chef/ohai_plugins 
 
 # Development
 
-We have written unit tests using [chefspec](http://code.sethvargo.com/chefspec/) and integration tests in [serverspec](http://serverspec.org/) executed via [test-kitchen](http://kitchen.ci).
-Much of the tooling around this cookbook is exposed via guard and test kitchen, so it is highly recommended to learn more about those tools.
-
-## Vagrant Plugin Dependencies
-
-The integration tests can be run via test-kitchen using vagrant, but it depends on the following vagrant plugins:
-
-```
-vagrant plugin install vagrant-omnibus
-```
-
-Tested with 
-* Vagrant (version 1.6.1)
-* vagrant-omnibus (1.4.1)
+We have written unit tests using [chefspec](http://code.sethvargo.com/chefspec/) and integration tests in [serverspec](http://serverspec.org/) executed via [test-kitchen](http://kitchen.ci). Much of the tooling around this cookbook is exposed via guard and test kitchen, so it is highly recommended to learn more about those tools. The easiest way to get started is to install the [Chef Development Kit](https://downloads.chef.io/chef-dk/)
 
 ## Running tests
 
 The following commands will run the tests:
 
 ```
-bundle install
-bundle exec rubocop
-bundle exec foodcritic .
-bundle exec rspec
-bundle exec kitchen test default-ubuntu-1404
-bundle exec kitchen test default-centos-65
+chef exec bundle install
+chef exec rubocop
+chef exec foodcritic .
+chef exec rspec
+chef exec kitchen test default-ubuntu-1404
+chef exec kitchen test default-centos-70
 ```
 
-The above will do ruby style ([rubocop](https://github.com/bbatsov/rubocop)) and cookbook style ([foodcritic](http://www.foodcritic.io/)) checks followed by rspec unit tests ensuring proper cookbook operation. Integration tests will be run next on two separate linux platforms (Ubuntu 14.04 LTS Precise 64-bit and CentOS 6.5). Please run the tests on any pull requests that you are about to submit and write tests for defects or new features to ensure backwards compatibility and a stable cookbook that we can all rely upon.
+The above will do ruby style ([rubocop](https://github.com/bbatsov/rubocop)) and cookbook style ([foodcritic](http://www.foodcritic.io/)) checks followed by rspec unit tests ensuring proper cookbook operation. Integration tests will be run next on two separate linux platforms (Ubuntu 14.04 LTS Precise 64-bit and CentOS 7.0). Please run the tests on any pull requests that you are about to submit and write tests for defects or new features to ensure backwards compatibility and a stable cookbook that we can all rely upon.
 
 ## Running tests continuously with guard
 
