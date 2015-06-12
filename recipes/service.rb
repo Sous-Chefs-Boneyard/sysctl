@@ -17,10 +17,16 @@
 # limitations under the License.
 #
 
-template '/etc/rc.d/init.d/procps' do
-  source 'procps.init-rhel.erb'
-  mode '0755'
-  only_if { platform_family?('rhel', 'fedora', 'pld') }
+if platform?('centos') && node['platform_version'].to_f < 6
+  template '/etc/rc.d/init.d/procps' do
+    source 'procps.init-centos5.erb'
+    mode '0755'
+  end
+elsif platform_family?('rhel', 'fedora', 'pld')
+  template '/etc/rc.d/init.d/procps' do
+    source 'procps.init-rhel.erb'
+    mode '0755'
+  end
 end
 
 service 'procps' do
