@@ -32,9 +32,11 @@ service 'procps' do
     service_name 'systemd-sysctl'
     provider Chef::Provider::Service::Systemd
   when 'ubuntu'
-    if node['platform_version'].to_f >= 9.10
+    if node['platform_version'].to_f >= 9.10 && node['platform_version'].to_f < 15.04
       service_name 'procps-instance' if node['platform_version'].to_f >= 14.10
       provider Chef::Provider::Service::Upstart
+    elsif node['platform_version'].to_f >= 15.04
+      provider Chef::Provider::Service::Init::Debian
     end
   end
   action :enable
