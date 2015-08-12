@@ -52,7 +52,7 @@ service 'procps' do
     if node['platform_version'].to_f < 12.0
       supports :restart => false, :reload => false, :status => true
       service_name 'boot.sysctl'
-    else node['platform_version'].to_f >= 12.0
+    elsif node['platform_version'].to_f >= 12.0
       service_name 'systemd-sysctl'
       provider Chef::Provider::Service::Systemd
     end
