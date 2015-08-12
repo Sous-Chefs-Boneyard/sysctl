@@ -10,6 +10,7 @@ group :unit do
   gem 'foodcritic',       '~> 5.0'
   gem 'rubocop',          '~> 0.36', '>= 0.36.0'
   gem 'chefspec',         '~> 4.5.0'
+  gem 'serverspec',       '~> 2.21'
 end
 
 group :integration do
