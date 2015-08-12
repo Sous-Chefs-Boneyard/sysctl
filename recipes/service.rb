@@ -48,6 +48,14 @@ service 'procps' do
     elsif node['platform_version'].to_f >= 15.04
       provider Chef::Provider::Service::Init::Systemd
     end
+  when 'suse'
+    if node['platform_version'].to_f < 12.0
+      supports :restart => false, :reload => false, :status => true
+      service_name 'boot.sysctl'
+    else node['platform_version'].to_f >= 12.0
+      service_name 'systemd-sysctl'
+      provider Chef::Provider::Service::Systemd
+    end
   end
   action :enable
 end

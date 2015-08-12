@@ -9,7 +9,8 @@ describe 'sysctl::service' do
     'fedora' => %w(18 20),
     'redhat' => ['6.5', '7.0'],
     'centos' => ['6.5', '7.0'],
-    'freebsd' => ['9.2']
+    'freebsd' => ['9.2'],
+    'suse' => ['11.2', '12.0']
   }
 
   # Test all generic stuff on all platforms
