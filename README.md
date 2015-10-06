@@ -17,7 +17,7 @@ Platforms
 * Scientific Linux
 * PLD Linux
 * Exherbo
-* Archlinux
+* Arch Linux
 
 Usage
 =======
