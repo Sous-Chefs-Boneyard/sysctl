@@ -36,7 +36,7 @@ service 'procps' do
       service_name 'procps-instance' if node['platform_version'].to_f >= 14.10
       provider Chef::Provider::Service::Upstart
     elsif node['platform_version'].to_f >= 15.04
-      provider Chef::Provider::Service::Init::Debian
+      provider Chef::Provider::Service::Init::Systemd
     end
   end
   action :enable
