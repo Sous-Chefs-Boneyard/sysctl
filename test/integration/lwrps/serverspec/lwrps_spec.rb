@@ -10,8 +10,8 @@ describe file('/proc/sys/net/ipv4/tcp_rmem') do
   it { should contain '4096	16384	33554432' }
 end
 
-persistence_file = case os[:family]
-                   when 'RedHat', 'Fedora', 'Debian', 'Ubuntu'
+persistence_file = case os[:family].downcase
+                   when 'redhat', 'fedora', 'debian', 'ubuntu'
                      '/etc/sysctl.d/99-chef-attributes.conf'
                    else
                      '/etc/sysctl.conf'

@@ -10,8 +10,8 @@ describe file('/proc/sys/vm/swappiness') do
   it { should contain '19' }
 end
 
-persistence_file = case os[:family]
-                   when 'RedHat', 'Fedora', 'Debian', 'Ubuntu'
+persistence_file = case os[:family].downcase
+                   when 'redhat', 'fedora', 'debian', 'ubuntu'
                      '/etc/sysctl.d/99-chef-attributes.conf'
                    else
                      '/etc/sysctl.conf'
