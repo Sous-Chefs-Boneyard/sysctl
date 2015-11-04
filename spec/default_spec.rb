@@ -62,8 +62,8 @@ describe 'sysctl::default' do
         end
 
         it 'sends the specific notification to the procps service immediately' do
-          expect(template).to notify('service[procps]').to(:start).immediately
-          expect(template).to_not notify('service[procps]').to(:start).delayed
+          expect(template).to notify('service[procps]').to(:restart).immediately
+          expect(template).to_not notify('service[procps]').to(:restart).delayed
         end
       end
     end
