@@ -31,6 +31,16 @@ service 'procps' do
   when 'arch', 'exherbo'
     service_name 'systemd-sysctl'
     provider Chef::Provider::Service::Systemd
+  when 'centos', 'redhat', 'scientific'
+    if node['platform_version'].to_f >= 7.0
+      service_name 'systemd-sysctl'
+      provider Chef::Provider::Service::Systemd
+    end
+  when 'fedora'
+    if node['platform_version'].to_f >= 18
+      service_name 'systemd-sysctl'
+      provider Chef::Provider::Service::Systemd
+    end
   when 'ubuntu'
     if node['platform_version'].to_f >= 9.10 && node['platform_version'].to_f < 15.04
       service_name 'procps-instance' if node['platform_version'].to_f >= 14.10
