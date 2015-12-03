@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 # for nokogiri gem, can be removed
 ENV['PKG_CONFIG_PATH'] = '/opt/chefdk/embedded/lib/pkgconfig'
 
-gem 'berkshelf',  '~> 4.0.1'
+gem 'berkshelf', '~> 4.0.1'
 
 group :unit do
   gem 'foodcritic',       '~> 5.0'
