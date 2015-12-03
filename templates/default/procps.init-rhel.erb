@@ -11,6 +11,17 @@
 # Source function library.
 . /etc/rc.d/init.d/functions
 
+<% if node['platform_family'] == 'rhel' && node['platform_version'].to_f < 6 -%>
+# Apply sysctl settings, including files in /etc/sysctl.d
+apply_sysctl() {
+    sysctl -e -p /etc/sysctl.conf >/dev/null 2>&1
+    for file in /etc/sysctl.d/* ; do
+        is_ignored_file "$file" && continue
+        test -f "$file" && sysctl -e -p "$file" >/dev/null 2>&1
+    done
+}
+<% end -%>
+
 case "$1" in
     start)
         apply_sysctl
