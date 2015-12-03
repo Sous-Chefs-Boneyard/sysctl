@@ -1,10 +1,20 @@
 Sysctl
 ======
 
-v0.6.3 (unreleased)
+v0.7.0 (2015-12-03)
 -------------------
 
+* Update gem and berkshelf cookbook dependencies
+* Update documentation to suggest using chefdk for development
+* Travis now uses ruby 2.1+
+* [GH-8]  Update README.md mentioning Archlinux and Exherbo
+* [GH-38] Update to ServerSpec2
+* [GH-36] ArchLinux fixes
+* [GH-41] RHEL 7 Systemd support updates
+* [GH-18] Added note on support for /etc/sysctl.d/ and using it on RHEL 6.2 or later.
+* [GH-30] Add support for Ubuntu Vivid (15.04)
 * [GH-16] Support ubuntu 14.10
+* [GH-31] Adjust sysctl::apply to use :restart instead of :start for better systemd support
 
 v0.6.2 (2014-12-06)
 -------------------
