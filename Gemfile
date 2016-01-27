@@ -1,18 +1,19 @@
 source 'https://rubygems.org'
 
-# for nokogiri gem, can be removed
+# resolve nokogiri updates for chefdk, although it may force chefdk now
+# https://github.com/chef/chef-dk/issues/278#issuecomment-89251860
 ENV['PKG_CONFIG_PATH'] = '/opt/chefdk/embedded/lib/pkgconfig'
 
 gem 'berkshelf', '~> 4.0.1'
 
 group :unit do
   gem 'foodcritic',       '~> 5.0'
-  gem 'rubocop',          '~> 0.35.1', '>= 0.35.1'
-  gem 'chefspec',         '~> 4.4.0'
+  gem 'rubocop',          '~> 0.36', '>= 0.36.0'
+  gem 'chefspec',         '~> 4.5.0'
 end
 
 group :integration do
-  gem 'test-kitchen', '~> 1.4.2'
+  gem 'test-kitchen', '~> 1.5'
   gem 'kitchen-vagrant', :require => false
   gem 'kitchen-digitalocean', :require => false
   gem 'kitchen-ec2', :require => false
@@ -34,7 +35,7 @@ group :development do
   gem 'terminal-notifier-guard', :require => false
   require 'rbconfig'
   if RbConfig::CONFIG['target_os'] =~ /mswin|mingw|cygwin/i
-    gem 'wdm', '>= 0.1.0'
+    gem 'wdm', '>= 0.1.1'
     gem 'win32console'
   end
 end
