@@ -1,17 +1,17 @@
 DEPENDENCIES
-  apt (~> 2.8.2)
+  apt (~> 2.9)
   sysctl
     path: .
     metadata: true
   sysctl_test
     path: test/cookbooks/sysctl_test
-  yum (~> 3.8.2)
+  yum (~> 3.9)
 
 GRAPH
-  apt (2.8.2)
-  ohai (2.0.4)
-  sysctl (0.6.2)
+  apt (2.9.2)
+  ohai (2.1.0)
+  sysctl (0.7.0)
     ohai (>= 0.0.0)
   sysctl_test (0.1.0)
     sysctl (>= 0.0.0)
-  yum (3.8.2)
+  yum (3.9.0)
