@@ -21,12 +21,13 @@
 
 include_recipe 'sysctl::service'
 
-directory node['sysctl']['conf_dir'] do
-  owner 'root'
-  group 'root'
-  mode 0755
-  action :create
-  only_if { node['sysctl']['conf_dir'] }
+if node['sysctl']['conf_dir'] # ~FC023 - switching to only_if breaks logic
+  directory node['sysctl']['conf_dir'] do
+    owner 'root'
+    group 'root'
+    mode 0755
+    action :create
+  end
 end
 
 sysctl_config_file = Sysctl.config_file(node)
