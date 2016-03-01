@@ -9,7 +9,8 @@ describe 'sysctl::default' do
     'fedora' => %w(18 20),
     'redhat' => ['6.5', '7.0'],
     'centos' => ['6.5', '7.0'],
-    'freebsd' => ['9.2']
+    'freebsd' => ['9.2'],
+    'suse' => ['11.2', '12.0']
   }
 
   # Test all generic stuff on all platforms
@@ -51,6 +52,8 @@ describe 'sysctl::default' do
         let(:template) do
           if platform == 'freebsd'
             chef_run.template('/etc/sysctl.conf.local')
+          elsif platform == 'suse' && version.to_f < 12.0
+            chef_run.template('/etc/sysctl.conf')
           else
             chef_run.template('/etc/sysctl.d/99-chef-attributes.conf')
           end

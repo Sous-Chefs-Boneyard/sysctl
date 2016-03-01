@@ -17,6 +17,10 @@ persistence_file = case os[:family].downcase
                      '/etc/sysctl.conf'
                    end
 
+if os[:family] == 'suse' && host_inventory['platform_version'].to_f >= 12.0
+  persistence_file = '/etc/sysctl.d/99-chef-attributes.conf'
+end
+
 describe file(persistence_file) do
   it { should be_file }
   it { should contain 'net.ipv4.tcp_max_syn_backlog=12345' }
