@@ -16,7 +16,7 @@ module Sysctl
         prefix += '.' unless prefix.empty?
         v.map { |key, value| compile_attr("#{prefix}#{key}", value) }.flatten.sort
       else
-        raise Chef::Exceptions::UnsupportedAction, "Sysctl cookbook can't handle values of type: #{v.class}"
+        fail Chef::Exceptions::UnsupportedAction, "Sysctl cookbook can't handle values of type: #{v.class}"
       end
     end
   end
