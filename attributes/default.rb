@@ -17,20 +17,18 @@
 # limitations under the License.
 #
 default['sysctl']['params'] = {}
+default['sysctl']['allow_sysctl_conf'] = false
+default['sysctl']['conf_file'] = '/etc/sysctl.conf'
+default['sysctl']['conf_dir'] = nil
 
 if platform_family?('freebsd')
   default['sysctl']['allow_sysctl_conf'] = true
   default['sysctl']['conf_file'] = '/etc/sysctl.conf.local'
-else
-  default['sysctl']['allow_sysctl_conf'] = false
-  default['sysctl']['conf_file'] = '/etc/sysctl.conf'
 end
 
 if platform_family?('arch', 'debian', 'rhel', 'fedora')
   default['sysctl']['conf_dir'] = '/etc/sysctl.d'
   default['sysctl']['conf_file'] = File.join(node['sysctl']['conf_dir'], '/99-chef-attributes.conf')
-else
-  default['sysctl']['conf_dir'] = nil
 end
 
 if platform_family?('suse')
