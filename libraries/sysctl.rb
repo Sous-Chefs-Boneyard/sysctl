@@ -2,15 +2,9 @@
 module Sysctl
   class << self
     def config_file(node)
-      if node['sysctl']['conf_dir']
-        return node['sysctl']['conf_file']
-      else
-        if node['sysctl']['allow_sysctl_conf']
-          return node['sysctl']['conf_file']
-        else
-          return nil
-        end
-      end
+      return nil unless node['sysctl']['conf_dir'] || node['sysctl']['allow_sysctl_conf']
+
+      node['sysctl']['conf_file']
     end
 
     def compile_attr(prefix, v)
