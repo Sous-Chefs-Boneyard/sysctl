@@ -8,7 +8,6 @@ v0.7.2 (2016-03-24)
 * [GH-47] Rename key_path local var to key_path_tokens for clarity
 * [GH-50] Resolves Rubocop complaint about nested ifs.
 * [GH-46] Use fail instead of raise
-* Update serverspec version
 * Update gem and berkshelf cookbook dependencies
 
 v0.7.0 (2015-12-03)
