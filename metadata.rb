@@ -11,6 +11,7 @@ supports 'ubuntu', '>= 12.04'
 supports 'debian', '>= 7.0'
 supports 'centos', '>= 5.9'
 supports 'scientific', '>= 6.4'
+supports 'suse', '>= 11.0'
 %w(redhat pld).each do |os|
   supports os
 end
