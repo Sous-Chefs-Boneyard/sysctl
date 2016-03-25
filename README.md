@@ -1,5 +1,7 @@
 sysctl cookbook
 ===============
+[![Cookbook Version](https://img.shields.io/cookbook/v/sysctl.svg?style=flat)](https://supermarket.chef.io/cookbooks/sysctl)
+[![Dependency Status](http://img.shields.io/gemnasium/svanzoest-cookbooks/sysctl.svg?style=flat)](https://gemnasium.com/svanzoest-cookbooks/syctl)
 [![Build Status](https://travis-ci.org/svanzoest-cookbooks/sysctl.png?branch=master)](https://travis-ci.org/svanzoest-cookbooks/sysctl)
 [![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/svanzoest-cookbooks/sysctl?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
@@ -113,7 +115,7 @@ chef exec rubocop
 chef exec foodcritic .
 chef exec rspec
 chef exec kitchen test default-ubuntu-1404
-chef exec kitchen test default-centos-70
+chef exec kitchen test default-centos-72
 ```
 
 The above will do ruby style ([rubocop](https://github.com/bbatsov/rubocop)) and cookbook style ([foodcritic](http://www.foodcritic.io/)) checks followed by rspec unit tests ensuring proper cookbook operation. Integration tests will be run next on two separate linux platforms (Ubuntu 14.04 LTS Precise 64-bit and CentOS 7.0). Please run the tests on any pull requests that you are about to submit and write tests for defects or new features to ensure backwards compatibility and a stable cookbook that we can all rely upon.
