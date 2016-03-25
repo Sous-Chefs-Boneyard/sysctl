@@ -20,6 +20,7 @@ Platforms
 * PLD Linux
 * Exherbo
 * Arch Linux
+* Suse
 
 Usage
 =======
@@ -101,6 +102,22 @@ The cookbook also includes an Ohai 7 plugin that can be installed by adding `sys
 
 To see ohai plugin output manually, you can run `ohai -d /etc/chef/ohai_plugins sys` on the command line.
 
+# Links
+
+There are a lot of different documents that talk about system control parameters, the hope here is to point to some of the most useful ones to provide more guidance as to what the possible kernel parameters are and what they mean.
+
+* [Linux Kernel Sysctl](https://www.kernel.org/doc/Documentation/sysctl/)
+* [Linux Kernel IP Sysctl](http://www.kernel.org/doc/Documentation/networking/ip-sysctl.txt)
+* [THE /proc FILESYSTEM (Jun 2009)](http://www.kernel.org/doc/Documentation/filesystems/proc.txt)
+* [RHEL 5 VM/Page Cache Tuning Presentation (2009) pdf](http://people.redhat.com/dshaks/Larry_Shak_Perf_Summit1_2009_final.pdf)
+  * Note that RHEL 6.2 or later support /etc/sysctl.d, and using 'service sysctl reload' to load attributes.
+* [Arch Linux SysCtl Tutorial (Feb 2013)](http://gotux.net/arch-linux/sysctl-config/)
+* [Old RedHat System Tuning Overview (2001!)](http://people.redhat.com/alikins/system_tuning.html)
+* [Tuning TCP For The Web at Velocity 2013 (video)](http://vimeo.com/70369211), [slides](http://cdn.oreillystatic.com/en/assets/1/event/94/Tuning%20TCP%20For%20The%20Web%20Presentation.pdf)
+* [Adventures in Linux TCP Tuning (Nov 2013)](http://thesimplecomputer.info/adventures-in-linux-tcp-tuning-page2/)
+* [Part 1: Lessons learned tuning TCP and Nginx in EC2 (Jan 2014)](http://engineering.chartbeat.com/2014/01/02/part-1-lessons-learned-tuning-tcp-and-nginx-in-ec2/)
+* [How to harden a new server with Chef](http://lollyrock.com/articles/how-to-harden-a-new-server/) about the [TelekomLabs Hardening Framework](http://telekomlabs.github.io/) (May 2014)
+
 # Development
 
 We have written unit tests using [chefspec](http://code.sethvargo.com/chefspec/) and integration tests in [serverspec](http://serverspec.org/) executed via [test-kitchen](http://kitchen.ci). Much of the tooling around this cookbook is exposed via guard and test kitchen, so it is highly recommended to learn more about those tools. The easiest way to get started is to install the [Chef Development Kit](https://downloads.chef.io/chef-dk/)
@@ -133,18 +150,3 @@ bundle exec guard start
 
 The cookbook exposes a chefspec matcher to be used by wrapper cookbooks to test the cookbooks LWRP. See `library/matchers.rb` for basic usage.
 
-# Links
-
-There are a lot of different documents that talk about system control parameters, the hope here is to point to some of the most useful ones to provide more guidance as to what the possible kernel parameters are and what they mean.
-
-* [Linux Kernel Sysctl](https://www.kernel.org/doc/Documentation/sysctl/)
-* [Linux Kernel IP Sysctl](http://www.kernel.org/doc/Documentation/networking/ip-sysctl.txt)
-* [THE /proc FILESYSTEM (Jun 2009)](http://www.kernel.org/doc/Documentation/filesystems/proc.txt)
-* [RHEL 5 VM/Page Cache Tuning Presentation (2009) pdf](http://people.redhat.com/dshaks/Larry_Shak_Perf_Summit1_2009_final.pdf)
-  * Note that RHEL 6.2 or later support /etc/sysctl.d, and using 'service sysctl reload' to load attributes.
-* [Arch Linux SysCtl Tutorial (Feb 2013)](http://gotux.net/arch-linux/sysctl-config/)
-* [Old RedHat System Tuning Overview (2001!)](http://people.redhat.com/alikins/system_tuning.html)
-* [Tuning TCP For The Web at Velocity 2013 (video)](http://vimeo.com/70369211), [slides](http://cdn.oreillystatic.com/en/assets/1/event/94/Tuning%20TCP%20For%20The%20Web%20Presentation.pdf)
-* [Adventures in Linux TCP Tuning (Nov 2013)](http://thesimplecomputer.info/adventures-in-linux-tcp-tuning-page2/)
-* [Part 1: Lessons learned tuning TCP and Nginx in EC2 (Jan 2014)](http://engineering.chartbeat.com/2014/01/02/part-1-lessons-learned-tuning-tcp-and-nginx-in-ec2/)
-* [How to harden a new server with Chef](http://lollyrock.com/articles/how-to-harden-a-new-server/) about the [TelekomLabs Hardening Framework](http://telekomlabs.github.io/) (May 2014)
