@@ -19,10 +19,10 @@ platforms:
   driver:
     box: lyte-scientific-6-minimal
     box_url: http://lyte.id.au/vagrant/sl6-64-lyte.box
-- name: canonical-ubuntu-14.04
+- name: canonical-ubuntu-16.04
   driver:
-    box: canonical-ubuntu-14.04
-    box_url: https://cloud-images.ubuntu.com/vagrant/trusty/current/trusty-server-cloudimg-amd64-vagrant-disk1.box
+    box: canonical-ubuntu-16.04-current
+    box_url: https://cloud-images.ubuntu.com/xenial/current/xenial-server-cloudimg-amd64-vagrant.box
 - name: srijn-arch-2014-01-07
   driver:
     box: srijn-arch-2014-01-07
