@@ -12,9 +12,10 @@ provisioner:
 platforms:
 - name: ubuntu-14.04
 - name: ubuntu-12.04
-- name: debian-7.4
-- name: centos-6.5
-- name: centos-7.0
+- name: debian-7.9
+- name: debian-8.3
+- name: centos-6.7
+- name: centos-7.2
 - name: scientific-6.4
   driver:
     box: lyte-scientific-6-minimal
@@ -28,8 +29,8 @@ platforms:
     box: srijn-arch-2014-01-07
     box_url:  http://vagrant.srijn.net/archlinux-x64-2014-01-07.box
 - name: fedora-18
-- name: fedora-20
-- name: freebsd-9.2
+- name: fedora-23
+- name: freebsd-9.3
 
 suites:
 - name: default
