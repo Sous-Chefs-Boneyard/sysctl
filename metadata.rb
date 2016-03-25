@@ -16,4 +16,4 @@ supports 'scientific', '>= 6.4'
 end
 conflicts 'jn_sysctl'
 conflicts 'el-sysctl'
-depends 'ohai'
+depends 'ohai', '~> 2.1'
