@@ -10,7 +10,7 @@ DEPENDENCIES
 GRAPH
   apt (3.0.0)
   ohai (3.0.1)
-  sysctl (0.7.2)
+  sysctl (0.7.3)
     ohai (~> 3.0)
   sysctl_test (0.1.0)
     sysctl (>= 0.0.0)

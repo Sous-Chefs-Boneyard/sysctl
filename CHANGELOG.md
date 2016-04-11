@@ -1,6 +1,10 @@
 Sysctl
 ======
 
+v0.7.4 (2016-04-11)
+-------------------
+* FC059: declare use_inline_resources
+
 v0.7.3 (2016-04-11)
 -------------------
 * Added suse to metadata.rb
