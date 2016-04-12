@@ -1,6 +1,10 @@
 Sysctl
 ======
 
+v0.7.5 (2016-04-12)
+-------------------
+* [GH-51] revert FC059: declare use_inline_resources
+
 v0.7.4 (2016-04-11)
 -------------------
 * FC059: declare use_inline_resources
