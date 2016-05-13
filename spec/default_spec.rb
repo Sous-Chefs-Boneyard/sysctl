@@ -4,13 +4,13 @@ require 'spec_helper'
 
 describe 'sysctl::default' do
   platforms = {
-    'ubuntu' => ['12.04', '14.04'],
-    'debian' => ['7.0', '7.4'],
-    'fedora' => %w(18 20),
-    'redhat' => ['6.5', '7.0'],
-    'centos' => ['6.5', '7.0'],
-    'freebsd' => ['9.2'],
-    'suse' => ['11.2', '12.0']
+    'ubuntu' => ['14.04','16.04'],
+    'debian' => ['7.9','8.4'],
+    'fedora' => %w(18 23),
+    'redhat' => ['6.6', '7.1'],
+    'centos' => ['6.7', '7.2.1511'],
+    'freebsd' => ['10.3'],
+    'opensuse' => ['12.3','13.2']
   }
 
   # Test all generic stuff on all platforms
