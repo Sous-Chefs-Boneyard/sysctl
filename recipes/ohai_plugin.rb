@@ -3,6 +3,7 @@
 # Recipe:: ohai_plugin
 #
 # Copyright 2014, OneHealth Solutions, Inc.
+# Copyright 2016, Alexander van Zoest
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -16,18 +17,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-
-ohai 'reload_sys' do
-  plugin 'sys'
-  action :nothing
+ohai_plugin 'sys' do
+  source_file 'plugins/sys.rb'
 end
-
-cookbook_file "#{node['ohai']['plugin_path']}/sys.rb" do
-  source 'plugins/sys.rb'
-  owner 'root'
-  group node['root_group']
-  mode '0755'
-  notifies :reload, 'ohai[reload_sys]', :immediately
-end
-
-include_recipe 'ohai::default'
