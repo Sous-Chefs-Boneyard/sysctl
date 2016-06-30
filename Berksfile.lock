@@ -9,9 +9,11 @@ DEPENDENCIES
 
 GRAPH
   apt (3.0.0)
-  ohai (3.0.1)
-  sysctl (0.7.3)
-    ohai (~> 3.0)
+  compat_resource (12.10.6)
+  ohai (4.1.1)
+    compat_resource (>= 12.10)
+  sysctl (0.7.5)
+    ohai (~> 4.0)
   sysctl_test (0.1.0)
     sysctl (>= 0.0.0)
   yum (3.10.0)
