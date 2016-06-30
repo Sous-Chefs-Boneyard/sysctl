@@ -1,5 +1,12 @@
 Sysctl
 ======
+v0.8.0 (2016-06-30)
+-------------------
+* [GH-55] Update README with FreeBSD 10.3 support
+* [GH-59] Update to ohai cookbook 4
+
+This cookbook indirectly now requires Chef 12+.
+If you require Chef 11 support you'll need to pin to version 0.7.5 in your environment.
 
 v0.7.5 (2016-04-12)
 -------------------
