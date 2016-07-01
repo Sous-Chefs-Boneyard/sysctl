@@ -25,7 +25,7 @@ directory 'Sysctl config directory' do
   path node['sysctl']['conf_dir']
   owner 'root'
   group 'root'
-  mode 0755
+  mode 0o755
   action :create
   only_if { node['sysctl']['conf_dir'] }
 end
