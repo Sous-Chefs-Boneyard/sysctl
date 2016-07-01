@@ -22,6 +22,7 @@ Platforms
 * Exherbo
 * Arch Linux
 * Suse
+* FreeBSD 10
 
 Usage
 =======
