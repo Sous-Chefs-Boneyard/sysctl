@@ -66,6 +66,7 @@ Procfile
 */.bzr/*
 */.hg/*
 */.svn/*
+.github
 
 # Berkshelf #
 #############
