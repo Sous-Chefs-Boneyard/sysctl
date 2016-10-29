@@ -27,7 +27,7 @@ directory 'Sysctl config directory' do
   group 'root'
   mode 0o755
   action :create
-  only_if { node['sysctl']['conf_dir'] }
+  only_if { node['sysctl']['conf_dir'] != nil }
 end
 
 sysctl_config_file = Sysctl.config_file(node)
