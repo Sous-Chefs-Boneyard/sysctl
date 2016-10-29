@@ -45,7 +45,7 @@ describe 'sysctl::default' do
               group: 'fat'
             )
           end
-	end
+        end
 
         it 'does not persist the attributes file' do
           expect(chef_run).to_not create_template('/etc/sysctl.d/99-chef-attributes.conf')
