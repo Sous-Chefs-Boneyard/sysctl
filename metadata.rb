@@ -18,4 +18,4 @@ supports 'suse', '>= 11.0'
 end
 conflicts 'jn_sysctl'
 conflicts 'el-sysctl'
-depends 'ohai', '~> 4.0'
+depends 'ohai', '>= 4.0'
