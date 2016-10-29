@@ -1,5 +1,11 @@
 Sysctl
 ======
+v0.8.1 (2016-10-29)
+-------------------
+* [GH-64] Relax ohai cookbook dependency to >= 4
+* Specify ohai version needs to be >= 8
+* [GH-65] Use systemd-sysctl service for ubuntu > 15+
+
 v0.8.0 (2016-06-30)
 -------------------
 * [GH-55] Update README with FreeBSD 10.3 support
