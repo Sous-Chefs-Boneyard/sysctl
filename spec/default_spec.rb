@@ -19,8 +19,8 @@ describe 'sysctl::default' do
       context "on #{platform.capitalize} #{version}" do
         let(:chef_run) do
           ChefSpec::SoloRunner.new(platform: platform, version: version) do |node|
-            node.set['sysctl']['conf_dir'] = '/etc/sysctl.d'
-            node.set['sysctl']['params'] = {
+            node.default['sysctl']['conf_dir'] = '/etc/sysctl.d'
+            node.default['sysctl']['params'] = {
               'vm' => {
                 'swappiness' => 19
               },
@@ -33,17 +33,19 @@ describe 'sysctl::default' do
           end.converge('sysctl::default')
         end
 
-        it 'creates sysctl.conf_dir directory' do
-          expect(chef_run).to create_directory('/etc/sysctl.d').with(
-            user: 'root',
-            group: 'root'
-          )
+        if platform != 'freebsd'
+          it 'creates sysctl.conf_dir directory' do
+            expect(chef_run).to create_directory('/etc/sysctl.d').with(
+              user: 'root',
+              group: 'root'
+            )
 
-          expect(chef_run).to_not create_directory('/etc/sysctl.d').with(
-            user: 'bacon',
-            group: 'fat'
-          )
-        end
+            expect(chef_run).to_not create_directory('/etc/sysctl.d').with(
+              user: 'bacon',
+              group: 'fat'
+            )
+          end
+	end
 
         it 'does not persist the attributes file' do
           expect(chef_run).to_not create_template('/etc/sysctl.d/99-chef-attributes.conf')
@@ -77,8 +79,8 @@ describe 'sysctl::default' do
     context "on Centos #{version}" do
       let(:chef_run) do
         runner = ChefSpec::SoloRunner.new(platform: 'centos', version: version)
-        runner.node.set['sysctl']['conf_dir'] = '/etc/sysctl.d'
-        runner.node.set['sysctl']['params'] = {
+        runner.node.default['sysctl']['conf_dir'] = '/etc/sysctl.d'
+        runner.node.default['sysctl']['params'] = {
           'vm' => {
             'swappiness' => 19
           },
