@@ -11,7 +11,7 @@ module Sysctl
       case v
       when Array
         "#{prefix}=#{v.join(' ')}"
-      when String, Fixnum, Bignum, Float, Symbol
+      when String, Integer, Float, Symbol
         "#{prefix}=#{v}"
       when Hash, Chef::Node::Attribute
         prefix += '.' unless prefix.empty?
