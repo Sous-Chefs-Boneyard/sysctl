@@ -1,7 +1,7 @@
 sysctl cookbook
 ===============
 [![Cookbook Version](https://img.shields.io/cookbook/v/sysctl.svg?style=flat)](https://supermarket.chef.io/cookbooks/sysctl)
-[![Dependency Status](http://img.shields.io/gemnasium/chef-brigade/sysctl.svg?style=flat)](https://gemnasium.com/chef-brigade/syctl)
+[![Dependency Status](http://img.shields.io/gemnasium/chef-brigade/sysctl.svg?style=flat)](https://gemnasium.com/chef-brigade/sysctl)
 [![Build Status](https://travis-ci.org/chef-brigade/sysctl.png?branch=master)](https://travis-ci.org/chef-brigade/sysctl)
 [![License](https://img.shields.io/badge/license-Apache_2-blue.svg)](https://www.apache.org/licenses/LICENSE-2.0)
 
