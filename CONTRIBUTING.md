@@ -5,7 +5,7 @@ step is the desire to improve the project.
 
 ## Quick-contribute
 
-* Create an issue on the github [issue tracker](https://github.com/svanzoest-cookbooks/sysctl/issues)
+* Create an issue on the github [issue tracker](https://github.com/chef-brigade/sysctl/issues)
 * Link to your patch as a rebased git branch or pull request from the ticket
 
 We regularly review contributions and will get back to you if we have

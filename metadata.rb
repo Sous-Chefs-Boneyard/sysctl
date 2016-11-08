@@ -1,8 +1,8 @@
 name 'sysctl'
 maintainer 'Sander van Zoest'
 maintainer_email 'sander+cookbooks@vanzoest.com'
-issues_url 'https://github.com/svanzoest-cookbooks/sysctl/issues' if respond_to?(:issues_url)
-source_url 'https://github.com/svanzoest-cookbooks/sysctl/' if respond_to?(:source_url)
+issues_url 'https://github.com/chef-brigade/sysctl/issues' if respond_to?(:issues_url)
+source_url 'https://github.com/chef-brigade/sysctl/' if respond_to?(:source_url)
 license 'Apache v2.0'
 description 'Configures sysctl parameters'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))

@@ -1,10 +1,9 @@
 sysctl cookbook
 ===============
 [![Cookbook Version](https://img.shields.io/cookbook/v/sysctl.svg?style=flat)](https://supermarket.chef.io/cookbooks/sysctl)
-[![Dependency Status](http://img.shields.io/gemnasium/svanzoest-cookbooks/sysctl.svg?style=flat)](https://gemnasium.com/svanzoest-cookbooks/syctl)
-[![Build Status](https://travis-ci.org/svanzoest-cookbooks/sysctl.png?branch=master)](https://travis-ci.org/svanzoest-cookbooks/sysctl)
+[![Dependency Status](http://img.shields.io/gemnasium/chef-brigade/sysctl.svg?style=flat)](https://gemnasium.com/chef-brigade/syctl)
+[![Build Status](https://travis-ci.org/chef-brigade/sysctl.png?branch=master)](https://travis-ci.org/chef-brigade/sysctl)
 [![License](https://img.shields.io/badge/license-Apache_2-blue.svg)](https://www.apache.org/licenses/LICENSE-2.0)
-[![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/svanzoest-cookbooks/sysctl?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 Description
 ===========
