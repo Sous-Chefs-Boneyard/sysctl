@@ -1,8 +1,8 @@
 name 'sysctl'
-maintainer 'Chef Brigade'
-maintainer_email 'help@chefbrigade.io'
-issues_url 'https://github.com/sous-chefs/sysctl/issues' if respond_to?(:issues_url)
-source_url 'https://github.com/sous-chefs/sysctl/' if respond_to?(:source_url)
+source_url "https://github.com/sous-chefs/sysctl" if respond_to?(:source_url)
+issues_url "https://github.com/sous-chefs/sysctl/issues" if respond_to?(:issues_url)
+maintainer 'Sous Chefs'
+maintainer_email 'help@sous-chefs.org'
 license 'Apache v2.0'
 description 'Configures sysctl parameters'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
