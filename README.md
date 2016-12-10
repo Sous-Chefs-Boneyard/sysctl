@@ -48,13 +48,13 @@ The configuration will be written out when `sysctl::apply` gets run, which allow
 
 ### Examples
 
-Set vm.swapiness to 20 via attributes
+Set `vm.swapiness` to 20 via attributes
 
-```` ruby
+```ruby
     node.default['sysctl']['params']['vm']['swappiness'] = 20
 
     include_recipe 'sysctl::apply'
-````
+```
 
 ## Using LWRPs
 
@@ -79,21 +79,21 @@ Attributes
 
 Set vm.swapiness to 20 via sysctl_param LWRP
 
-```` ruby
+```ruby
     include_recipe 'sysctl::default'
 
     sysctl_param 'vm.swappiness' do
       value 20
     end
-````
+```
 Remove sysctl parameter and set net.ipv4.tcp_fin_timeout back to default
 
-```` ruby
+```ruby
     sysctl_param 'net.ipv4.tcp_fin_timeout' do
       value 30
       action :remove
     end
-````
+```
 
 # Reading Sysctl Parameters
 
@@ -126,7 +126,7 @@ We have written unit tests using [chefspec](http://code.sethvargo.com/chefspec/)
 
 The following commands will run the tests:
 
-```
+```bash
 chef exec bundle install
 chef exec rubocop
 chef exec foodcritic .
@@ -141,7 +141,7 @@ The above will do ruby style ([rubocop](https://github.com/bbatsov/rubocop)) and
 
 This cookbook is also setup to run the checks while you work via the [guard gem](http://guardgem.org/).
 
-```
+```bash
 bundle install
 bundle exec guard start
 ```
@@ -149,4 +149,3 @@ bundle exec guard start
 ## ChefSpec LWRP Matchers
 
 The cookbook exposes a chefspec matcher to be used by wrapper cookbooks to test the cookbooks LWRP. See `library/matchers.rb` for basic usage.
-
