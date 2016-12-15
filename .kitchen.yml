@@ -31,3 +31,6 @@ suites:
 - name: attributes
   run_list:
     - recipe[sysctl_test::attributes]
+- name: attributes-empty
+  run_list:
+    - recipe[sysctl_test::attributes_empty]
