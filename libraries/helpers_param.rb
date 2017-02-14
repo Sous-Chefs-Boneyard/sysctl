@@ -44,7 +44,17 @@ module SysctlCookbook
       def get_sysctl_value(key)
         o = shell_out("sysctl -n #{key}")
         raise 'Unknown sysctl key!' if o.error!
-        o.stdout.tr("\t", ' ').strip
+        o = o.stdout.tr("\t", ' ').strip
+        raise unless o == get_sysctld_value(key)
+        o
+      end
+
+      def get_sysctld_value(key)
+        raise unless ::File.exist?("/etc/sysctl.d/99-chef-#{key}.conf")
+        k, v = IO.read("/etc/sysctl.d/99-chef-#{key}.conf").match(/(.*) = (.*)/).captures
+        raise 'Unknown sysctl key!' if k.nil?
+        raise 'Unknown sysctl value!' if v.nil?
+        v
       end
 
       def set_sysctl_param(key, value)
