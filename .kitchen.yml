@@ -19,21 +19,20 @@ client_rb:
 platforms:
 - name: ubuntu-14.04
 - name: ubuntu-16.04
-- name: debian-7.10
-- name: debian-8.4
+- name: debian-7.11
+- name: debian-8.7
 - name: centos-6.8
 - name: centos-7.3
+- name: fedora-25
+- name: freebsd-11
 - name: scientific-6.4
   driver:
     box: lyte-scientific-6-minimal
     box_url: http://lyte.id.au/vagrant/sl6-64-lyte.box
-- name: srijn-arch-2014-01-07
+- name: arch
   driver:
     box: srijn-arch-2014-01-07
     box_url:  http://vagrant.srijn.net/archlinux-x64-2014-01-07.box
-- name: fedora-18
-- name: fedora-23
-- name: freebsd-10.3
 
 suites:
 - name: default
