@@ -1,13 +1,11 @@
-require 'spec_helper'
-
 describe file('/proc/sys/net/ipv4/tcp_max_syn_backlog') do
   it { should be_file }
-  it { should contain '12345' }
+  its('content') { should match /12345/ }
 end
 
 describe file('/proc/sys/net/ipv4/tcp_rmem') do
   it { should be_file }
-  it { should contain '4096	16384	33554432' }
+  its('content') { should match /4096	16384	33554432/ }
 end
 
 persistence_file = case os[:family].downcase
@@ -23,7 +21,7 @@ end
 
 describe file(persistence_file) do
   it { should be_file }
-  it { should contain 'net.ipv4.tcp_max_syn_backlog=12345' }
-  it { should contain 'net.ipv4.tcp_rmem=4096 16384 33554432' }
-  it { should contain 'net.ipv4.tcp_wmem=1024 32768 33554432' }
+  its('content') { should match /net.ipv4.tcp_max_syn_backlog=12345/ }
+  its('content') { should match /net.ipv4.tcp_rmem=4096 16384 33554432/ }
+  its('content') { should match /net.ipv4.tcp_wmem=1024 32768 33554432/ }
 end
