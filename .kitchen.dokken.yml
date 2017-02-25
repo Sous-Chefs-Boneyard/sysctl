@@ -90,13 +90,13 @@ platforms:
     intermediate_instructions:
       - RUN zypper --non-interactive install aaa_base perl-Getopt-Long-Descriptive which net-tools
 
-suites:
-  - name: client
-    run_list:
-      - recipe[test::client]
-    attributes:
-
-  - name: server
-    run_list:
-      - recipe[test::server]
-    attributes:
+# suites:
+#   - name: client
+#     run_list:
+#       - recipe[test::client]
+#     attributes:
+#
+#   - name: server
+#     run_list:
+#       - recipe[test::server]
+#     attributes:
