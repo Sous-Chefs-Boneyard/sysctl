@@ -1,16 +1,12 @@
 driver:
   name: dokken
   privileged: true # because Docker and SystemD/Upstart
-  chef_version: current
 
 transport:
   name: dokken
 
 provisioner:
   name: dokken
-
-verifier:
-  name: inspec
 
 platforms:
 - name: debian-7
@@ -45,20 +41,12 @@ platforms:
     intermediate_instructions:
       - RUN yum -y install lsof which systemd-sysv initscripts wget net-tools
 
-- name: fedora-latest
+- name: fedora-25
   driver:
     image: fedora:latest
     pid_one_command: /usr/lib/systemd/systemd
     intermediate_instructions:
       - RUN dnf -y install yum which systemd-sysv initscripts wget net-tools
-
-- name: ubuntu-12.04
-  driver:
-    image: ubuntu-upstart:12.04
-    pid_one_command: /sbin/init
-    intermediate_instructions:
-      - RUN /usr/bin/apt-get update
-      - RUN /usr/bin/apt-get install apt-transport-https lsb-release procps net-tools -y
 
 - name: ubuntu-14.04
   driver:
@@ -76,27 +64,9 @@ platforms:
       - RUN /usr/bin/apt-get update
       - RUN /usr/bin/apt-get install apt-transport-https lsb-release procps net-tools -y
 
-- name: opensuse-13.2
-  driver:
-    image: opensuse:13.2
-    pid_one_command: /bin/systemd
-    intermediate_instructions:
-      - RUN zypper --non-interactive install aaa_base perl-Getopt-Long-Descriptive which net-tools
-
 - name: opensuse-leap
   driver:
     image: opensuse:leap
     pid_one_command: /bin/systemd
     intermediate_instructions:
       - RUN zypper --non-interactive install aaa_base perl-Getopt-Long-Descriptive which net-tools
-
-# suites:
-#   - name: client
-#     run_list:
-#       - recipe[test::client]
-#     attributes:
-#
-#   - name: server
-#     run_list:
-#       - recipe[test::server]
-#     attributes:

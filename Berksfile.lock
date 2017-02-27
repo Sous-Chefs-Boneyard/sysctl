@@ -9,9 +9,7 @@ DEPENDENCIES
 
 GRAPH
   apt (3.0.0)
-  compat_resource (12.10.6)
-  ohai (4.1.1)
-    compat_resource (>= 12.10)
+  ohai (5.0.0)
   sysctl (0.8.1)
     ohai (>= 4.0.0)
   sysctl_test (0.1.0)
