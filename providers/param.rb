@@ -37,7 +37,7 @@ action :remove do
     if location.empty?
       key_path_tokens.size.times do |i|
         int_key = key_path_tokens.size - i - 1
-        l = key_path_tokens.slice(0, int_key).reduce(node['sysctl']['params']) do |m, o|
+        l = key_path_tokens.slice(0, int_key).reduce(sys_attrs) do |m, o|
           m.nil? ? nil : m[o]
         end
         if l && l[key_path_tokens[int_key]] && l[key_path_tokens[int_key]].empty?
