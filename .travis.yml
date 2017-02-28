@@ -1,9 +1,11 @@
-sudo: false 
+sudo: required
+dist: trusty
 
+# install the pre-release chef-dk.  Use chef-stable-trusty to install the stable release
 addons:
   apt:
     sources:
-      - chef-current-precise
+      - chef-stable-trusty
     packages:
       - chefdk
 
@@ -43,12 +45,13 @@ env:
 before_script:
   - sudo iptables -L DOCKER || ( echo "DOCKER iptables chain missing" ; sudo iptables -N DOCKER )
   - eval "$(/opt/chefdk/bin/chef shell-init bash)"
+  - chef gem install kitchen-dokken
+
+script:
   - /opt/chefdk/embedded/bin/chef --version
   - /opt/chefdk/embedded/bin/cookstyle --version
   - /opt/chefdk/embedded/bin/foodcritic --version
-  - chef gem install kitchen-dokken
-
-script: KITCHEN_LOCAL_YAML=.kitchen.dokken.yml /opt/chefdk/embedded/bin/kitchen verify ${INSTANCE}
+  - KITCHEN_LOCAL_YAML=.kitchen.dokken.yml /opt/chefdk/embedded/bin/kitchen verify ${INSTANCE}
 
 matrix:
   include:
