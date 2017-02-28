@@ -48,7 +48,7 @@ The configuration will be written out when `sysctl::apply` gets run, which allow
 
 ### Examples
 
-Set `vm.swapiness` to 20 via attributes
+Set `vm.swappiness` to 20 via attributes
 
 ```ruby
     node.default['sysctl']['params']['vm']['swappiness'] = 20
@@ -77,7 +77,7 @@ Attributes
 
 ### Examples
 
-Set vm.swapiness to 20 via sysctl_param LWRP
+Set vm.swappiness to 20 via sysctl_param LWRP
 
 ```ruby
     include_recipe 'sysctl::default'
