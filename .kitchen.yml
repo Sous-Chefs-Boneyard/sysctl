@@ -49,6 +49,6 @@ suites:
       params:
         vm:
           swappiness: 19
-        net:
-          ipv4:
-            tcp_fin_timeout: 29
+        dev:
+          cdrom:
+            autoeject: 1
