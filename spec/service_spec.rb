@@ -10,7 +10,7 @@ describe 'sysctl::service' do
     'redhat' => ['6.5', '7.0'],
     'centos' => ['6.5', '7.0'],
     'freebsd' => ['10.3'],
-    'suse' => ['11.2', '12.0']
+    'suse' => ['11.2', '12.0'],
   }
 
   # Test all generic stuff on all platforms
@@ -22,13 +22,13 @@ describe 'sysctl::service' do
           runner.node.default['sysctl']['conf_dir'] = '/etc/sysctl.d'
           runner.node.default['sysctl']['params'] = {
             'vm' => {
-              'swappiness' => 19
+              'swappiness' => 19,
             },
             'net' => {
               'ipv4' => {
-                'tcp_fin_timeout' => 29
-              }
-            }
+                'tcp_fin_timeout' => 29,
+              },
+            },
           }
           runner.converge('sysctl::service')
         end
