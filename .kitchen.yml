@@ -8,10 +8,9 @@ provisioner:
   roles_path: "roles"
   environments_path: "environments"
   require_chef_omnibus: true
-
-client_rb:
-  treat_deprecation_warnings_as_errors: true
-  resource_cloning: false
+  solo_rb:
+    treat_deprecation_warnings_as_errors: true
+    resource_cloning: false
 
 platforms:
 - name: ubuntu-14.04
