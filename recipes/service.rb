@@ -25,38 +25,5 @@ end
 
 service 'procps' do
   supports :restart => true, :reload => true, :status => false
-  case node['platform']
-  when 'freebsd'
-    service_name 'sysctl'
-  when 'arch', 'exherbo'
-    service_name 'systemd-sysctl'
-    provider Chef::Provider::Service::Systemd
-  when 'centos', 'redhat', 'scientific'
-    if node['platform_version'].to_f >= 7.0
-      service_name 'systemd-sysctl'
-      provider Chef::Provider::Service::Systemd
-    end
-  when 'fedora'
-    if node['platform_version'].to_f >= 18
-      service_name 'systemd-sysctl'
-      provider Chef::Provider::Service::Systemd
-    end
-  when 'ubuntu'
-    if node['platform_version'].to_f >= 9.10 && node['platform_version'].to_f < 15.04
-      service_name 'procps-instance' if node['platform_version'].to_f >= 14.10
-      provider Chef::Provider::Service::Upstart
-    elsif node['platform_version'].to_f >= 15.04
-      service_name 'systemd-sysctl'
-      provider Chef::Provider::Service::Init::Systemd
-    end
-  when 'suse'
-    if node['platform_version'].to_f < 12.0
-      supports :restart => false, :reload => false, :status => true
-      service_name 'boot.sysctl'
-    elsif node['platform_version'].to_f >= 12.0
-      service_name 'systemd-sysctl'
-      provider Chef::Provider::Service::Systemd
-    end
-  end
   action :enable
 end
