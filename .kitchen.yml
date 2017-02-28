@@ -29,7 +29,7 @@ suites:
 - name: default
   run_list:
     - recipe[sysctl_test::default]
-    - recipe[sysctl_test::tcp_wmem]
+#    - recipe[sysctl_test::tcp_wmem]
     - recipe[sysctl::ohai_plugin]
   attributes:
     sysctl:
