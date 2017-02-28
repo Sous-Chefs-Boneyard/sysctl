@@ -34,22 +34,22 @@ env:
   - INSTANCE=default-centos-7
   - INSTANCE=default-fedora-25
   - INSTANCE=default-opensuse-leap
-  - INSTANCE=lwrps--debian-7
-  - INSTANCE=lwrps--debian-8
-  - INSTANCE=lwrps--centos-6
-  - INSTANCE=lwrps--centos-7
-  - INSTANCE=lwrps--fedora-latest
-  - INSTANCE=lwrps--ubuntu-1604
-  - INSTANCE=lwrps--opensuse-132
-  - INSTANCE=lwrps--opensuse-leap
-  - INSTANCE=attributes--debian-7
-  - INSTANCE=attributes--debian-8
-  - INSTANCE=attributes--centos-6
-  - INSTANCE=attributes--centos-7
-  - INSTANCE=attributes--fedora-latest
-  - INSTANCE=attributes--ubuntu-1404
-  - INSTANCE=attributes--ubuntu-1604
-  - INSTANCE=attributes--opensuse-leap
+  - INSTANCE=lwrps-debian-7
+  - INSTANCE=lwrps-debian-8
+  - INSTANCE=lwrps-centos-6
+  - INSTANCE=lwrps-centos-7
+  - INSTANCE=lwrps-fedora-latest
+  - INSTANCE=lwrps-ubuntu-1604
+  - INSTANCE=lwrps-opensuse-132
+  - INSTANCE=lwrps-opensuse-leap
+  - INSTANCE=attributes-debian-7
+  - INSTANCE=attributes-debian-8
+  - INSTANCE=attributes-centos-6
+  - INSTANCE=attributes-centos-7
+  - INSTANCE=attributes-fedora-latest
+  - INSTANCE=attributes-ubuntu-1404
+  - INSTANCE=attributes-ubuntu-1604
+  - INSTANCE=attributes-opensuse-leap
 
 before_script:
   - sudo iptables -L DOCKER || ( echo "DOCKER iptables chain missing" ; sudo iptables -N DOCKER )
