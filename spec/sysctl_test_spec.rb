@@ -7,7 +7,7 @@ describe 'sysctl_test' do
         node.default['sysctl']['conf_dir'] = '/etc/sysctl.d'
         node.default['sysctl']['params'] = {}
         node.default['sysctl']['allow_sysctl_conf'] = false
-      end.converge 'sysctl_test'
+      end.converge 'sysctl_test::chefspec'
     end
 
     it 'applies a sysctl_param named net.ipv4.tcp_max_syn_backlog with value 12345' do
