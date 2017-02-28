@@ -1,41 +1,34 @@
 ---
 driver:
   name: vagrant
+  chef_version: current
 
 provisioner:
-  name: chef_solo
+  name: chef_zero
   data_bags_path: "data_bags"
-  roles_path: "roles"
-  environments_path: "environments"
-  require_chef_omnibus: true
+
+verifier:
+  name: inspec
 
 client_rb:
   treat_deprecation_warnings_as_errors: true
   resource_cloning: false
 
 platforms:
+- name: debian-7.11
+- name: debian-8.7
+- name: centos-6.8
+- name: centos-7.3
+- name: fedora-25
 - name: ubuntu-14.04
 - name: ubuntu-16.04
-- name: debian-7.10
-- name: debian-8.4
-- name: centos-6.7
-- name: centos-7.2
-- name: scientific-6.4
-  driver:
-    box: lyte-scientific-6-minimal
-    box_url: http://lyte.id.au/vagrant/sl6-64-lyte.box
-- name: srijn-arch-2014-01-07
-  driver:
-    box: srijn-arch-2014-01-07
-    box_url:  http://vagrant.srijn.net/archlinux-x64-2014-01-07.box
-- name: fedora-18
-- name: fedora-23
-- name: freebsd-10.3
+- name: freebsd-11.0
+- name: opensuse-leap-42.1
 
 suites:
 - name: default
   run_list:
-    - recipe[sysctl_test]
+    - recipe[sysctl_test::default]
     - recipe[sysctl_test::tcp_wmem]
     - recipe[sysctl::ohai_plugin]
   attributes:

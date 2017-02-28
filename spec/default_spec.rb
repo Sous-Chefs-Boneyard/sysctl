@@ -10,7 +10,7 @@ describe 'sysctl::default' do
     'redhat' => ['6.6', '7.1'],
     'centos' => ['6.7', '7.2.1511'],
     'freebsd' => ['10.3'],
-    'opensuse' => ['12.3', '13.2']
+    'opensuse' => ['12.3', '13.2'],
   }
 
   # Test all generic stuff on all platforms
@@ -22,13 +22,13 @@ describe 'sysctl::default' do
             node.default['sysctl']['conf_dir'] = '/etc/sysctl.d'
             node.default['sysctl']['params'] = {
               'vm' => {
-                'swappiness' => 19
+                'swappiness' => 19,
               },
               'net' => {
                 'ipv4' => {
-                  'tcp_fin_timeout' => 29
-                }
-              }
+                  'tcp_fin_timeout' => 29,
+                },
+              },
             }
           end.converge('sysctl::default')
         end
@@ -82,13 +82,13 @@ describe 'sysctl::default' do
         runner.node.default['sysctl']['conf_dir'] = '/etc/sysctl.d'
         runner.node.default['sysctl']['params'] = {
           'vm' => {
-            'swappiness' => 19
+            'swappiness' => 19,
           },
           'net' => {
             'ipv4' => {
-              'tcp_fin_timeout' => 29
-            }
-          }
+              'tcp_fin_timeout' => 29,
+            },
+          },
         }
         runner.converge('sysctl::default')
       end
