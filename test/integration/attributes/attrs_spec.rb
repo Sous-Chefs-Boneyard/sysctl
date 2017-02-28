@@ -1,6 +1,6 @@
-describe file('/proc/sys/net/ipv4/tcp_fin_timeout') do
+describe file('/proc/sys/dev/cdrom/autoeject') do
   it { should be_file }
-  its('content') { should match /29/ }
+  its('content') { should match /1/ }
 end
 
 describe file('/proc/sys/vm/swappiness') do
@@ -22,5 +22,5 @@ end
 describe file(persistence_file) do
   it { should be_file }
   its('content') { should match /vm.swappiness=19/ }
-  its('content') { should match /net.ipv4.tcp_fin_timeout=29/ }
+  its('content') { should match /dev.cdrom.autoeject=1/ }
 end
