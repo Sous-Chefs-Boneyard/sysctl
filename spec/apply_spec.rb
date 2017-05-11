@@ -5,12 +5,12 @@ require 'spec_helper'
 describe 'sysctl::apply' do
   platforms = {
     'ubuntu' => ['14.04', '16.04'],
-    'debian' => ['7.0', '7.4'],
-    'fedora' => %w(18 23),
-    'redhat' => ['6.5', '7.0'],
-    'centos' => ['6.5', '7.0'],
-    'freebsd' => ['10.3'],
-    'suse' => ['11.2', '12.0'],
+    'debian' => ['7.11', '8.7'],
+    'fedora' => ['25'],
+    'redhat' => ['6.8', '7.3'],
+    'centos' => ['6.8', '7.3.1611'],
+    'freebsd' => ['10.3', '11.0'],
+    'suse' => ['12.2'],
   }
 
   # Test all generic stuff on all platforms
