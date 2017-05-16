@@ -5,12 +5,12 @@ require 'spec_helper'
 describe 'sysctl::default' do
   platforms = {
     'ubuntu' => ['14.04', '16.04'],
-    'debian' => ['7.9', '8.4'],
-    'fedora' => %w(18 23),
-    'redhat' => ['6.6', '7.1'],
-    'centos' => ['6.7', '7.2.1511'],
-    'freebsd' => ['10.3'],
-    'opensuse' => ['12.3', '13.2'],
+    'debian' => ['7.11', '8.7'],
+    'fedora' => ['25'],
+    'redhat' => ['6.8', '7.3'],
+    'centos' => ['6.8', '7.3.1611'],
+    'freebsd' => ['10.3', '11.0'],
+    'suse' => ['12.2'],
   }
 
   # Test all generic stuff on all platforms
@@ -30,7 +30,7 @@ describe 'sysctl::default' do
                 },
               },
             }
-            node.default['sysctl']['restart_procps'] = false
+            node.default['sysctl']['restart_procps'] = true
           end.converge('sysctl::default')
         end
 
@@ -62,14 +62,18 @@ describe 'sysctl::default' do
           end
         end
 
+        it 'should restart procps' do
+          expect(chef_run.node['sysctl']['restart_procps']).to be true
+        end
+
         it 'sends a notification to the procps service' do
-          expect(template).to notify('service[procps]').immediately if (chef_run.node['sysctl']['restart_procps']).should == true
-          expect(template).to_not notify('service[not_procps]').immediately if (chef_run.node['sysctl']['restart_procps']).should == true
+          expect(template).to notify('service[procps]').immediately if expect(chef_run.node['sysctl']['restart_procps']).to be true
+          expect(template).to_not notify('service[not_procps]').immediately
         end
 
         it 'sends the specific notification to the procps service immediately' do
-          expect(template).to notify('service[procps]').to(:restart).immediately if (chef_run.node['sysctl']['restart_procps']).should == true
-          expect(template).to_not notify('service[procps]').to(:restart).delayed if (chef_run.node['sysctl']['restart_procps']).should == true
+          expect(template).to notify('service[procps]').to(:restart).immediately if expect(chef_run.node['sysctl']['restart_procps']).to be true
+          expect(template).to_not notify('service[procps]').to(:restart).delayed
         end
       end
     end
