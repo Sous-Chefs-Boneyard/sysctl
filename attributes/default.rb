@@ -20,6 +20,7 @@ default['sysctl']['params'] = {}
 default['sysctl']['allow_sysctl_conf'] = false
 default['sysctl']['conf_file'] = '/etc/sysctl.conf'
 default['sysctl']['conf_dir'] = nil
+default['sysctl']['restart_procps'] = true
 
 if platform_family?('freebsd')
   default['sysctl']['allow_sysctl_conf'] = true
