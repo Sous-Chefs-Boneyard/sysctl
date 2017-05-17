@@ -30,7 +30,6 @@ describe 'sysctl::default' do
                 },
               },
             }
-            node.default['sysctl']['restart_procps'] = true
           end.converge('sysctl::default')
         end
 
@@ -62,23 +61,19 @@ describe 'sysctl::default' do
           end
         end
 
-        it 'should restart procps' do
-          expect(chef_run.node['sysctl']['restart_procps']).to be true
-        end
-
         it 'sends a notification to the procps service' do
-          expect(template).to notify('service[procps]').immediately if expect(chef_run.node['sysctl']['restart_procps']).to be true
+          expect(template).to notify('service[procps]').immediately
           expect(template).to_not notify('service[not_procps]').immediately
         end
 
         it 'sends the specific notification to the procps service immediately' do
-          expect(template).to notify('service[procps]').to(:restart).immediately if expect(chef_run.node['sysctl']['restart_procps']).to be true
+          expect(template).to notify('service[procps]').to(:restart).immediately
           expect(template).to_not notify('service[procps]').to(:restart).delayed
         end
       end
     end
   end
-
+  
   versions = ['5.9', '6.4']
   versions.each do |version|
     context "on Centos #{version}" do
