@@ -73,7 +73,7 @@ describe 'sysctl::default' do
       end
     end
   end
-  
+
   versions = ['5.9', '6.4']
   versions.each do |version|
     context "on Centos #{version}" do
