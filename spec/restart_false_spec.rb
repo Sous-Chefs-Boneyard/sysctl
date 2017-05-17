@@ -31,7 +31,7 @@ describe 'sysctl::default' do
           else
             chef_run.template('/etc/sysctl.d/99-chef-attributes.conf')
           end
-        end              
+        end
         it 'should not restart procps if restart_procps is false' do
           expect(template).to_not notify('service[procps]').immediately if expect(chef_run.node['sysctl']['restart_procps']).to be false
         end
