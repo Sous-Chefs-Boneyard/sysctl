@@ -15,7 +15,6 @@ verifier:
 
 client_rb:
   treat_deprecation_warnings_as_errors: true
-  resource_cloning: false
 
 platforms:
 - name: debian-7.11
