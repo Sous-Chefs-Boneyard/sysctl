@@ -4,7 +4,7 @@ module Sysctl
     def config_file(node)
       return nil unless node['sysctl']['conf_dir'] || node['sysctl']['allow_sysctl_conf']
 
-      node['sysctl']['conf_file']
+      return node['sysctl']['conf_file']
     end
 
     def compile_attr(prefix, v)
