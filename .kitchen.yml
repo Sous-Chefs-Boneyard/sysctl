@@ -10,9 +10,6 @@ provisioner:
 verifier:
   name: inspec
 
-verifier:
-  name: inspec
-
 client_rb:
   treat_deprecation_warnings_as_errors: true
 
