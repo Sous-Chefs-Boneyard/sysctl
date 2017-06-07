@@ -48,7 +48,7 @@ Set `vm.swappiness` to 20 via attributes
     include_recipe 'sysctl::apply'
 ```
 
-## Using LWRPs
+## Using resources
 
 The `sysctl_param` LWRP can be called from wrapper and application cookbooks to immediately set the kernel parameter and cue the kernel parameter to be written out to the configuration file.
 

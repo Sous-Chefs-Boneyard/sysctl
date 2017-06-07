@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe 'sysctl_test' do
-  describe 'lwrps' do
+  describe 'resources' do
     let(:chef_run) do
       ChefSpec::SoloRunner.new(step_into: ['sysctl_param'], platform: 'ubuntu', version: '16.04') do |node|
         node.default['sysctl']['conf_dir'] = '/etc/sysctl.d'

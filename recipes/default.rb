@@ -34,7 +34,7 @@ sysctl_config_file = Sysctl.config_file(node)
 
 if sysctl_config_file
   # If default sysctl.params attributes are not set, set them at recipe compile time
-  # to the values output by the last run. This allows the LWRPs to act idempotently
+  # to the values output by the last run. This allows the resources to act idempotently
   if File.exist?(sysctl_config_file)
     File.read(sysctl_config_file).lines.each do |l|
       next unless l =~ /^[\w\.]+?=/

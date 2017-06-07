@@ -40,7 +40,7 @@ suites:
         net:
           ipv4:
             tcp_fin_timeout: 29
-- name: lwrps
+- name: resources
   run_list:
     - recipe[sysctl_test]
 - name: attributes
