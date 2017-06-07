@@ -48,7 +48,7 @@ if sysctl_config_file
     end
   end
 
-  # this is called by the sysctl_param lwrp to trigger template creation
+  # this is called by the sysctl_param resource to trigger template creation
   ruby_block 'save-sysctl-params' do
     action :nothing
     block do

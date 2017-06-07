@@ -72,7 +72,7 @@ This also requires that your run_list include the `sysctl::default` recipe in or
 
 #### Examples
 
-Set vm.swappiness to 20 via sysctl_param LWRP
+Set vm.swappiness to 20 via sysctl_param resource
 
 ```ruby
     include_recipe 'sysctl::default'
@@ -139,6 +139,6 @@ bundle install
 bundle exec guard start
 ```
 
-### ChefSpec LWRP Matchers
+### ChefSpec Resource Matchers
 
 The cookbook exposes a ChefSpec matcher to be used by wrapper cookbooks to test the cookbooks resource. See `libraries/matchers.rb` for basic usage.
