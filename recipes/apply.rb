@@ -22,5 +22,5 @@ include_recipe 'sysctl::default'
 ruby_block 'notify-apply-sysctl-params' do
   block do
   end
-  notifies :run, 'ruby_block[apply-sysctl-params]', :immediately
+  notifies :reload, 'sysctl_reload[reload sysctl]', :immediately if node['sysctl']['reload_systctl']
 end

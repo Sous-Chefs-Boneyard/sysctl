@@ -56,14 +56,6 @@ if sysctl_config_file
     notifies :create, "template[#{sysctl_config_file}]", :delayed
   end
 
-  # this is called by the sysctl::apply recipe to trigger template creation
-  ruby_block 'apply-sysctl-params' do
-    action :nothing
-    block do
-    end
-    notifies :create, "template[#{sysctl_config_file}]", :immediately
-  end
-
   # this needs to have an action in case node.sysctl.params has changed
   # and also needs to be called for persistence on resource changes via the
   # ruby_block
@@ -71,6 +63,11 @@ if sysctl_config_file
     action :nothing
     source 'sysctl.conf.erb'
     mode '0644'
-    notifies :restart, 'service[procps]', :immediately if node['sysctl']['restart_procps']
+    notifies :reload, 'sysctl_reload[reload sysctl]', :immediately if node['sysctl']['reload_systctl']
   end
+end
+
+# for notifcation purposes
+sysctl_reload 'reload sysctl' do
+  action :nothing
 end

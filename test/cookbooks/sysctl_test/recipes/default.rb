@@ -19,17 +19,14 @@
 #
 include_recipe 'sysctl'
 
-# sysctl_param 'net.ipv4.tcp_max_syn_backlog' do
-#  value 12_345
-# end
+sysctl_param 'net.ipv4.tcp_max_syn_backlog' do
+ value 12_345
+end
 
 # sysctl_param 'net.ipv4.tcp_rmem' do
 #  value '4096 16384 33554432'
 # end
 #
-sysctl_param 'dev.cdrom.autoeject' do
-  value 1
-end
 
 sysctl_param 'vm.swappiness' do
   value '19'

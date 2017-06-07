@@ -17,13 +17,16 @@
 # limitations under the License.
 #
 
+# systemd handles loading the sysctl configs itself so don't run these
 template '/etc/rc.d/init.d/procps' do
   source 'procps.init-rhel.erb'
   mode '0755'
-  only_if { platform_family?('rhel', 'fedora', 'pld') }
+  only_if { platform_family?('rhel', 'pld') }
+  not_if { node['init_package'] == 'systemd' }
 end
 
 service 'procps' do
   supports restart: true, reload: true, status: false
   action :enable
+  not_if { node['init_package'] == 'systemd' }
 end
