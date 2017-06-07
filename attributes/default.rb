@@ -27,13 +27,8 @@ if platform_family?('freebsd')
   default['sysctl']['conf_file'] = '/etc/sysctl.conf.local'
 end
 
-if platform_family?('arch', 'debian', 'rhel', 'fedora', 'amazon')
-  default['sysctl']['conf_dir'] = '/etc/sysctl.d'
-  default['sysctl']['conf_file'] = File.join(node['sysctl']['conf_dir'], '/99-chef-attributes.conf')
-end
-
-if platform_family?('suse')
-  if node['platform_version'].to_f < 12.0
+if platform_family?('arch', 'debian', 'rhel', 'fedora', 'amazon', 'suse')
+  if platform_family?('suse') && node['platform_version'].to_f < 12.0
     default['sysctl']['allow_sysctl_conf'] = true
     default['sysctl']['conf_file'] = '/etc/sysctl.conf'
   else
