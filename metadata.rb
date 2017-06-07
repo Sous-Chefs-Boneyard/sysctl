@@ -8,7 +8,6 @@ description 'Configures sysctl parameters'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
 version '0.9.0'
 chef_version '>= 12.5'
-ohai_version '>= 8'
 
 supports 'ubuntu', '>= 14.04'
 supports 'debian', '>= 7.0'
