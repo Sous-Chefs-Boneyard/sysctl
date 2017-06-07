@@ -1,6 +1,6 @@
-describe file('/proc/sys/dev/cdrom/autoeject') do
+describe file('/proc/sys/net/ipv4/tcp_max_syn_backlog') do
   it { should be_file }
-  its('content') { should match /1/ }
+  its('content') { should match /12345/ }
 end
 
 describe file('/proc/sys/vm/swappiness') do
@@ -22,5 +22,5 @@ end
 describe file(persistence_file) do
   it { should be_file }
   its('content') { should match /vm.swappiness=19/ }
-  its('content') { should match /dev.cdrom.autoeject=1/ }
+  its('content') { should match /net.ipv4.tcp_max_syn_backlog=12345/ }
 end
