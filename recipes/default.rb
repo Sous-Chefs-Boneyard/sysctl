@@ -65,7 +65,7 @@ if sysctl_config_file
   end
 
   # this needs to have an action in case node.sysctl.params has changed
-  # and also needs to be called for persistence on lwrp changes via the
+  # and also needs to be called for persistence on resource changes via the
   # ruby_block
   template sysctl_config_file do
     action :nothing
