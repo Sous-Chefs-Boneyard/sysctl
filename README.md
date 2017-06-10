@@ -2,26 +2,29 @@
 
 [![Cookbook Version](https://img.shields.io/cookbook/v/sysctl.svg?style=flat)](https://supermarket.chef.io/cookbooks/sysctl) [![Build Status](https://travis-ci.org/sous-chefs/sysctl.svg?branch=master)](https://travis-ci.org/sous-chefs/sysctl) [![License](https://img.shields.io/badge/license-Apache_2-blue.svg)](https://www.apache.org/licenses/LICENSE-2.0)
 
-# Description
-
 Set [sysctl](http://en.wikipedia.org/wiki/Sysctl) system control parameters via Chef
 
-# Platforms
+## Requirements
 
-- Debian/Ubuntu (chefdk tested)
-- RHEL/CentOS (chefdk tested)
-- Scientific Linux
+### Platforms
+
+- Debian/Ubuntu (Integration tested)
+- RHEL/CentOS (Integration tested)
 - PLD Linux
 - Exherbo
 - Arch Linux
-- Suse
-- FreeBSD 10
+- openSUSE
+- FreeBSD
 
-# Usage
+### Chef
 
-There are two main ways to interact with the cookbook. This is via chef [attributes](http://docs.chef.io/attributes.html) or via the provided [LWRP](http://docs.chef.io/lwrp.html).
+- 12.5+
 
-# Cookbook Attributes
+## Usage
+
+There are two main ways to interact with the cookbook. This is via chef [attributes](http://docs.chef.io/attributes.html) or via the resource.
+
+### Cookbook Attributes
 
 - `node['sysctl']['params']` - A namespace for setting sysctl parameters.
 - `node['sysctl']['conf_dir']` - Specifies the sysctl.d directory to be used. Defaults to `/etc/sysctl.d` on the Debian and RHEL platform families, otherwise `nil`
@@ -30,15 +33,15 @@ There are two main ways to interact with the cookbook. This is via chef [attribu
 
 Note: if `node['sysctl']['conf_dir']` is set to nil and `node['sysctl']['allow_sysctl_conf']` is not set, no config will be written
 
-# Setting Sysctl Parameters
+### Setting Sysctl Parameters
 
-## Using Attributes
+#### Using Attributes
 
 Setting variables in the `node['sysctl']['params']` hash will allow you to easily set common kernel parameters across a lot of nodes. All you need to do to have them loaded is to include `sysctl::apply` anywhere in your run list of the node. It is recommended to do this early in the run list, so any recipe that gets applied afterwards that may depend on the set parameters will find them to be set.
 
 The attributes method is easiest to implement if you manage the kernel parameters at the system level opposed to a per cookbook level approach. The configuration will be written out when `sysctl::apply` gets run, which allows the parameters set to be persisted during a reboot.
 
-### Examples
+#### Examples
 
 Set `vm.swappiness` to 20 via attributes
 
@@ -48,28 +51,28 @@ Set `vm.swappiness` to 20 via attributes
     include_recipe 'sysctl::apply'
 ```
 
-## Using LWRPs
+### Using resources
 
-The `sysctl_param` LWRP can be called from wrapper and application cookbooks to immediately set the kernel parameter and cue the kernel parameter to be written out to the configuration file.
+The `sysctl_param` resource can be called from wrapper or application cookbooks to immediately set the kernel parameter and cue the kernel parameter to be written out to the configuration file.
 
 This also requires that your run_list include the `sysctl::default` recipe in order to persist the settings.
 
 ### sysctl_param
 
-Actions
+#### Actions
 
-- apply (default)
-- remove
-- nothing
+- `:apply` (default)
+- `:remove`
+- `:nothing`
 
-Attributes
+#### Properties
 
 - key
 - value
 
-### Examples
+#### Examples
 
-Set vm.swappiness to 20 via sysctl_param LWRP
+Set vm.swappiness to 20 via sysctl_param resource
 
 ```ruby
     include_recipe 'sysctl::default'
@@ -88,15 +91,13 @@ Remove sysctl parameter and set net.ipv4.tcp_fin_timeout back to default
     end
 ```
 
-# Reading Sysctl Parameters
+### Ohai Plugin
 
-## Ohai Plugin
+The cookbook also includes an Ohai plugin that can be installed by adding `sysctl::ohai_plugin` to your run_list. This will populate `node['sys']` with automatic attributes that mirror the layout of `/proc/sys`.
 
-The cookbook also includes an ohai plugin that can be installed by adding `sysctl::ohai_plugin` to your run_list. This will populate `node['sys']` with automatic attributes that mirror the layout of `/proc/sys`.
+To see Ohai plugin output manually, you can run `ohai -d /etc/chef/ohai/plugins sys` on the command line.
 
-To see ohai plugin output manually, you can run `ohai -d /etc/chef/ohai/plugins sys` on the command line.
-
-# Links
+## Additional Reading
 
 There are a lot of different documents that talk about system control parameters, the hope here is to point to some of the most useful ones to provide more guidance as to what the possible kernel parameters are and what they mean.
 
@@ -111,26 +112,25 @@ There are a lot of different documents that talk about system control parameters
 - [Tuning TCP For The Web at Velocity 2013 (video)](http://vimeo.com/70369211), [slides](http://cdn.oreillystatic.com/en/assets/1/event/94/Tuning%20TCP%20For%20The%20Web%20Presentation.pdf) by Jason Cook
 - [THE /proc FILESYSTEM (Jun 2009)](http://www.kernel.org/doc/Documentation/filesystems/proc.txt)
 
-# Development
+## Development
 
 We have written unit tests using [chefspec](http://code.sethvargo.com/chefspec/) and integration tests in [serverspec](http://serverspec.org/) executed via [test-kitchen](http://kitchen.ci). Much of the tooling around this cookbook is exposed via guard and test kitchen, so it is highly recommended to learn more about those tools. The easiest way to get started is to install the [Chef Development Kit](https://downloads.chef.io/chef-dk/)
 
-## Running tests
+### Running tests
 
 The following commands will run the tests:
 
 ```bash
 chef exec bundle install
-chef exec rubocop
+chef exec cookstyle
 chef exec foodcritic .
 chef exec rspec
-chef exec kitchen test default-ubuntu-1404
-chef exec kitchen test default-centos-72
+chef exec kitchen test
 ```
 
-The above will do ruby style ([rubocop](https://github.com/bbatsov/rubocop)) and cookbook style ([foodcritic](http://www.foodcritic.io/)) checks followed by rspec unit tests ensuring proper cookbook operation. Integration tests will be run next on two separate linux platforms (Ubuntu 14.04 LTS Precise 64-bit and CentOS 7.2). Please run the tests on any pull requests that you are about to submit and write tests for defects or new features to ensure backwards compatibility and a stable cookbook that we can all rely upon.
+Please run the tests on any pull requests that you are about to submit and write tests for defects or new features to ensure backwards compatibility and a stable cookbook that we can all rely upon.
 
-## Running tests continuously with guard
+### Running tests continuously with guard
 
 This cookbook is also setup to run the checks while you work via the [guard gem](http://guardgem.org/).
 
@@ -139,6 +139,6 @@ bundle install
 bundle exec guard start
 ```
 
-## ChefSpec LWRP Matchers
+### ChefSpec Resource Matchers
 
-The cookbook exposes a chefspec matcher to be used by wrapper cookbooks to test the cookbooks LWRP. See `library/matchers.rb` for basic usage.
+The cookbook exposes a ChefSpec matcher to be used by wrapper cookbooks to test the cookbooks resource. See `libraries/matchers.rb` for basic usage.

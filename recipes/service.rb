@@ -24,6 +24,6 @@ template '/etc/rc.d/init.d/procps' do
 end
 
 service 'procps' do
-  supports :restart => true, :reload => true, :status => false
+  supports restart: true, reload: true, status: false
   action :enable
 end

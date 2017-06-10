@@ -25,7 +25,7 @@ directory 'Sysctl config directory' do
   path node['sysctl']['conf_dir']
   owner 'root'
   group 'root'
-  mode 0o755
+  mode '0755'
   action :create
   only_if { !node['sysctl']['conf_dir'].nil? }
 end
@@ -34,7 +34,7 @@ sysctl_config_file = Sysctl.config_file(node)
 
 if sysctl_config_file
   # If default sysctl.params attributes are not set, set them at recipe compile time
-  # to the values output by the last run. This allows the LWRPs to act idempotently
+  # to the values output by the last run. This allows the resources to act idempotently
   if File.exist?(sysctl_config_file)
     File.read(sysctl_config_file).lines.each do |l|
       next unless l =~ /^[\w\.]+?=/
@@ -48,7 +48,7 @@ if sysctl_config_file
     end
   end
 
-  # this is called by the sysctl_param lwrp to trigger template creation
+  # this is called by the sysctl_param resource to trigger template creation
   ruby_block 'save-sysctl-params' do
     action :nothing
     block do
@@ -65,7 +65,7 @@ if sysctl_config_file
   end
 
   # this needs to have an action in case node.sysctl.params has changed
-  # and also needs to be called for persistence on lwrp changes via the
+  # and also needs to be called for persistence on resource changes via the
   # ruby_block
   template sysctl_config_file do
     action :nothing
