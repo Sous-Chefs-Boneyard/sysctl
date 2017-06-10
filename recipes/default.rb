@@ -44,7 +44,7 @@ if sysctl_config_file
         m[o] ||= {}
         m[o]
       end
-      location[key_path.last] ||= val.to_s
+      location[key_path.last] = val.to_s
     end
   end
 
