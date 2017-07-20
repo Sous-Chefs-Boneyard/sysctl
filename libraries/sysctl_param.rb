@@ -1,5 +1,5 @@
 module SysctlCookbook
-  class SysctlParam < ChefCompat::Resource
+  class SysctlParam < Chef::Resource
     require_relative 'helpers_param'
     include SysctlHelpers::Param
 
