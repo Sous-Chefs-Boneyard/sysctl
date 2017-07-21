@@ -17,6 +17,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
+
 ohai_plugin 'sys' do
   source_file 'plugins/sys.rb'
 end

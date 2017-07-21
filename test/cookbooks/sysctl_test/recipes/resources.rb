@@ -1,8 +1,9 @@
 #
-# Cookbook Name:: sysctl
-# Recipe:: service
+# Cookbook Name:: test_sysctl
+# Attributes:: default
 #
 # Copyright 2013-2014, OneHealth Solutions, Inc.
+# Copyright 2014, Viverae, Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -17,13 +18,10 @@
 # limitations under the License.
 #
 
-template '/etc/rc.d/init.d/procps' do
-  source 'procps.init-rhel.erb'
-  mode '0755'
-  only_if { platform_family?('rhel', 'fedora', 'pld') }
+sysctl_param 'vm.swappiness' do
+  value 19
 end
 
-service 'procps' do
-  supports restart: true, reload: true, status: false
-  action :enable
+sysctl_param 'dev.cdrom.autoeject' do
+  value '1'
 end

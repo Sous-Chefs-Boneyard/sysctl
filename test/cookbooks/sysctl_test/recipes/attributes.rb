@@ -1,8 +1,9 @@
 #
 # Cookbook Name:: test_sysctl
-# Recipe:: tcp_wmem
+# Attributes:: default
 #
-# Copyright (C) 2014 Zendesk Inc.
+# Copyright 2013-2014, OneHealth Solutions, Inc.
+# Copyright 2014, Viverae, Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -17,8 +18,11 @@
 # limitations under the License.
 #
 
-include_recipe 'sysctl'
+::Chef::Recipe.send(:include, SysctlCookbook::SysctlHelpers::Param)
 
-sysctl_param 'net.ipv4.tcp_wmem' do
-  value '1024 32768 33554432'
-end
+coerce_attributes(node['sysctl']['params']).each do |x|
+  k, v = x.split('=')
+  sysctl_param k do
+    value v
+  end
+end if node.attribute?('sysctl') && node['sysctl'].attribute?('params')

@@ -25,29 +25,12 @@ platforms:
 - name: ubuntu-16.04
 
 suites:
-- name: default
-  run_list:
-    - recipe[sysctl_test::default]
-    - recipe[sysctl::ohai_plugin]
-  attributes:
-    sysctl:
-      params:
-        vm:
-          swappiness: 19
-        net:
-          ipv4:
-            tcp_fin_timeout: 29
 - name: resources
   run_list:
-    - recipe[sysctl_test]
+    - recipe[sysctl_test::resources]
 - name: attributes
   run_list:
-    - recipe[sysctl::apply]
-  attributes:
-    sysctl:
-      params:
-        vm:
-          swappiness: 19
-        dev:
-          cdrom:
-            autoeject: 1
+    - recipe[sysctl_test::attributes]
+- name: attributes-empty
+  run_list:
+    - recipe[sysctl_test::attributes_empty]
