@@ -1,26 +1,19 @@
-describe command('sysctl -n net.ipv4.tcp_max_syn_backlog') do
+describe command('sysctl -n vm.swappiness') do
   its(:exit_status) { should eq 0 }
-  its(:stdout) { should match(/^12345$/) }
+  its(:stdout) { should match(/^19$/) }
 end
 
-describe file('/etc/sysctl.d/99-chef-net.ipv4.tcp_max_syn_backlog.conf') do
+describe file('/etc/sysctl.d/99-chef-vm.swappiness.conf') do
   it { should be_file }
+  its(:content) { should match /^vm.swappiness = 19$/ }
 end
 
-describe command('sysctl -n net.ipv4.tcp_rmem') do
+describe command('sysctl -n dev.cdrom.autoeject') do
   its(:exit_status) { should eq 0 }
-  its(:stdout) { should match(/^4096\t16384\t33554432$/) }
+  its(:stdout) { should match(/^1$/) }
 end
 
-describe file('/etc/sysctl.d/99-chef-net.ipv4.tcp_rmem.conf') do
+describe file('/etc/sysctl.d/99-chef-dev.cdrom.autoeject.conf') do
   it { should be_file }
-end
-
-describe command('sysctl -n net.ipv4.tcp_mem') do
-  its(:exit_status) { should eq 0 }
-  its(:stdout) { should match(/^44832\t59776\t179328$/) }
-end
-
-describe file('/etc/sysctl.d/99-chef-net.ipv4.tcp_mem.conf') do
-  it { should be_file }
+  its(:content) { should match /^dev.cdrom.autoeject = 1$/ }
 end

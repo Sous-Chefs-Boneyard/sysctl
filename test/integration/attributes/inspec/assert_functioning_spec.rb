@@ -5,22 +5,15 @@ end
 
 describe file('/etc/sysctl.d/99-chef-vm.swappiness.conf') do
   it { should be_file }
+  its(:content) { should match /^vm.swappiness = 19$/ }
 end
 
-describe command('sysctl -n net.ipv4.tcp_fin_timeout') do
+describe command('sysctl -n dev.cdrom.autoeject') do
   its(:exit_status) { should eq 0 }
-  its(:stdout) { should match(/^29$/) }
+  its(:stdout) { should match(/^1$/) }
 end
 
-describe file('/etc/sysctl.d/99-chef-net.ipv4.tcp_fin_timeout.conf') do
+describe file('/etc/sysctl.d/99-chef-dev.cdrom.autoeject.conf') do
   it { should be_file }
-end
-
-describe command('sysctl -n net.ipv4.tcp_wmem') do
-  its(:exit_status) { should eq 0 }
-  its(:stdout) { should match(/^4096\t16384\t3825664$/) }
-end
-
-describe file('/etc/sysctl.d/99-chef-net.ipv4.tcp_wmem.conf') do
-  it { should be_file }
+  its(:content) { should match /^dev.cdrom.autoeject = 1$/ }
 end
