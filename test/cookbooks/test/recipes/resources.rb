@@ -19,9 +19,9 @@
 #
 
 sysctl_param 'vm.swappiness' do
-  value 19
+  value '19'
 end
 
-sysctl_param 'dev.cdrom.autoeject' do
-  value '1'
+sysctl_param 'net.ipv4.tcp_max_syn_backlog' do
+  value '4096'
 end

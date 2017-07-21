@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'sysctl_test::attributes' do
+describe 'test::attributes' do
   cached(:chef_run) { ChefSpec::SoloRunner.new(platform: 'ubuntu', version: '16.04').converge(described_recipe) }
 
   context 'testing apply action' do

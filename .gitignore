@@ -49,3 +49,6 @@ Cheffile.lock
 .vagrant/
 .vagrant.d/
 .kitchen/
+
+# editors
+.editorconfig

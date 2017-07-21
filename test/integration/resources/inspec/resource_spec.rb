@@ -8,12 +8,12 @@ describe file('/etc/sysctl.d/99-chef-vm.swappiness.conf') do
   its(:content) { should match /^vm.swappiness = 19$/ }
 end
 
-describe command('sysctl -n dev.cdrom.autoeject') do
+describe command('sysctl -n net.ipv4.tcp_max_syn_backlog') do
   its(:exit_status) { should eq 0 }
-  its(:stdout) { should match(/^1$/) }
+  its(:stdout) { should match(/^4096$/) }
 end
 
-describe file('/etc/sysctl.d/99-chef-dev.cdrom.autoeject.conf') do
+describe file('/etc/sysctl.d/99-chef-net.ipv4.tcp_max_syn_backlog.conf') do
   it { should be_file }
-  its(:content) { should match /^dev.cdrom.autoeject = 1$/ }
+  its(:content) { should match /^net.ipv4.tcp_max_syn_backlog = 4096$/ }
 end

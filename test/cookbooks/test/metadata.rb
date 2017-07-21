@@ -1,4 +1,4 @@
-name 'sysctl_test'
+name 'test'
 maintainer 'Viverae, Inc.'
 maintainer_email 'cookbooks@viveraehealth.com'
 license 'Apache-2.0'
