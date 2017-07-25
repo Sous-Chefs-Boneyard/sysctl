@@ -28,7 +28,7 @@ module SysctlCookbook
           cookbook 'sysctl'
           source 'procps.init-rhel.erb'
           mode '0775'
-          only_if { platform_family?('rhel', 'fedora', 'pld') }
+          only_if { platform_family?('rhel', 'fedora', 'pld', 'amazon') }
         end
 
         s = service_type

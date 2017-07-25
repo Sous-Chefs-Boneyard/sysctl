@@ -1,5 +1,8 @@
 # Sysctl
 
+## v0.9.1 (2017-07-25)
+- [GH-85] Added support for Amazon Linux as a platform for Chef 13 support
+
 ## v0.9.0 (2017-05-18)
 
 - This cookbook is now maintained by Sous-Chefs. See <http://sous-chefs.org/>

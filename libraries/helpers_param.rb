@@ -9,7 +9,7 @@ module SysctlCookbook
         case node['platform_family']
         when 'freebsd'
           false
-        when 'arch', 'debian', 'rhel', 'fedora'
+        when 'arch', 'debian', 'rhel', 'fedora', 'amazon'
           true
         when 'suse'
           node['platform_version'].to_f < 12.0 ? false : true

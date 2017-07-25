@@ -11,6 +11,7 @@ describe 'sysctl::default' do
     'centos' => ['6.8', '7.3.1611'],
     'freebsd' => ['10.3', '11.0'],
     'suse' => ['12.2'],
+    'amazon' => ['2017.03'],
   }
 
   # Test all generic stuff on all platforms

@@ -15,6 +15,7 @@ Set [sysctl](http://en.wikipedia.org/wiki/Sysctl) system control parameters via 
 - Arch Linux
 - openSUSE
 - FreeBSD
+- Amazon Linux
 
 ### Chef
 
