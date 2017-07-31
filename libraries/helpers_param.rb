@@ -111,7 +111,7 @@ module SysctlCookbook
           elsif node['platform_version'].to_f >= 15.04
             s['provider'] = Chef::Provider::Service::Init::Systemd
           end
-        when 'suse'
+        when 'suse', 'opensuseleap'
           if node['platform_version'].to_f < 12.0
             s['name'] = 'boot.sysctl'
           elsif node['platform_version'].to_f >= 12.0

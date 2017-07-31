@@ -27,7 +27,7 @@ env:
   - INSTANCE=resources-fedora-latest
   - INSTANCE=resources-ubuntu-1404
   - INSTANCE=resources-ubuntu-1604
-  # - INSTANCE=resources-opensuse-leap
+  - INSTANCE=resources-opensuse-leap
   - INSTANCE=attributes-amazonlinux
   - INSTANCE=attributes-centos-6
   - INSTANCE=attributes-centos-7
@@ -36,7 +36,7 @@ env:
   - INSTANCE=attributes-fedora-latest
   - INSTANCE=attributes-ubuntu-1404
   - INSTANCE=attributes-ubuntu-1604
-  # - INSTANCE=attributes-opensuse-leap
+  - INSTANCE=attributes-opensuse-leap
 
 before_script:
   - sudo iptables -L DOCKER || ( echo "DOCKER iptables chain missing" ; sudo iptables -N DOCKER )
