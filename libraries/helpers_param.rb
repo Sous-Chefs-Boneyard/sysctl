@@ -97,7 +97,7 @@ module SysctlCookbook
         when 'arch', 'exherbo'
           s['name'] = 'systemd-sysctl'
           s['provider'] = Chef::Provider::Service::Systemd
-        when 'centos', 'redhat', 'scientific'
+        when 'centos', 'redhat', 'scientific', 'oracle'
           if node['platform_version'].to_f >= 7.0
             s['name'] = 'systemd-sysctl'
             s['provider'] = Chef::Provider::Service::Systemd
