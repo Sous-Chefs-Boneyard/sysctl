@@ -103,8 +103,8 @@ module SysctlCookbook
             s['provider'] = Chef::Provider::Service::Systemd
           end
         when 'fedora'
-            s['name'] = 'systemd-sysctl'
-            s['provider'] = Chef::Provider::Service::Systemd
+          s['name'] = 'systemd-sysctl'
+          s['provider'] = Chef::Provider::Service::Systemd
         when 'ubuntu'
           if node['platform_version'].to_f < 15.04
             s['name'] = 'procps-instance' if node['platform_version'].to_f >= 14.10
