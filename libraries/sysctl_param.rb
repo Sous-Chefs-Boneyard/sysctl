@@ -62,20 +62,20 @@ module SysctlCookbook
 
     action :apply do
       converge_if_changed do
-        node.default['sysctl']['backup'][key] ||= get_sysctl_value(key)
+        node.default['sysctl']['backup'][new_resource.key] ||= get_sysctl_value(new_resource.key)
         create_init
-        create_sysctld(key, value)
-        set_sysctl_param(key, value)
+        create_sysctld(new_resource.key, new_resource.value)
+        set_sysctl_param(new_resource.key, new_resource.value)
       end
     end
 
     action :remove do
-      converge_by "reverting #{key}" do
-        v = node['sysctl']['backup'][key]
+      converge_by "reverting #{new_resource.key}" do
+        v = node['sysctl']['backup'][new_resource.key]
         r = create_sysctld
         r.action(:delete)
-        set_sysctl_param(key, v)
-        node.rm['sysctl']['backup'][key]
+        set_sysctl_param(new_resource.key, v)
+        node.rm['sysctl']['backup'][new_resource.key]
       end
     end
   end
