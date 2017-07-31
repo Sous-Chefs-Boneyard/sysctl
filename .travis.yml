@@ -23,14 +23,14 @@ env:
   - INSTANCE=resources-debian-8
   - INSTANCE=resources-centos-6
   - INSTANCE=resources-centos-7
-  - INSTANCE=resources-fedora-25
+  - INSTANCE=resources-fedora-latest
   - INSTANCE=resources-ubuntu-1604
   # - INSTANCE=resources-opensuse-leap
   - INSTANCE=attributes-debian-7
   - INSTANCE=attributes-debian-8
   - INSTANCE=attributes-centos-6
   - INSTANCE=attributes-centos-7
-  - INSTANCE=attributes-fedora-25
+  - INSTANCE=attributes-fedora-latest
   - INSTANCE=attributes-ubuntu-1404
   - INSTANCE=attributes-ubuntu-1604
   # - INSTANCE=attributes-opensuse-leap
