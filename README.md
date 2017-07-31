@@ -8,6 +8,7 @@ Set [sysctl](http://en.wikipedia.org/wiki/Sysctl) system control parameters via 
 
 ### Platforms
 
+- Amazon Linux (Integration tested)
 - Debian/Ubuntu (Integration tested)
 - RHEL/CentOS (Integration tested)
 - PLD Linux
