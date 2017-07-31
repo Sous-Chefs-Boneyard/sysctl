@@ -107,7 +107,6 @@ module SysctlCookbook
           s['provider'] = Chef::Provider::Service::Systemd
         when 'ubuntu'
           if node['platform_version'].to_f < 15.04
-            s['name'] = 'procps-instance' if node['platform_version'].to_f >= 14.10
             s['provider'] = Chef::Provider::Service::Upstart
           elsif node['platform_version'].to_f >= 15.04
             s['provider'] = Chef::Provider::Service::Init::Systemd
