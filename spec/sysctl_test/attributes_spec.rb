@@ -9,11 +9,5 @@ describe 'sysctl_test::attributes' do
         value: '19'
       )
     end
-
-    it 'apply sysctl_param[dev.cdrom.autoeject]' do
-      expect(chef_run).to apply_sysctl_param('dev.cdrom.autoeject').with(
-        value: '1'
-      )
-    end
   end
 end

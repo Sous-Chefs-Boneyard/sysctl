@@ -21,7 +21,3 @@
 sysctl_param 'vm.swappiness' do
   value 19
 end
-
-sysctl_param 'dev.cdrom.autoeject' do
-  value '1'
-end
