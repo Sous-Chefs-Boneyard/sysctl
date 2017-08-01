@@ -1,5 +1,15 @@
 # Sysctl
 
+## v0.10.0 (2017-07-31)
+
+- Added support for Amazon Linux, Oracle Linux, and openSUSE
+- Removed support for Ubuntu 14.10, Ubuntu <= 9.10, and Fedora < 18
+- Resolved CHEF-19 Deprecation warnings that will impact Chef 14 runs
+- Expanded Travis testing to more platforms and releases
+- Removed problematic cdrom autoeject test that didn't work on all platforms
+- Reenabled testing of FoodCritic rules FC059 and FC085
+- Enabled testing of Chef deprecation warnings
+
 ## v0.9.0 (2017-05-18)
 
 - This cookbook is now maintained by Sous-Chefs. See <http://sous-chefs.org/>

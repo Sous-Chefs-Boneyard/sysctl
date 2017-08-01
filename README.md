@@ -8,12 +8,14 @@ Set [sysctl](http://en.wikipedia.org/wiki/Sysctl) system control parameters via 
 
 ### Platforms
 
+- Amazon Linux (Integration tested)
 - Debian/Ubuntu (Integration tested)
 - RHEL/CentOS (Integration tested)
+- openSUSE (Integration tested)
 - PLD Linux
 - Exherbo
 - Arch Linux
-- openSUSE
+- SLES
 - FreeBSD
 
 ### Chef

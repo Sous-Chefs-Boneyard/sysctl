@@ -9,7 +9,7 @@ module SysctlCookbook
         case node['platform_family']
         when 'freebsd'
           false
-        when 'arch', 'debian', 'rhel', 'fedora'
+        when 'arch', 'debian', 'rhel', 'fedora', 'amazon'
           true
         when 'suse'
           node['platform_version'].to_f < 12.0 ? false : true
@@ -97,24 +97,21 @@ module SysctlCookbook
         when 'arch', 'exherbo'
           s['name'] = 'systemd-sysctl'
           s['provider'] = Chef::Provider::Service::Systemd
-        when 'centos', 'redhat', 'scientific'
+        when 'centos', 'redhat', 'scientific', 'oracle'
           if node['platform_version'].to_f >= 7.0
             s['name'] = 'systemd-sysctl'
             s['provider'] = Chef::Provider::Service::Systemd
           end
         when 'fedora'
-          if node['platform_version'].to_f >= 18
-            s['name'] = 'systemd-sysctl'
-            s['provider'] = Chef::Provider::Service::Systemd
-          end
+          s['name'] = 'systemd-sysctl'
+          s['provider'] = Chef::Provider::Service::Systemd
         when 'ubuntu'
-          if node['platform_version'].to_f >= 9.10 && node['platform_version'].to_f < 15.04
-            s['name'] = 'procps-instance' if node['platform_version'].to_f >= 14.10
+          if node['platform_version'].to_f < 15.04
             s['provider'] = Chef::Provider::Service::Upstart
           elsif node['platform_version'].to_f >= 15.04
             s['provider'] = Chef::Provider::Service::Init::Systemd
           end
-        when 'suse'
+        when 'suse', 'opensuseleap'
           if node['platform_version'].to_f < 12.0
             s['name'] = 'boot.sysctl'
           elsif node['platform_version'].to_f >= 12.0
