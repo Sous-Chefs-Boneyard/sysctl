@@ -1,5 +1,9 @@
 # Sysctl
 
+## v0.10.1 (2017-08-07)
+
+- Fix a typo in the helper that caused the cookbook to fail
+
 ## v0.10.0 (2017-07-31)
 
 - Added support for Amazon Linux, Oracle Linux, and openSUSE
