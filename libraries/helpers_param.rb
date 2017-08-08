@@ -21,7 +21,7 @@ module SysctlCookbook
       end
 
       def config_sysctl
-        return node['sysctl']['conf_dir'] if node['sysctl'].attribute?('conf_dir')
+        return node['sysctl']['conf_file'] if node['sysctl'].attribute?('conf_file')
 
         case node['platform_family']
         when 'freebsd'
