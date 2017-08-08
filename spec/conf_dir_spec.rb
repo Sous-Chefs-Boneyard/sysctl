@@ -17,13 +17,12 @@ describe 'sysctl::default' do
   platforms.each do |platform, versions|
     versions.each do |version|
       context "on #{platform.capitalize} #{version}" do
-
         let(:conf_dir) do
           '/etc/test.sysctl'
         end
 
         let(:conf_d_file) do
-          ::File.join(conf_dir,'99-chef-vm.swappiness.conf')
+          ::File.join(conf_dir, '99-chef-vm.swappiness.conf')
         end
 
         let(:chef_run) do
@@ -31,7 +30,7 @@ describe 'sysctl::default' do
             node.override['sysctl']['conf_dir'] = conf_dir
             node.default['sysctl']['params']['vm']['swappiness'] = 90
             allow_any_instance_of(Chef::Resource).to receive(:shell_out).and_call_original
-            allow_any_instance_of(Chef::Resource).to receive(:shell_out).with(/^sysctl -w .*/).and_return(double('Mixlib::ShellOut', error!: false ))
+            allow_any_instance_of(Chef::Resource).to receive(:shell_out).with(/^sysctl -w .*/).and_return(double('Mixlib::ShellOut', error!: false))
           end.converge('sysctl::default')
         end
 

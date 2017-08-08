@@ -17,7 +17,6 @@ describe 'sysctl::default' do
   platforms.each do |platform, versions|
     versions.each do |version|
       context "on #{platform.capitalize} #{version}" do
-
         before do
           @restart_procps = false
         end
@@ -27,7 +26,7 @@ describe 'sysctl::default' do
             node.override['sysctl']['restart_procps'] = @restart_procps
             node.default['sysctl']['params']['vm']['swappiness'] = 90
             allow_any_instance_of(Chef::Resource).to receive(:shell_out).and_call_original
-            allow_any_instance_of(Chef::Resource).to receive(:shell_out).with(/^sysctl -w .*/).and_return(double('Mixlib::ShellOut', error!: false ))
+            allow_any_instance_of(Chef::Resource).to receive(:shell_out).with(/^sysctl -w .*/).and_return(double('Mixlib::ShellOut', error!: false))
           end.converge('sysctl::default')
         end
 
@@ -35,15 +34,14 @@ describe 'sysctl::default' do
           chef_run.template('/etc/sysctl.d/99-chef-vm.swappiness.conf')
         end
 
-
         it 'should not restart procps if restart_procps is false' do
           @restart_procps = false
-          expect(template).to_not notify('service[procps]').immediately 
+          expect(template).to_not notify('service[procps]').immediately
         end
 
         it 'should start procps if restart_procps is true' do
           @restart_procps = true
-          expect(template).to notify('service[procps]').to(:start).immediately 
+          expect(template).to notify('service[procps]').to(:start).immediately
           if platform == 'freebsd'
             expect(template).to notify('execute[combine sysctl files]').to(:run).immediately
           end
