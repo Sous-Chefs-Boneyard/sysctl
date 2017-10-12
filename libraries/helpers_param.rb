@@ -42,7 +42,7 @@ module SysctlCookbook
       end
 
       def get_sysctl_value(key)
-        o = shell_out("sysctl -n #{key}")
+        o = shell_out("sysctl -n #{'-e ' if node['sysctl']['ignore_error']}#{key}")
         raise 'Unknown sysctl key!' if o.error!
         o = o.stdout.tr("\t", ' ').strip
         raise unless o == get_sysctld_value(key)
@@ -58,7 +58,7 @@ module SysctlCookbook
       end
 
       def set_sysctl_param(key, value)
-        o = shell_out("sysctl -w \"#{key}=#{value}\"")
+        o = shell_out("sysctl #{'-e ' if node['sysctl']['ignore_error']}-w \"#{key}=#{value}\"")
         return false if o.error!
         true
       end
