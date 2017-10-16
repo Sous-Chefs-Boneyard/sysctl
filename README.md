@@ -32,6 +32,7 @@ There are two main ways to interact with the cookbook. This is via chef [attribu
 - `node['sysctl']['conf_dir']` - Specifies the sysctl.d directory to be used. Defaults to `/etc/sysctl.d` on the Debian and RHEL platform families, otherwise `nil`
 - `node['sysctl']['allow_sysctl_conf']` - Defaults to false. Using `conf_dir` is highly recommended. On some platforms that is not supported. For those platforms, set this to `true` and the cookbook will rewrite the `/etc/sysctl.conf` file directly with the params provided. Be sure to save any local edits of `/etc/sysctl.conf` before enabling this to avoid losing them.
 - `node['sysctl']['restart_procps']` - Defaults to true. Will allow the consumer of the cookbook to control whether or not to notify procps to restart sysctl to load the newly set values.
+- `node['sysctl']['ignore_error']` - Defaults is not set. If true, this will allow the consumer of the cookbook to control whether or not to utilize '-e' flag within actual sysctl command.
 
 Note: if `node['sysctl']['conf_dir']` is set to nil and `node['sysctl']['allow_sysctl_conf']` is not set, no config will be written
 

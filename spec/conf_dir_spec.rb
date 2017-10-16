@@ -3,16 +3,6 @@ require 'spec_helper'
 # examples at https://github.com/sethvargo/chefspec/tree/master/examples
 
 describe 'sysctl::default' do
-  platforms = {
-    'ubuntu' => ['14.04', '16.04'],
-    'debian' => ['7.11', '8.8'],
-    'fedora' => ['25'],
-    'redhat' => ['6.9', '7.3'],
-    'centos' => ['6.9', '7.3.1611'],
-    'freebsd' => ['10.3', '11.0'],
-    'suse' => ['12.2'],
-  }
-
   # Test all generic stuff on all platforms
   platforms.each do |platform, versions|
     versions.each do |version|
