@@ -1,5 +1,9 @@
 # Sysctl
 
+## v0.10.2 (2017-09-17)
+
+- Add attribute to handle with sysctl -e flag (#99)
+
 ## v0.10.1 (2017-08-07)
 
 - Fix a typo in the helper that caused the cookbook to fail
