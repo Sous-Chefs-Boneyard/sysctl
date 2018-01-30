@@ -17,7 +17,8 @@ module SysctlCookbook
       end
 
       def restart_procps?
-        return node['sysctl']['restart_procps'] if node['sysctl'].attribute?('restart_procps')
+        return true unless node['sysctl'].attribute?('restart_procps')
+        node['sysctl']['restart_procps']
       end
 
       def config_sysctl
