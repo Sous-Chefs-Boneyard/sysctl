@@ -1,6 +1,5 @@
 #
 # Cookbook Name:: test_sysctl
-# Attributes:: default
 #
 # Copyright 2013-2014, OneHealth Solutions, Inc.
 # Copyright 2014, Viverae, Inc.

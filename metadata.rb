@@ -19,4 +19,4 @@ supports 'opensuseleap'
 supports 'redhat'
 supports 'pld'
 
-depends 'ohai', '>= 4.0'
+depends 'ohai', '>= 5.0'
