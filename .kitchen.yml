@@ -3,7 +3,6 @@ driver:
 
 provisioner:
   name: chef_zero
-  data_bags_path: "data_bags"
   deprecations_as_errors: true
 
 verifier:
@@ -28,9 +27,3 @@ suites:
 - name: resources
   run_list:
     - recipe[sysctl_test::resources]
-- name: attributes
-  run_list:
-    - recipe[sysctl_test::attributes]
-- name: attributes-empty
-  run_list:
-    - recipe[sysctl_test::attributes_empty]
