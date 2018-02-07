@@ -24,6 +24,6 @@ platforms:
 - name: ubuntu-16.04
 
 suites:
-- name: resources
+- name: default
   run_list:
-    - recipe[sysctl_test::resources]
+    - recipe[test::default]

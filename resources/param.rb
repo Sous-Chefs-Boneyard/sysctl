@@ -30,43 +30,39 @@ action :remove do
 end
 
 action_class do
-def create_init
-  template '/etc/rc.d/init.d/procps' do
-    cookbook 'sysctl'
-    source 'procps.init-rhel.erb'
-    mode '0775'
-    only_if { platform_family?('rhel', 'fedora', 'pld', 'amazon') }
+  def create_init
+    template '/etc/rc.d/init.d/procps' do
+      cookbook 'sysctl'
+      source 'procps.init-rhel.erb'
+      mode '0775'
+      only_if { platform_family?('rhel', 'fedora', 'pld', 'amazon') }
+    end
+
+    s = service_type
+    service 'procps' do
+      service_name s['name'] if s['name']
+      provider s['provider'] if s['provider']
+      action :enable
+    end
   end
 
-  s = service_type
-  service 'procps' do
-    service_name s['name'] if s['name']
-    provider s['provider'] if s['provider']
-    action :enable
+  def create_sysctld(key, value)
+    directory confd_sysctl
+
+    template "#{confd_sysctl}/99-chef-#{key}.conf" do
+      cookbook 'sysctl'
+      source 'sysctl.conf.erb'
+      variables(
+        key: key,
+        value: value
+      )
+      notifies :run, 'execute[combine sysctl files]', :immediately unless sysctld?
+      notifies :start, 'service[procps]', :immediately if restart_procps?
+    end
+
+    execute 'combine sysctl files' do
+      command "cat #{confd_sysctl}/*.conf > #{config_sysctl}"
+      action :nothing
+    end unless sysctld?
   end
 end
-
-def create_sysctld(key, value)
-  directory confd_sysctl
-
-  template "#{confd_sysctl}/99-chef-#{key}.conf" do
-    cookbook 'sysctl'
-    source 'sysctl.conf.erb'
-    variables(
-      k: key,
-      v: value
-    )
-    notifies :run, 'execute[combine sysctl files]', :immediately unless sysctld?
-    notifies :start, 'service[procps]', :immediately if restart_procps?
-  end
-
-  execute 'combine sysctl files' do
-    command "cat #{confd_sysctl}/*.conf > #{config_sysctl}"
-    action :nothing
-  end unless sysctld?
-end
-end
-
-def get_current_value
-  sysctl -n vm.mmap_min_addr
-end 
