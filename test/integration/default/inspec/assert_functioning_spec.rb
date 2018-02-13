@@ -1,4 +1,4 @@
-if os[:family] == 'redhat' && os[:release].start_with?('6') || os[:family] == 'amazon' 
+if os[:family] == 'redhat' && os[:release].start_with?('6') || os[:family] == 'amazon'
 
   describe command('sysctl -n kernel.msgmax') do
     its(:exit_status) { should eq 0 }
@@ -18,9 +18,11 @@ describe file('/etc/sysctl.d/99-chef-kernel.msgmax.conf') do
   it { should_not be_file }
 end
 
-describe file('/etc/sysctl.d/99-chef-vm.swappiness.conf') do
-  it { should be_file }
-  its(:content) { should match /^vm.swappiness = 19$/ }
+unless virtualization[:system] == 'docker'
+  describe file('/etc/sysctl.d/99-chef-vm.swappiness.conf') do
+    it { should be_file }
+    its(:content) { should match /^vm.swappiness = 19$/ }
+  end
 end
 
 describe command('sysctl -n vm.swappiness') do
