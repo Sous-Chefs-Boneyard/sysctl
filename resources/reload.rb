@@ -20,9 +20,8 @@
 
 action :reload do
   if node['init_package'] == 'systemd'
-    execute 'reload sysctl via systemd' do
-      command '/usr/lib/systemd/systemd-sysctl'
-      action :run
+    service 'systemd-sysctl' do
+      action :restart
     end
   else
     service 'procps' do

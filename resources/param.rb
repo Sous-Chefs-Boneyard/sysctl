@@ -16,11 +16,11 @@ property :restart_procps, [true, false], default: true
 include SysctlCookbook::SysctlHelpers::Param
 
 load_current_value do
-    value get_sysctl_value(key)
-    if node.default['sysctl']['backup'][key].empty?
-      node.default['sysctl']['backup'][key] = value
-    end
-    node.save
+  value get_sysctl_value(key)
+  if node.default['sysctl']['backup'][key].empty?
+    node.default['sysctl']['backup'][key] = value
+  end
+  node.save
 end
 
 action :apply do
@@ -62,7 +62,6 @@ action :remove do
       command 'sysctl --system'
       action :run
     end
-
   end
 
   sysctl_reload 'reload'
