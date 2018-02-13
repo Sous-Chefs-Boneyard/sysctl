@@ -38,8 +38,8 @@ action :apply do
 
     set_sysctl_param(new_resource.key, new_resource.value)
 
-    execute 'sysctl --system' do
-      command 'sysctl --system'
+    execute 'sysctl -p' do
+      command 'sysctl -p'
       action :run
     end
   end
@@ -58,8 +58,8 @@ action :remove do
     node.rm('sysctl', 'backup', new_resource.key)
     node.save
 
-    execute 'sysctl --system' do
-      command 'sysctl --system'
+    execute 'sysctl -p' do
+      command 'sysctl -p'
       action :run
     end
   end

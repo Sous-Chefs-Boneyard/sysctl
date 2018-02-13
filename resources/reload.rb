@@ -24,6 +24,13 @@ action :reload do
       action :restart
     end
   else
+    cookbook_file '/etc/rc.d/init.d/procps' do
+      cookbook 'sysctl'
+      source 'procps'
+      mode '0775'
+      only_if { platform_family?('rhel', 'fedora', 'pld', 'amazon') }
+    end
+
     service 'procps' do
       supports restart: true, reload: true, status: false
       action :restart
