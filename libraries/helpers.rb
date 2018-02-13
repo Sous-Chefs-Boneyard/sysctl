@@ -2,16 +2,14 @@ module SysctlCookbook
   module SysctlHelpers
     module Param
       def set_sysctl_param(key, value)
-        o = shell_out("sysctl #{'-e ' if node['sysctl']['ignore_error']}-w \"#{key}=#{value}\"")
+        o = shell_out("sysctl #{'-e ' if new_resource.ignore_error}-w \"#{key}=#{value}\"")
         o.error! ? false : true
       end
 
       def get_sysctl_value(key)
-        o = shell_out("sysctl -n #{'-e ' if new_resource.ignore_error}")
+        o = shell_out("sysctl -n -e #{key}")
         raise 'Unknown sysctl key!' if o.error!
-        value = o.stdout.tr("\t", ' ').strip
-        raise unless value == get_sysctld_value(key)
-        value
+        o.stdout.tr("\t", ' ').strip
       end
 
       def get_sysctld_value(key)
