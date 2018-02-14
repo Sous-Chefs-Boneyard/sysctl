@@ -18,13 +18,6 @@ describe file('/etc/sysctl.d/99-chef-kernel.msgmax.conf') do
   it { should_not be_file }
 end
 
-unless virtualization[:system] == 'docker'
-  describe file('/etc/sysctl.d/99-chef-vm.swappiness.conf') do
-    it { should be_file }
-    its(:content) { should match /^vm.swappiness = 19$/ }
-  end
-end
-
 describe command('sysctl -n vm.swappiness') do
   its(:exit_status) { should eq 0 }
   its(:stdout) { should match(/^19$/) }
