@@ -58,8 +58,7 @@ Ohai.plugin(:Sysctl) do
 
   collect_data(:linux) do
     sys Mash.new
-    # this is for the benefit of CentOS 5.10 as sysctl is not in it's path
-    get_sysctls 'sysctl -A || /sbin/sysctl -A'
+    get_sysctls
   end
 
   collect_data(:darwin) do

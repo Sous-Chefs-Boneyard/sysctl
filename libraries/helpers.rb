@@ -9,7 +9,7 @@ module SysctlCookbook
       def get_sysctl_value(key)
         o = shell_out("sysctl -n -e #{key}")
         raise 'Unknown sysctl key!' if o.error!
-        o.stdout.tr("\t", ' ').strip
+        o.stdout.to_s.tr("\t", ' ').strip
       end
 
       def get_sysctld_value(key)

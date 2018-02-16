@@ -1,4 +1,22 @@
-
+#
+# Cookbook Name:: sysctl
+# Resource:: reload
+#
+# Copyright:: 2018, Webb Agile Solutions Ltd.
+# Copyright:: 2018, Chef Software Inc.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#
 property :key, String, name_property: true
 property :ignore_error, [true, false], default: false
 property :value, [Array, String, Integer], coerce: proc { |v| coerce_value(v) }, required: true
@@ -20,7 +38,7 @@ load_current_value do
   if node.default['sysctl']['backup'][key].empty?
     node.default['sysctl']['backup'][key] = value
   end
-  node.save
+  # node.save
 end
 
 action :apply do
@@ -56,7 +74,7 @@ action :remove do
     backup_value = node['sysctl']['backup'][new_resource.key]
     set_sysctl_param(new_resource.key, backup_value) unless backup_value.empty?
     node.rm('sysctl', 'backup', new_resource.key)
-    node.save
+    # node.save
 
     execute 'sysctl -p' do
       command 'sysctl -p'
