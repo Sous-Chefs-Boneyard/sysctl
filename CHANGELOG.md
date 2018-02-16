@@ -1,5 +1,21 @@
 # Sysctl
 
+## v1.0.0 (tbc)
+
+- Remove mentions of attributes
+- `sysctl_param` now doesn't use attributes
+- update ohai to 5+ to remove `compat_resource` dependency
+- Move all helpers into helpers.rb
+- Remove unused methods in the helpers
+- Turn `template` into `cookbook_file`
+
+### Behaviour Change
+
+- Always ignore error when getting a key, that way the error is vomited back into the Chef run if there is one.
+- Now use sysctl -p to set attributes This mean we can set/unset sysctl_param in one run.
+- Fix reload resource for systemd
+- No longer require `recipes:default` to be added to persist a parameter
+
 ## v0.10.2 (2017-09-17)
 
 - Add attribute to handle with sysctl -e flag (#99)
