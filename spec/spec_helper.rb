@@ -1,6 +1,5 @@
 require 'chefspec'
 require 'chefspec/berkshelf'
-require 'mixlib/shellout'
 
 RSpec.configure do |config|
   config.formatter = :documentation
@@ -16,7 +15,7 @@ def platforms
     'fedora' => ['25'],
     'redhat' => ['6.9', '7.3'],
     'centos' => ['6.9', '7.3.1611'],
-    'freebsd' => ['10.3', '11.0'],
+    'freebsd' => ['11.0'],
     'suse' => ['12.2'],
   }
 end

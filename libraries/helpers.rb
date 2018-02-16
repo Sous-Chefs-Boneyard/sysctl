@@ -1,53 +1,15 @@
 module SysctlCookbook
   module SysctlHelpers
     module Param
-      def sysctld?
-        if node['sysctl'].attribute?('allow_sysctl_conf')
-          return node['sysctl']['allow_sysctl_conf'] ? false : true
-        end
-
-        case node['platform_family']
-        when 'freebsd'
-          false
-        when 'arch', 'debian', 'rhel', 'fedora', 'amazon'
-          true
-        when 'suse'
-          node['platform_version'].to_f < 12.0 ? false : true
-        end
-      end
-
-      def restart_procps?
-        return true unless node['sysctl'].attribute?('restart_procps')
-        node['sysctl']['restart_procps']
-      end
-
-      def config_sysctl
-        return node['sysctl']['conf_file'] if node['sysctl'].attribute?('conf_file')
-
-        case node['platform_family']
-        when 'freebsd'
-          '/etc/sysctl.conf.local'
-        when 'suse'
-          '/etc/sysctl.conf' if node['platform_version'].to_f < 12.0
-        else
-          raise 'Unknown sysctl file location. Unsupported platform.'
-        end
-      end
-
-      def confd_sysctl
-        if node['sysctl'].attribute?('conf_dir')
-          node['sysctl']['conf_dir']
-        else
-          '/etc/sysctl.d'
-        end
+      def set_sysctl_param(key, value)
+        o = shell_out("sysctl #{'-e ' if new_resource.ignore_error}-w \"#{key}=#{value}\"")
+        o.error! ? false : true
       end
 
       def get_sysctl_value(key)
-        o = shell_out("sysctl -n #{'-e ' if node['sysctl']['ignore_error']}#{key}")
+        o = shell_out("sysctl -n -e #{key}")
         raise 'Unknown sysctl key!' if o.error!
-        o = o.stdout.tr("\t", ' ').strip
-        raise unless o == get_sysctld_value(key)
-        o
+        o.stdout.to_s.tr("\t", ' ').strip
       end
 
       def get_sysctld_value(key)
@@ -56,24 +18,6 @@ module SysctlCookbook
         raise 'Unknown sysctl key!' if k.nil?
         raise 'Unknown sysctl value!' if v.nil?
         v
-      end
-
-      def set_sysctl_param(key, value)
-        o = shell_out("sysctl #{'-e ' if node['sysctl']['ignore_error']}-w \"#{key}=#{value}\"")
-        return false if o.error!
-        true
-      end
-
-      def coerce_attributes(a, out = nil)
-        case a
-        when Array
-          "#{out}=#{a.join(' ')}"
-        when String, Integer
-          "#{out}=#{a}"
-        when Hash
-          out += '.' unless out.nil?
-          a.map { |k, v| coerce_attributes(v, "#{out}#{k}") }.flatten.sort
-        end
       end
 
       def coerce_value(v)

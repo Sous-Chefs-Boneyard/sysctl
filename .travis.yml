@@ -19,24 +19,15 @@ services: docker
 
 env:
   matrix:
-  - INSTANCE=resources-amazonlinux
-  - INSTANCE=resources-centos-6
-  - INSTANCE=resources-centos-7
-  - INSTANCE=resources-debian-7
-  - INSTANCE=resources-debian-8
-  - INSTANCE=resources-fedora-latest
-  - INSTANCE=resources-ubuntu-1404
-  - INSTANCE=resources-ubuntu-1604
-  - INSTANCE=resources-opensuse-leap
-  - INSTANCE=attributes-amazonlinux
-  - INSTANCE=attributes-centos-6
-  - INSTANCE=attributes-centos-7
-  - INSTANCE=attributes-debian-7
-  - INSTANCE=attributes-debian-8
-  - INSTANCE=attributes-fedora-latest
-  - INSTANCE=attributes-ubuntu-1404
-  - INSTANCE=attributes-ubuntu-1604
-  - INSTANCE=attributes-opensuse-leap
+  - INSTANCE=default-amazonlinux
+  - INSTANCE=default-centos-6
+  - INSTANCE=default-centos-7
+  - INSTANCE=default-debian-7
+  - INSTANCE=default-debian-8
+  - INSTANCE=default-fedora-latest
+  - INSTANCE=default-ubuntu-1404
+  - INSTANCE=default-ubuntu-1604
+  - INSTANCE=default-opensuse-leap
 
 before_script:
   - sudo iptables -L DOCKER || ( echo "DOCKER iptables chain missing" ; sudo iptables -N DOCKER )
