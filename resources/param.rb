@@ -38,7 +38,6 @@ load_current_value do
   if node.default['sysctl']['backup'][key].empty?
     node.default['sysctl']['backup'][key] = value
   end
-  # node.save
 end
 
 action :apply do
@@ -74,7 +73,6 @@ action :remove do
     backup_value = node['sysctl']['backup'][new_resource.key]
     set_sysctl_param(new_resource.key, backup_value) unless backup_value.empty?
     node.rm('sysctl', 'backup', new_resource.key)
-    # node.save
 
     execute 'sysctl -p' do
       command 'sysctl -p'
