@@ -59,7 +59,7 @@ module SysctlCookbook
         when 'suse', 'opensuseleap'
           if node['platform_version'].to_f < 12.0
             s['name'] = 'boot.sysctl'
-          elsif node['platform_version'].to_f >= 12.0
+          else
             s['name'] = 'systemd-sysctl'
             s['provider'] = Chef::Provider::Service::Systemd
           end
