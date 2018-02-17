@@ -27,6 +27,8 @@ property :conf_file, [String, nil], default: lazy {
     '/etc/sysctl.conf.local'
   when 'suse'
     '/etc/sysctl.conf' if node['platform_version'].to_f < 12.0
+  else
+    nil
   end
 }
 property :restart_procps, [true, false], default: true
@@ -42,18 +44,20 @@ end
 
 action :apply do
   converge_if_changed do
-    directory new_resource.conf_dir
+    if new_resource.conf_file.nil?
+      directory new_resource.conf_dir
 
-    template "#{new_resource.conf_dir}/99-chef-#{new_resource.key}.conf" do
-      cookbook 'sysctl'
-      source 'sysctl.conf.erb'
-      variables(key: new_resource.key, value: new_resource.value)
-      # notifies :start, 'service[procps]', :immediately if new_resource.restart_procps
+      template "#{new_resource.conf_dir}/99-chef-#{new_resource.key}.conf" do
+        cookbook 'sysctl'
+        source 'sysctl.conf.erb'
+        variables(key: new_resource.key, value: new_resource.value)
+      end
+
+      set_sysctl_param(new_resource.key, new_resource.value)
+
+    else
+      Chef::Log.fatal 'sysctl.d directory not found. Distro not currently supported by sysctl'
     end
-
-    Chef::Log.fatal 'sysctl.d directory not found. Distro not supported by sysctl' unless ::File.exist?(new_resource.conf_dir)
-
-    set_sysctl_param(new_resource.key, new_resource.value)
 
     execute 'sysctl -p' do
       command 'sysctl -p'

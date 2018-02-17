@@ -11,6 +11,17 @@ module SysctlCookbook
         raise 'Unknown sysctl key!' if o.error!
         o.stdout.to_s.tr("\t", ' ').strip
       end
+
+      def coerce_value(v)
+        case v
+        when Array
+          v.join(' ')
+        when Integer
+          v.to_s
+        else
+          v
+        end
+      end
     end
   end
 end
