@@ -1,6 +1,6 @@
 # Sysctl
 
-## v1.0.0 (tbc)
+## v1.0.0 (2018-02-17)
 
 - Remove mentions of attributes
 - `sysctl_param` now doesn't use attributes
