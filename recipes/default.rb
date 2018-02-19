@@ -1,0 +1,1 @@
+Chef::Log.warn('The sysctl::default recipe has been deprecated as of version 1.0 of the sysctl cookbook. This recipe is no longer necessary to use the systctl resource. Please update your cookbooks or remove the sysctl::default recipe from your runlist.')
