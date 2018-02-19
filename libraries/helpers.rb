@@ -12,6 +12,12 @@ module SysctlCookbook
         o.stdout.to_s.tr("\t", ' ').strip
       end
 
+      def get_sysctld_value(key)
+        return nil unless ::File.exist?("/etc/sysctl.d/99-chef-#{key}.conf")
+        k, v = IO.read("/etc/sysctl.d/99-chef-#{key}.conf").match(/(.*) = (.*)/).captures
+        v
+      end
+
       def coerce_value(v)
         case v
         when Array
