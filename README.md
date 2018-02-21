@@ -24,10 +24,6 @@ Set [sysctl](http://en.wikipedia.org/wiki/Sysctl) system control parameters via 
 
 ## Usage
 
-There are two main ways to interact with the cookbook. This is via chef [attributes](http://docs.chef.io/attributes.html) or via the resource.
-
-### Custom Resources
-
 The `sysctl_param` resource can be called from wrapper or application cookbooks to immediately set the kernel parameter.
 
 ### sysctl_param
