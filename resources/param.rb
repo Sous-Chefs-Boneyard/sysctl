@@ -67,22 +67,25 @@ action :apply do
 end
 
 action :remove do
-  converge_by "removing #{new_resource.key}" do
-    file "#{new_resource.conf_dir}/99-chef-#{new_resource.key}.conf" do
-      action :delete
-    end
+  # only converge the resource if the file actually exists to delete
+  if ::File.exist?("#{new_resource.conf_dir}/99-chef-#{new_resource.key}.conf")
+    converge_by "removing #{new_resource.key}" do
+      file "#{new_resource.conf_dir}/99-chef-#{new_resource.key}.conf" do
+        action :delete
+      end
 
-    backup_value = node['sysctl']['backup'][new_resource.key]
-    set_sysctl_param(new_resource.key, backup_value) unless backup_value.empty?
-    node.rm('sysctl', 'backup', new_resource.key)
+      backup_value = node['sysctl']['backup'][new_resource.key]
+      set_sysctl_param(new_resource.key, backup_value) unless backup_value.empty?
+      node.rm('sysctl', 'backup', new_resource.key)
 
-    execute 'sysctl -p' do
-      command 'sysctl -p'
-      action :run
+      execute 'sysctl -p' do
+        command 'sysctl -p'
+        action :run
+      end
+
+      sysctl_reload 'reload'
     end
   end
-
-  sysctl_reload 'reload'
 end
 
 action_class do
