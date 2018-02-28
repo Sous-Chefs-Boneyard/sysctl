@@ -36,7 +36,14 @@ property :restart_procps, [true, false], default: true
 include SysctlCookbook::SysctlHelpers::Param
 
 load_current_value do
-  value get_sysctl_value(key)
+  sysctl_value = get_sysctl_value(key)
+  sysctld_value = get_sysctld_value(key)
+  if sysctl_value == sysctld_value
+    value(sysctl_value)
+  else
+    value('')
+  end
+
   if node.default['sysctl']['backup'][key].empty?
     node.default['sysctl']['backup'][key] = value
   end
