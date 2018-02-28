@@ -67,8 +67,6 @@ action :apply do
 end
 
 action :remove do
-  puts node.default['sysctl']['backup'][new_resource.key]
-
   converge_by "removing #{new_resource.key}" do
     file "#{new_resource.conf_dir}/99-chef-#{new_resource.key}.conf" do
       action :delete
