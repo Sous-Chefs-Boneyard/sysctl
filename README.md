@@ -22,7 +22,7 @@ Set [sysctl](http://en.wikipedia.org/wiki/Sysctl) system control parameters via 
 
 ### Chef
 
-- 12.5+
+- 12.7+
 
 ## Usage
 
