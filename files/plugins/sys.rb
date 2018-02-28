@@ -49,19 +49,7 @@ Ohai.plugin(:Sysctl) do
     sys.update lines_attrs
   end
 
-  collect_data(:default) do
-    sys Mash.new
-  end
-
-  # :aix, :darwin, :freebsd, :linux, :openbsd, :netbsd, :solaris2, :windows
-  #  or any other value from RbConfig::CONFIG['host_os']
-
   collect_data(:linux) do
-    sys Mash.new
-    get_sysctls
-  end
-
-  collect_data(:darwin) do
     sys Mash.new
     get_sysctls
   end
