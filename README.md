@@ -4,6 +4,8 @@
 
 Set [sysctl](http://en.wikipedia.org/wiki/Sysctl) system control parameters via Chef
 
+**Please read the changelog when upgrading from the v0.x series to the v1.x series**
+
 ## Requirements
 
 ### Platforms
