@@ -1,5 +1,13 @@
 # Sysctl
 
+## v1.0.2 (2018-02-28)
+
+- Removed sysctl collection in ohai for non-Linux hosts. This cookbook doesn't support it so we shouldn't increase ohai runtimes by collecting this data
+- Removed the mention of attributes in the readme and put a large warning for users upgrading to 1.0
+- Remove a debug statement that was left in the param resource
+- Fixed the :remove action in the param resource to not converge when there isn't a entry to remove
+- Increased the required Chef version to 12.7 since we're using action_class in the resource which had several bugs in 12.5/12.6
+
 ## v1.0.1 (2018-02-19)
 
 - Add back systctl::default recipe, but log a warning that the recipe should be removed from cookbooks / runlists. Please update your cookbooks to require systctl 1 or later and remove this recipe.
