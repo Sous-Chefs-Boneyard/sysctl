@@ -17,8 +17,7 @@ Set [sysctl](http://en.wikipedia.org/wiki/Sysctl) system control parameters via 
 - PLD Linux
 - Exherbo
 - Arch Linux
-- SLES
-- FreeBSD
+- SLES 12+
 
 ### Chef
 

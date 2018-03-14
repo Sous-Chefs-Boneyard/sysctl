@@ -21,12 +21,11 @@ property :key, String, name_property: true
 property :ignore_error, [true, false], default: false
 property :value, [Array, String, Integer], coerce: proc { |v| coerce_value(v) }, required: true
 property :conf_dir, String, default: '/etc/sysctl.d'
-property :conf_file, [String, nil], default: lazy {
-  case node['platform_family']
-  when 'freebsd'
-    '/etc/sysctl.conf.local'
-  when 'suse'
-    '/etc/sysctl.conf' if node['platform_version'].to_f < 12.0
+
+def after_created
+  raise "The systctl_param resource does not support FreeBSD as FreeBSD lacks a systctl.d directory" if platform_family?('freebsd')
+  raise "The systctl_param resource does not support Suse as < 12 as it a systctl.d directory" if platform_family?('sles') && node['platform_version'].to_i < 12
+end
   end
 }
 
@@ -41,18 +40,13 @@ end
 
 action :apply do
   converge_if_changed do
-    if new_resource.conf_file.nil?
-      directory new_resource.conf_dir
+    directory new_resource.conf_dir
 
-      file "#{new_resource.conf_dir}/99-chef-#{new_resource.key}.conf" do
-        content "#{new_resource.key} = #{new_resource.value}"
-      end
-
-      set_sysctl_param(new_resource.key, new_resource.value)
-
-    else
-      Chef::Log.fatal 'sysctl.d directory not found. Distro not currently supported by sysctl'
+    file "#{new_resource.conf_dir}/99-chef-#{new_resource.key}.conf" do
+      content "#{new_resource.key} = #{new_resource.value}"
     end
+
+    set_sysctl_param(new_resource.key, new_resource.value)
 
     execute 'sysctl -p' do
       command 'sysctl -p'
