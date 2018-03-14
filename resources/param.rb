@@ -45,10 +45,8 @@ action :apply do
     if new_resource.conf_file.nil?
       directory new_resource.conf_dir
 
-      template "#{new_resource.conf_dir}/99-chef-#{new_resource.key}.conf" do
-        cookbook 'sysctl'
-        source 'sysctl.conf.erb'
-        variables(key: new_resource.key, value: new_resource.value)
+      file "#{new_resource.conf_dir}/99-chef-#{new_resource.key}.conf" do
+        content "#{new_resource.key} = #{new_resource.value}"
       end
 
       set_sysctl_param(new_resource.key, new_resource.value)
