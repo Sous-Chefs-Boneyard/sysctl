@@ -21,17 +21,28 @@ property :key, String, name_property: true
 property :ignore_error, [true, false], default: false
 property :value, [Array, String, Integer], coerce: proc { |v| coerce_value(v) }, required: true
 property :conf_dir, String, default: '/etc/sysctl.d'
-property :conf_file, [String, nil], default: lazy {
-  case node['platform_family']
-  when 'freebsd'
-    '/etc/sysctl.conf.local'
-  when 'suse'
-    '/etc/sysctl.conf' if node['platform_version'].to_f < 12.0
-  end
-}
-property :restart_procps, [true, false], default: true
 
-include SysctlCookbook::SysctlHelpers::Param
+def after_created
+  raise "The systctl_param resource does not support FreeBSD as FreeBSD lacks a systctl.d directory" if platform_family?('freebsd')
+  raise "The systctl_param resource does not support Suse as < 12 as it a systctl.d directory" if platform_family?('sles') && node['platform_version'].to_i < 12
+end
+
+def coerce_value(v)
+  case v
+  when Array
+    v.join(' ')
+  when Integer
+    v.to_s
+  else
+    v
+  end
+end
+
+def get_sysctl_value(key)
+  o = shell_out("sysctl -n -e #{key}")
+  raise 'Unknown sysctl key!' if o.error!
+  o.stdout.to_s.tr("\t", ' ').strip
+end
 
 load_current_value do
   value get_sysctl_value(key)
@@ -42,18 +53,13 @@ end
 
 action :apply do
   converge_if_changed do
-    if new_resource.conf_file.nil?
-      directory new_resource.conf_dir
+    directory new_resource.conf_dir
 
-      file "#{new_resource.conf_dir}/99-chef-#{new_resource.key}.conf" do
-        content "#{new_resource.key} = #{new_resource.value}"
-      end
-
-      set_sysctl_param(new_resource.key, new_resource.value)
-
-    else
-      Chef::Log.fatal 'sysctl.d directory not found. Distro not currently supported by sysctl'
+    file "#{new_resource.conf_dir}/99-chef-#{new_resource.key}.conf" do
+      content "#{new_resource.key} = #{new_resource.value}"
     end
+
+    set_sysctl_param(new_resource.key, new_resource.value)
 
     execute 'sysctl -p' do
       command 'sysctl -p'
@@ -85,5 +91,8 @@ action :remove do
 end
 
 action_class do
-  include SysctlCookbook::SysctlHelpers::Param
+  def set_sysctl_param(key, value)
+    o = shell_out("sysctl #{'-e ' if new_resource.ignore_error}-w \"#{key}=#{value}\"")
+    o.error! ? false : true
+  end
 end
