@@ -29,7 +29,6 @@ property :conf_file, [String, nil], default: lazy {
     '/etc/sysctl.conf' if node['platform_version'].to_f < 12.0
   end
 }
-property :restart_procps, [true, false], default: true
 
 include SysctlCookbook::SysctlHelpers::Param
 
