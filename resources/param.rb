@@ -26,10 +26,23 @@ def after_created
   raise "The systctl_param resource does not support FreeBSD as FreeBSD lacks a systctl.d directory" if platform_family?('freebsd')
   raise "The systctl_param resource does not support Suse as < 12 as it a systctl.d directory" if platform_family?('sles') && node['platform_version'].to_i < 12
 end
-  end
-}
 
-include SysctlCookbook::SysctlHelpers::Param
+def coerce_value(v)
+  case v
+  when Array
+    v.join(' ')
+  when Integer
+    v.to_s
+  else
+    v
+  end
+end
+
+def get_sysctl_value(key)
+  o = shell_out("sysctl -n -e #{key}")
+  raise 'Unknown sysctl key!' if o.error!
+  o.stdout.to_s.tr("\t", ' ').strip
+end
 
 load_current_value do
   value get_sysctl_value(key)
@@ -78,5 +91,8 @@ action :remove do
 end
 
 action_class do
-  include SysctlCookbook::SysctlHelpers::Param
+  def set_sysctl_param(key, value)
+    o = shell_out("sysctl #{'-e ' if new_resource.ignore_error}-w \"#{key}=#{value}\"")
+    o.error! ? false : true
+  end
 end
