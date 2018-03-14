@@ -1,5 +1,10 @@
 # Sysctl
 
+## v1.0.3 (2018-03-14)
+
+- Refactor sysctl helpers into the correct files
+- Hard fail on FreeBSD/SLEZ < 12 [#125](https://github.com/sous-chefs/sysctl/pull/125)
+
 ## v1.0.2 (2018-02-28)
 
 - Removed sysctl collection in ohai for non-Linux hosts. This cookbook doesn't support it so we shouldn't increase ohai runtimes by collecting this data
