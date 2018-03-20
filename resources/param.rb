@@ -1,6 +1,6 @@
 #
 # Cookbook:: sysctl
-# Resource:: reload
+# Resource:: param
 #
 # Copyright:: 2018, Webb Agile Solutions Ltd.
 # Copyright:: 2018, Chef Software Inc.
