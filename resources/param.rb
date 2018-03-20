@@ -90,7 +90,6 @@ end
 
 action_class do
   def set_sysctl_param(key, value)
-    o = shell_out("sysctl #{'-e ' if new_resource.ignore_error}-w \"#{key}=#{value}\"")
-    o.error! ? false : true
+    shell_out!("sysctl #{'-e ' if new_resource.ignore_error}-w \"#{key}=#{value}\"")
   end
 end
