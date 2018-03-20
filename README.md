@@ -33,12 +33,11 @@ The `sysctl_param` resource can be called from wrapper or application cookbooks 
 
 - `:apply` (default)
 - `:remove`
-- `:nothing`
 
 #### Properties
 
-- key
-- value
+- `key`
+- `value`
 
 #### Examples
 
