@@ -23,8 +23,8 @@ property :value, [Array, String, Integer], coerce: proc { |v| coerce_value(v) },
 property :conf_dir, String, default: '/etc/sysctl.d'
 
 def after_created
-  raise "The systctl_param resource does not support FreeBSD as FreeBSD lacks a systctl.d directory" if platform_family?('freebsd')
-  raise "The systctl_param resource does not support Suse as < 12 as it a systctl.d directory" if platform_family?('sles') && node['platform_version'].to_i < 12
+  raise 'The systctl_param resource requires Linux as it needs sysctl and the systctl.d directory functionality.' unless node['os'] == 'linux'
+  raise 'The systctl_param resource does not support SLES releases less than 12 as it requires a systctl.d directory' if platform_family?('suse') && node['platform_version'].to_i < 12
 end
 
 def coerce_value(v)
