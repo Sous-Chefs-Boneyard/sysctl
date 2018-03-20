@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: sysctl
+# Cookbook:: sysctl
 # Resource:: reload
 #
 # Copyright:: 2018, Webb Agile Solutions Ltd.
@@ -19,7 +19,7 @@
 #
 property :key, String, name_property: true
 property :ignore_error, [true, false], default: false
-property :value, [Array, String, Integer], coerce: proc { |v| coerce_value(v) }, required: true
+property :value, [Array, String, Integer, Float], coerce: proc { |v| coerce_value(v) }, required: true
 property :conf_dir, String, default: '/etc/sysctl.d'
 
 def after_created
@@ -31,10 +31,8 @@ def coerce_value(v)
   case v
   when Array
     v.join(' ')
-  when Integer
-    v.to_s
   else
-    v
+    v.to_s
   end
 end
 
