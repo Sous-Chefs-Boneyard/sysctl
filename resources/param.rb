@@ -51,13 +51,14 @@ end
 
 action :apply do
   converge_if_changed do
+    # set it temporarily
+    set_sysctl_param(new_resource.key, new_resource.value)
+
     directory new_resource.conf_dir
 
     file "#{new_resource.conf_dir}/99-chef-#{new_resource.key}.conf" do
       content "#{new_resource.key} = #{new_resource.value}"
     end
-
-    set_sysctl_param(new_resource.key, new_resource.value)
 
     execute 'sysctl -p' do
       command 'sysctl -p'
