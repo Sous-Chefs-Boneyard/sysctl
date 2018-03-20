@@ -1,4 +1,4 @@
-if (os[:family] == 'redhat' && os[:release].start_with?('6')) || os[:name] == 'amazon'
+if (os[:family] == 'redhat' && os[:release].start_with?('6')) || os[:name] == 'amazon' || os[:family] == 'suse'
 
   describe command('sysctl -n kernel.msgmax') do
     its(:exit_status) { should eq 0 }
