@@ -84,8 +84,6 @@ action :remove do
         command 'sysctl -p'
         action :run
       end
-
-      sysctl_reload 'reload'
     end
   end
 end
