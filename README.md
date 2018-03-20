@@ -32,8 +32,11 @@ Use the sysctl_param resource to set kernel parameters using the [sysctl](http:/
 
 #### Properties
 
-- `key` - the path to the kernel parameter in dotted notation
-- `value` - String, Integer, Float, or Array of values
+`property`     | `type`                        | `description`
+-------------- | ----------------------------- | ------------------------------------------------------------------------------------------------
+`key`          | String                        | the path to the kernel parameter
+`value`        | String, Integer, Float, Array | the value to set for the kernel parameter
+`ignore_error` | True / False                  | Should the resource fail if setting the parameter via the `sysclt` command line was unsuccessful
 
 #### Examples
 
