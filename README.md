@@ -2,7 +2,7 @@
 
 [![Cookbook Version](https://img.shields.io/cookbook/v/sysctl.svg?style=flat)](https://supermarket.chef.io/cookbooks/sysctl) [![Build Status](https://travis-ci.org/sous-chefs/sysctl.svg?branch=master)](https://travis-ci.org/sous-chefs/sysctl) [![License](https://img.shields.io/badge/license-Apache_2-blue.svg)](https://www.apache.org/licenses/LICENSE-2.0)
 
-Set [sysctl](http://en.wikipedia.org/wiki/Sysctl) system control parameters via Chef
+Use the sysctl_param resource to set kernel parameters using the [sysctl](http://en.wikipedia.org/wiki/Sysctl) command line tool and configuration files in the system's sysctl.d directory. Configuration files managed by this resource are named 99-chef-KEYNAME.conf. If an existing value was already set for the value it will be backed up to the node and restored if the :remove action is used later.
 
 **Please read the changelog when upgrading from the v0.x series to the v1.x series**
 
@@ -23,22 +23,20 @@ Set [sysctl](http://en.wikipedia.org/wiki/Sysctl) system control parameters via 
 
 - 12.7+
 
-## Usage
-
-The `sysctl_param` resource can be called from wrapper or application cookbooks to immediately set the kernel parameter.
-
 ### sysctl_param
 
 #### Actions
 
 - `:apply` (default)
 - `:remove`
-- `:nothing`
 
 #### Properties
 
-- key
-- value
+`property`     | `type`                        | `description`
+-------------- | ----------------------------- | ------------------------------------------------------------------------------------------------
+`key`          | String                        | the path to the kernel parameter
+`value`        | String, Integer, Float, Array | the value to set for the kernel parameter
+`ignore_error` | True / False                  | Should the resource fail if setting the parameter via the `sysclt` command line was unsuccessful
 
 #### Examples
 
@@ -95,7 +93,7 @@ There are a lot of different documents that talk about system control parameters
 
 ## Development
 
-We have written unit tests using [chefspec](http://code.sethvargo.com/chefspec/) and integration tests in [serverspec](http://serverspec.org/) executed via [test-kitchen](http://kitchen.ci). Much of the tooling around this cookbook is exposed via guard and test kitchen, so it is highly recommended to learn more about those tools. The easiest way to get started is to install the [Chef Development Kit](https://downloads.chef.io/chef-dk/)
+We have written unit tests using [chefspec](http://code.sethvargo.com/chefspec/) and integration tests in [InSpec](https://www.inspec.io//) executed via [test-kitchen](https://kitchen.ci/). Much of the tooling around this cookbook is exposed via guard and test kitchen, so it is highly recommended to learn more about those tools. The easiest way to get started is to install the [Chef Development Kit](https://downloads.chef.io/chefdk)
 
 ### Running tests
 

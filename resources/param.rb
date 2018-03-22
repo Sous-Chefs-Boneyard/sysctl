@@ -1,6 +1,6 @@
 #
-# Cookbook Name:: sysctl
-# Resource:: reload
+# Cookbook:: sysctl
+# Resource:: param
 #
 # Copyright:: 2018, Webb Agile Solutions Ltd.
 # Copyright:: 2018, Chef Software Inc.
@@ -19,22 +19,20 @@
 #
 property :key, String, name_property: true
 property :ignore_error, [true, false], default: false
-property :value, [Array, String, Integer], coerce: proc { |v| coerce_value(v) }, required: true
+property :value, [Array, String, Integer, Float], coerce: proc { |v| coerce_value(v) }, required: true
 property :conf_dir, String, default: '/etc/sysctl.d'
 
 def after_created
-  raise "The systctl_param resource does not support FreeBSD as FreeBSD lacks a systctl.d directory" if platform_family?('freebsd')
-  raise "The systctl_param resource does not support Suse as < 12 as it a systctl.d directory" if platform_family?('sles') && node['platform_version'].to_i < 12
+  raise 'The systctl_param resource requires Linux as it needs sysctl and the systctl.d directory functionality.' unless node['os'] == 'linux'
+  raise 'The systctl_param resource does not support SLES releases less than 12 as it requires a systctl.d directory' if platform_family?('suse') && node['platform_version'].to_i < 12
 end
 
 def coerce_value(v)
   case v
   when Array
     v.join(' ')
-  when Integer
-    v.to_s
   else
-    v
+    v.to_s
   end
 end
 
@@ -53,13 +51,14 @@ end
 
 action :apply do
   converge_if_changed do
+    # set it temporarily
+    set_sysctl_param(new_resource.key, new_resource.value)
+
     directory new_resource.conf_dir
 
     file "#{new_resource.conf_dir}/99-chef-#{new_resource.key}.conf" do
       content "#{new_resource.key} = #{new_resource.value}"
     end
-
-    set_sysctl_param(new_resource.key, new_resource.value)
 
     execute 'sysctl -p' do
       command 'sysctl -p'
@@ -84,15 +83,12 @@ action :remove do
         command 'sysctl -p'
         action :run
       end
-
-      sysctl_reload 'reload'
     end
   end
 end
 
 action_class do
   def set_sysctl_param(key, value)
-    o = shell_out("sysctl #{'-e ' if new_resource.ignore_error}-w \"#{key}=#{value}\"")
-    o.error! ? false : true
+    shell_out!("sysctl #{'-e ' if new_resource.ignore_error}-w \"#{key}=#{value}\"")
   end
 end
