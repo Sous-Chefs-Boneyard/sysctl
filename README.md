@@ -36,7 +36,7 @@ Use the sysctl_param resource to set kernel parameters using the [sysctl](http:/
 -------------- | ----------------------------- | ------------------------------------------------------------------------------------------------
 `key`          | String                        | the path to the kernel parameter
 `value`        | String, Integer, Float, Array | the value to set for the kernel parameter
-`ignore_error` | True / False                  | Should the resource fail if setting the parameter via the `sysclt` command line was unsuccessful
+`ignore_error` | True / False                  | Should the resource fail if setting the parameter via the `sysctl` command line was unsuccessful
 
 #### Examples
 
@@ -67,6 +67,15 @@ Remove sysctl parameter and set net.ipv4.tcp_fin_timeout back to default
 sysctl_param 'net.ipv4.tcp_fin_timeout' do
   value 30
   action :remove
+end
+```
+
+Add sysctl parameter but ignore errors if they arise
+
+```ruby
+sysctl_param 'kernel.randomize_va_space' do
+  value 0
+  ignore_error true
 end
 ```
 
