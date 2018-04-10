@@ -1,3 +1,5 @@
+The sysctl resource from this cookbook is now shipping as part of Chef 14\. With the inclusion of this resource into Chef itself we are now deprecating this cookbook. It will continue to function for Chef 13 users, but will not be updated.
+
 # sysctl cookbook
 
 [![Cookbook Version](https://img.shields.io/cookbook/v/sysctl.svg?style=flat)](https://supermarket.chef.io/cookbooks/sysctl) [![Build Status](https://travis-ci.org/sous-chefs/sysctl.svg?branch=master)](https://travis-ci.org/sous-chefs/sysctl) [![License](https://img.shields.io/badge/license-Apache_2-blue.svg)](https://www.apache.org/licenses/LICENSE-2.0)
