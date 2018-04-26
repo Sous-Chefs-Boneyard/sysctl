@@ -61,7 +61,7 @@ action :apply do
     end
 
     execute 'sysctl -p' do
-      command 'sysctl -p'
+      command "sysctl #{'-e ' if new_resource.ignore_error}-p"
       action :run
     end
   end
