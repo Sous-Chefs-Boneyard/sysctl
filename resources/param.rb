@@ -36,17 +36,12 @@ def coerce_value(v)
   end
 end
 
-def get_sysctl_value(key)
-  o = shell_out("sysctl -n -e #{key}")
-  raise 'Unknown sysctl key!' if o.error!
-  o.stdout.to_s.tr("\t", ' ').strip
-end
-
+# shellout to systctl to get the current value
+# ignore missing keys by using '-e'
+# convert tabs to spaces since systctl tab deliminates multivalue parameters
+# strip the newline off the end of the output as well
 load_current_value do
-  value get_sysctl_value(key)
-  if node.default['sysctl']['backup'][key].empty?
-    node.default['sysctl']['backup'][key] = value
-  end
+  value shell_out!("sysctl -n -e #{key}").stdout.tr("\t", ' ').strip
 end
 
 action :apply do
