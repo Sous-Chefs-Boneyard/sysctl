@@ -18,7 +18,7 @@
 # limitations under the License.
 #
 property :key, String, name_property: true
-property :ignore_error, [true, false], default: false
+property :ignore_error, [true, false], default: false, desired_state: false
 property :value, [Array, String, Integer, Float], coerce: proc { |v| coerce_value(v) }, required: true
 property :conf_dir, String, default: '/etc/sysctl.d'
 
