@@ -60,7 +60,7 @@ action :apply do
       content "#{new_resource.key} = #{new_resource.value}"
     end
 
-    execute 'sysctl -p' do
+    execute 'Load sysctl values' do
       command "sysctl #{'-e ' if new_resource.ignore_error}-p"
       action :run
     end
@@ -79,7 +79,7 @@ action :remove do
       set_sysctl_param(new_resource.key, backup_value) unless backup_value.empty?
       node.rm('sysctl', 'backup', new_resource.key)
 
-      execute 'sysctl -p' do
+      execute 'Load sysctl values' do
         command 'sysctl -p'
         action :run
       end
