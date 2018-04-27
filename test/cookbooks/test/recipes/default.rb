@@ -2,6 +2,11 @@ sysctl_param 'net.ipv4.ip_forward' do
   value 0
 end
 
+sysctl_param 'bogus.param' do
+  value 100000000
+  ignore_error true
+end
+
 # Amazon Linux does not support vm.swappiness
 sysctl_param 'vm.swappiness' do
   value 19
