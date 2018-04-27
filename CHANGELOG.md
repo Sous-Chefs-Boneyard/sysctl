@@ -1,8 +1,15 @@
 # Sysctl
 
+## v1.0.5 (2018-04-27)
+
+- Remove the last remains of the parameter backup functionality in the param resource
+- Use more friendly resource names when reloading the sysctl values
+- Fixed ignore_error to actually work and set it to not show up in reporting
+- Simplified how we load the current value
+
 ## v1.0.4 (2018-04-07)
 
-- The swap resource from this cookbook is now shipping as part of Chef 14\. With the inclusion of this resource into Chef itself we are now deprecating this cookbook. It will continue to function for Chef 13 users, but will not be updated.
+- The param resource from this cookbook is now shipping as part of Chef 14\. With the inclusion of this resource into Chef itself we are now deprecating this cookbook. It will continue to function for Chef 13 users, but will not be updated.
 
 ## v1.0.3 (2018-03-14)
 
