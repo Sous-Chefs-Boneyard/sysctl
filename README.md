@@ -4,6 +4,12 @@ The sysctl resource from this cookbook is now shipping as part of Chef 14\. With
 
 [![Cookbook Version](https://img.shields.io/cookbook/v/sysctl.svg?style=flat)](https://supermarket.chef.io/cookbooks/sysctl) [![CircleCI](https://circleci.com/gh/sous-chefs/sysctl.svg?style=svg)](https://circleci.com/gh/sous-chefs/sysctl) [![License](https://img.shields.io/badge/license-Apache_2-blue.svg)](https://www.apache.org/licenses/LICENSE-2.0)
 
+# Warning: Depreciated Cookbook
+
+This cookbook is now a core resource in Chef 14.
+
+## summary:
+
 Use the sysctl_param resource to set kernel parameters using the [sysctl](http://en.wikipedia.org/wiki/Sysctl) command line tool and configuration files in the system's sysctl.d directory. Configuration files managed by this resource are named 99-chef-KEYNAME.conf. If an existing value was already set for the value it will be backed up to the node and restored if the :remove action is used later.
 
 **Please read the changelog when upgrading from the v0.x series to the v1.x series**
