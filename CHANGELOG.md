@@ -1,5 +1,9 @@
 # Sysctl
 
+## v1.1.0 (2019-11-07)
+
+- exposed the `sysctl_param` resource as `sysctl` as well to make upgrades less painful
+
 ## v1.0.5 (2018-04-27)
 
 - Remove the last remains of the parameter backup functionality in the param resource
