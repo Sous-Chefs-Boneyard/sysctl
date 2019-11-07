@@ -9,8 +9,8 @@ workflows:
       - kitchen/danger:
           name: danger
           context: Danger
-      - kitchen/lint:
-          name: lint
+      # - kitchen/lint:
+      #     name: lint
       # - kitchen/dokken:
       #     name: default
       #     suite: default
