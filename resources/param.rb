@@ -22,6 +22,11 @@ property :ignore_error, [true, false], default: false, desired_state: false
 property :value, [Array, String, Integer, Float], coerce: proc { |v| coerce_value(v) }, required: true
 property :conf_dir, String, default: '/etc/sysctl.d'
 
+resource_name :sysctl_param
+provides :sysctl_param
+provides :sysctl
+
+
 def after_created
   raise 'The systctl_param resource requires Linux as it needs sysctl and the systctl.d directory functionality.' unless node['os'] == 'linux'
   raise 'The systctl_param resource does not support SLES releases less than 12 as it requires a systctl.d directory' if platform_family?('suse') && node['platform_version'].to_i < 12

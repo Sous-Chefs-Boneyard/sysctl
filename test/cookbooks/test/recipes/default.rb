@@ -7,6 +7,12 @@ sysctl_param 'bogus.param' do
   ignore_error true
 end
 
+sysctl 'vm.swappiness' do
+  value 18
+  ignore_error true
+end
+
+
 # Amazon Linux does not support vm.swappiness
 sysctl_param 'vm.swappiness' do
   value 19
